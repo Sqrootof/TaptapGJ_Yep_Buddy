@@ -18,12 +18,12 @@ public class LaserWeapon : MonoBehaviour
             lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
 
-        lineRenderer.startWidth = 0.1f; // 激光起始宽度
-        lineRenderer.endWidth = 0.1f; // 激光结束宽度
-        lineRenderer.material = new Material(Shader.Find("Unlit/Color")); // 使用无光照着色器
-        lineRenderer.startColor = Color.red; // 激光颜色
-        lineRenderer.endColor = Color.red; // 激光颜色
-        lineRenderer.positionCount = 3; // 激光有三个点（起点、反射点和终点）
+        //lineRenderer.startWidth = 0.1f; // 激光起始宽度
+        //lineRenderer.endWidth = 0.1f; // 激光结束宽度
+        //lineRenderer.material = new Material(Shader.Find("Unlit/Color")); // 使用无光照着色器
+        //lineRenderer.startColor = Color.red; // 激光颜色
+        //lineRenderer.endColor = Color.red; // 激光颜色
+        //lineRenderer.positionCount = 3; // 激光有三个点（起点、反射点和终点）
 
         // 初始隐藏激光
         lineRenderer.enabled = false;
