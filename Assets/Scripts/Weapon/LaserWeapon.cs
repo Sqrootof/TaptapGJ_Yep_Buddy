@@ -100,10 +100,10 @@ public class LaserWeapon : MonoBehaviour
                 if ((enemyLayer & (1 << hit.collider.gameObject.layer)) != 0)
                 {
                     // 击中敌人，但继续穿透
-                    EnemyPYPTest enemyHealth = hit.collider.GetComponent<EnemyPYPTest>();
+                    Enemy enemyHealth = hit.collider.GetComponent<Enemy>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.health -= damageAmount * (maxReflections - reflections); // 对敌人造成伤害
+                        enemyHealth.currentHealth -= damageAmount * (maxReflections - reflections); // 对敌人造成伤害
                         Instantiate(explosionPrefab, hit.point, Quaternion.identity);
                     }
 
