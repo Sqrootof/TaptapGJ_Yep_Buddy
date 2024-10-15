@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &109691296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,6 +333,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  patrolPointA: {x: -5, y: 0, z: 0}
+  patrolPointB: {x: 5, y: 0, z: 0}
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 541989890501793066, guid: 61f6af541d4001341983a4a06aa65915,
     type: 3}
@@ -418,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 109691295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.47, y: -3.8, z: -0.0136647895}
+  m_LocalPosition: {x: -4.47, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1032,7 +1034,7 @@ Transform:
   m_GameObject: {fileID: 536617218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.292, y: -3.57, z: -0.00000011920929}
+  m_LocalPosition: {x: -15.292, y: -3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2166,7 +2168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1140917657
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2223,6 +2225,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  patrolPointA: {x: -5, y: 0, z: 0}
+  patrolPointB: {x: 5, y: 0, z: 0}
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 541989890501793066, guid: 61f6af541d4001341983a4a06aa65915,
     type: 3}
@@ -2308,7 +2312,7 @@ Transform:
   m_GameObject: {fileID: 1140917656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.04, y: -3.8, z: -0.0136647895}
+  m_LocalPosition: {x: -1.04, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2367,7 +2371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1505367611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2424,6 +2428,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  patrolPointA: {x: -5, y: 0, z: 0}
+  patrolPointB: {x: 5, y: 0, z: 0}
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 541989890501793066, guid: 61f6af541d4001341983a4a06aa65915,
     type: 3}
@@ -2509,7 +2515,7 @@ Transform:
   m_GameObject: {fileID: 1505367610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.12, y: -3.8, z: -0.0136647895}
+  m_LocalPosition: {x: -8.12, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3066,7 +3072,7 @@ Transform:
   m_GameObject: {fileID: 1643146496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34, y: -3.8, z: -0.0136647895}
+  m_LocalPosition: {x: -6.31, y: -3.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3102,6 +3108,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  patrolPointA: {x: -9, y: -4, z: 0}
+  patrolPointB: {x: -2, y: -4, z: 0}
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 541989890501793066, guid: 61f6af541d4001341983a4a06aa65915,
     type: 3}
@@ -3377,7 +3385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1733835055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3434,6 +3442,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  patrolPointA: {x: -5, y: 0, z: 0}
+  patrolPointB: {x: 5, y: 0, z: 0}
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 541989890501793066, guid: 61f6af541d4001341983a4a06aa65915,
     type: 3}
@@ -3519,7 +3529,7 @@ Transform:
   m_GameObject: {fileID: 1733835054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -3.8, z: -0.0136647895}
+  m_LocalPosition: {x: -2.6, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

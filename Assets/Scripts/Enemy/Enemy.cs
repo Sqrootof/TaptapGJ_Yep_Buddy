@@ -26,6 +26,11 @@ public class Enemy : MonoBehaviour
 
     [Tooltip("玩家层")] public LayerMask playerLayer = 1 << 6;
     [Tooltip("障碍物层")] public LayerMask obstacleLayer = 1 << 7;
+
+    // 定义巡逻点
+    public Vector3 patrolPointA = new Vector3(0f, 0f, 0f); // A点
+    public Vector3 patrolPointB = new Vector3(0f, 0f, 0f);  // B点
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -33,6 +38,14 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + visualPoint, visualRange);   //画出视野范围
+
+        Gizmos.color = Color.red; // 设置颜色为红色
+        Gizmos.DrawSphere(patrolPointA, 0.3f); // 绘制 A 点
+        Gizmos.DrawSphere(patrolPointB, 0.3f); // 绘制 B 点
+
+        // 绘制 A 点和 B 点之间的线
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(patrolPointA, patrolPointB);
     }
 
     /// <summary>
