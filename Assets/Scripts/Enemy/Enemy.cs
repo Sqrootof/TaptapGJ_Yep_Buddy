@@ -28,8 +28,10 @@ public class Enemy : MonoBehaviour
     [Tooltip("障碍物层")] public LayerMask obstacleLayer = 1 << 7;
 
     // 定义巡逻点
-    public Vector3 patrolPointA = new Vector3(0f, 0f, 0f); // A点
-    public Vector3 patrolPointB = new Vector3(0f, 0f, 0f);  // B点
+    public GameObject PointA;
+    public GameObject PointB;
+    public Vector3 patrolPointA;
+    public Vector3 patrolPointB;
 
     private void OnDrawGizmosSelected()
     {
@@ -39,13 +41,13 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + visualPoint, visualRange);   //画出视野范围
 
-        Gizmos.color = Color.red; // 设置颜色为红色
-        Gizmos.DrawSphere(patrolPointA, 0.3f); // 绘制 A 点
-        Gizmos.DrawSphere(patrolPointB, 0.3f); // 绘制 B 点
+        //Gizmos.color = Color.red; // 设置颜色为红色
+        //Gizmos.DrawSphere(patrolPointA, 0.3f); // 绘制 A 点
+        //Gizmos.DrawSphere(patrolPointB, 0.3f); // 绘制 B 点
 
-        // 绘制 A 点和 B 点之间的线
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(patrolPointA, patrolPointB);
+        //// 绘制 A 点和 B 点之间的线
+        //Gizmos.color = Color.blue;
+        //Gizmos.DrawLine(patrolPointA, patrolPointB);
     }
 
     /// <summary>
@@ -56,6 +58,10 @@ public class Enemy : MonoBehaviour
         enemyFSM = new EnemyFSM();   // 创建敌人状态机实例
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();     // 获取刚体组件
+        patrolPointA=PointA.transform.position;
+        patrolPointB=PointB.transform.position;
+        PointA.SetActive(false);
+        PointB.SetActive(false);
     }
 
     /// <summary>
