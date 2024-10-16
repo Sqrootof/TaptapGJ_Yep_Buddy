@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     [Header("移动属性相关")]
     [SerializeField] float WalkSpeed;
     [SerializeField] float JumpSpeed;
-    [SerializeField] float DashForce; 
+    [SerializeField] float DashForce;
+    [SerializeField] float rotationSpeed = 100f; // 旋转速度
     float DashCoolDown = 5f;
     int RemainingJumpTime = 2;
 
@@ -119,16 +120,25 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         Vector3 MoveVec = new Vector3(moveaxis * WalkSpeed, Rigidbody.velocity.y, 0);
         Rigidbody.velocity = MoveVec;
 
-        if (Input.GetKeyDown(KeyCode.D)){
+        if (Input.GetKey(KeyCode.D)){
             FaceDir = 1;
-            PlayerBody.transform.rotation = Quaternion.Lerp(PlayerBody.transform.rotation,Quaternion.Euler(0,45,0),Time.deltaTime);
+            PlayerBody.transform.rotation = Quaternion.RotateTowards(
+                PlayerBody.transform.rotation,
+                Quaternion.Euler(0, -45, 0),
+                rotationSpeed * Time.deltaTime);
         }
-        else if (Input.GetKeyDown(KeyCode.A)) {
+        else if (Input.GetKey(KeyCode.A)) {
             FaceDir = -1;
-            PlayerBody.transform.rotation = Quaternion.Lerp(PlayerBody.transform.rotation, Quaternion.Euler(0, 45, 0), Time.deltaTime);
+            PlayerBody.transform.rotation = Quaternion.RotateTowards(
+                PlayerBody.transform.rotation,
+                Quaternion.Euler(0, 45, 0),
+                rotationSpeed * Time.deltaTime);
         }
         else{
-            PlayerBody.transform.rotation = Quaternion.Lerp(PlayerBody.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime);
+            PlayerBody.transform.rotation = Quaternion.RotateTowards(
+                PlayerBody.transform.rotation,
+                Quaternion.Euler(0, 0, 0),
+                rotationSpeed * Time.deltaTime);
         }
     }
 

@@ -483,6 +483,7 @@ MonoBehaviour:
   WalkSpeed: 8
   JumpSpeed: 6
   DashForce: 1000
+  rotationSpeed: 1000000
   HealthMax: 100
   BasicDefense: 0
   BasicKnockbackResistance: 0
@@ -513,7 +514,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 72
   m_CollisionDetection: 0
 --- !u!135 &245711900
 SphereCollider:
