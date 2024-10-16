@@ -18,6 +18,9 @@ TagManager:
   - PlayerBullet
   - Enemy
   - Environment
+  - Ground
+  - PLayer
+  - Light
   - 
   - 
   - 

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPYPTest : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f; // 玩家移动速度
     public float jumpForce = 5f; // 跳跃力度
     private Rigidbody rb; // 3D 刚体组件
     private bool isGrounded; // 判断玩家是否在地面
+    public float health=1f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,10 @@ public class PlayerPYPTest : MonoBehaviour
     {
         Move(); // 调用移动方法
         Jump(); // 调用跳跃方法
+        if(health<=0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Move()
@@ -54,5 +59,10 @@ public class PlayerPYPTest : MonoBehaviour
         {
             isGrounded = false; // 玩家不在地面上
         }
+    }
+
+    public void GetHit(float damage)
+    {
+        health -= damage;
     }
 }

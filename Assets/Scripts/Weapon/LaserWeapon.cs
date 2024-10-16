@@ -3,19 +3,21 @@
 public class LaserWeapon : MonoBehaviour
 {
     public Camera Camera;
+    public GameObject Line;
     public LineRenderer lineRenderer; // 用于显示激光
     public LayerMask obstacleLayer; // 用于检测的障碍物图层
     public LayerMask enemyLayer; // 用于检测敌人的图层
     public float damageAmount; // 每次激光造成的伤害
     public GameObject explosionPrefab; // 爆炸效果预制体
     public int maxReflections; //最大反射次数
-
+    public GameObject laserStartParticlePrefab; // 粒子系统预制体
     private void Start()
     {
         // 确保 LineRenderer 组件已添加
         if (lineRenderer == null)
         {
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
+            lineRenderer=Line.GetComponent<LineRenderer>();
+            //lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
 
         //lineRenderer.startWidth = 0.1f; // 激光起始宽度
@@ -26,7 +28,8 @@ public class LaserWeapon : MonoBehaviour
         //lineRenderer.positionCount = 3; // 激光有三个点（起点、反射点和终点）
 
         // 初始隐藏激光
-        lineRenderer.enabled = false;
+        //lineRenderer.enabled = false;
+        Line.SetActive(false);
     }
 
     private void Update()
@@ -37,11 +40,13 @@ public class LaserWeapon : MonoBehaviour
             // 获取鼠标位置并更新激光
             Vector3 mouseWorldPosition = GetMousePosition();
             UpdateLaser(mouseWorldPosition);
-            lineRenderer.enabled = true; // 显示激光
+            //lineRenderer.enabled = true; // 显示激光
+            Line.SetActive(true);
         }
         else
         {
-            lineRenderer.enabled = false; // 隐藏激光
+            //lineRenderer.enabled = false; // 隐藏激光
+            Line.SetActive(false);
         }
     }
 
@@ -71,6 +76,14 @@ public class LaserWeapon : MonoBehaviour
         lineRenderer.positionCount = 1; // 动态调整点的数量
         lineRenderer.SetPosition(0, startPosition); // 激光的起点
 
+        Transform lineChild = Line.transform.GetChild(0); // 获取第一个子物体
+        lineChild.position = startPosition;
+        if (laserDirection != Vector3.zero) // 确保方向不为零
+        {
+            lineChild.rotation = Quaternion.LookRotation(laserDirection); // 根据激光方向设置旋转
+        }
+
+
         Vector3 currentPosition = startPosition;
         Vector3 currentDirection = laserDirection;
 
@@ -87,10 +100,10 @@ public class LaserWeapon : MonoBehaviour
                 if ((enemyLayer & (1 << hit.collider.gameObject.layer)) != 0)
                 {
                     // 击中敌人，但继续穿透
-                    EnemyPYPTest enemyHealth = hit.collider.GetComponent<EnemyPYPTest>();
+                    Enemy enemyHealth = hit.collider.GetComponent<Enemy>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.health -= damageAmount * (maxReflections - reflections); // 对敌人造成伤害
+                        enemyHealth.currentHealth -= damageAmount * (maxReflections - reflections); // 对敌人造成伤害
                         Instantiate(explosionPrefab, hit.point, Quaternion.identity);
                     }
 
