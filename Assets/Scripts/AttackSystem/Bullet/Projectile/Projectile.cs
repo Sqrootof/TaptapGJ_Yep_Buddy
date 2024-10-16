@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -23,16 +24,16 @@ public class Projectile : Bullet
     public float CoolDown;//充能时间
     public bool SelfDamage;//是否对自己造成伤害
     public GameObject Prefab;//预制体
-    
-    ProjectileHandler projectileHandler = null;
-    public ProjectileHandler ProjectileHandler
-    {
-        get { 
-            if(projectileHandler)
-                return projectileHandler;
-            else
-                projectileHandler = Prefab.GetComponent<ProjectileHandler>();
-            return projectileHandler;
-        }
+    public ExternalFunction ExternalFunction;
+
+    /// <summary>
+    /// 动态生成的子弹
+    /// </summary>
+    public ProjectileHandler ProjectileHandler;
+
+    public Projectile DeepCopy(){ 
+        Projectile target = Instantiate(this);
+        if(ExternalFunction) target.ExternalFunction = ExternalFunction.DeepCopy();
+        return target;
     }
 }

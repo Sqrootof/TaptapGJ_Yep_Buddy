@@ -22,5 +22,8 @@ MonoBehaviour:
   LifeTime: 0
   CoolDown: 0
   SelfDamage: 0
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
+  ExternalFunction: {fileID: 0}
+  ProjectileHandler: {fileID: 0}
+  useGravity: 0
   BombRadius: 0

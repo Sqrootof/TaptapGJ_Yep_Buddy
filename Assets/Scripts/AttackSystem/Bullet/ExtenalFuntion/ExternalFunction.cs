@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class ExternalFunction : ScriptableObject
 {
-    public virtual void ExternalFunc() { }
+    [HideInInspector]
+    public ProjectileHandler AttachTo;//¶¯Ì¬°ó¶¨µÄProjectileHandler
+
+    public virtual void OnAwake() { }
+
+    public virtual IEnumerator ExternalFunc() { yield return null; }
+
+    public virtual ExternalFunction DeepCopy() {
+        ExternalFunction instance = Instantiate(this);
+        return instance;
+    }
 }

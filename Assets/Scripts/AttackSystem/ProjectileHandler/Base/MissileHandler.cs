@@ -6,14 +6,14 @@ public class MissileHandler : ProjectileHandler
 {
     [Header("×é¼þ")]
     Rigidbody Rigidbody;
-    Collider Collider;
     ParticleSystem Particle;
 
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
-        
+        Particle?.Play();
+        if(OnProjectileFly != null) StartCoroutine(OnProjectileFly());
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class MissileHandler : ProjectileHandler
             if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
             DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Obstacle")) { 
+        else if (collision.gameObject.CompareTag("Environment")) { 
             if(OnProjectileHit != null) StartCoroutine (OnProjectileHit());
             DestroyProjectile();
         }
@@ -37,10 +37,6 @@ public class MissileHandler : ProjectileHandler
 
     private void OnTriggerEnter(Collider trigger)
     {
-        
-    }
-
-    public MissileHandler(Projectile Projectile) : base(Projectile){
         
     }
 
@@ -71,7 +67,11 @@ public class MissileHandler : ProjectileHandler
     protected override void ComponentInit()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        Collider = GetComponent<Collider>();
         Particle = GetComponent<ParticleSystem>();
+    }
+
+    public MissileHandler(Projectile Projectile) : base(Projectile)
+    {
+
     }
 }

@@ -22,6 +22,8 @@ MonoBehaviour:
   LifeTime: 0
   CoolDown: 0
   SelfDamage: 0
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 7150247062388800605, guid: 91ef01eb8fa9fa3428cb67fa4ca438bd, type: 3}
+  ExternalFunction: {fileID: 0}
+  ProjectileHandler: {fileID: 0}
   LaserWidth: 0
   LaserLength: 0

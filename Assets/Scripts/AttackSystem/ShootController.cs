@@ -39,7 +39,7 @@ public class ShootController : MonoBehaviour
         Cooldown = 0;
         foreach (var Projectile in CurrentProjectileBlock)
         {
-            Projectile newData = Instantiate(Projectile);
+            Projectile newData = Projectile.DeepCopy();
             Cooldown += newData.CoolDown;
             foreach (var gain in CurrentGainsBlock)
             {
@@ -47,10 +47,20 @@ public class ShootController : MonoBehaviour
             }
             GameObject newbullet = Instantiate(Projectile.Prefab);
             ProjectileHandler Handler = newbullet.GetComponent<ProjectileHandler>();
+            newData.ProjectileHandler = Handler;
             Handler.SetProjectileData(newData);
-            
-            Handler.BeShoot(transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Handler.BeShoot(transform.position, GetMousePosition());
         }
+    }
+
+    public Vector3 GetMousePosition()
+    {
+        // 获取鼠标屏幕位置
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        float distanceFromCamera = 20f; // 距离相机的深度
+        mouseScreenPosition.z = distanceFromCamera;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        return mouseWorldPosition;
     }
 
     /// <summary>
