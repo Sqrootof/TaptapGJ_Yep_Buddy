@@ -12,7 +12,8 @@ public class MissileHandler : ProjectileHandler
     void Start()
     {
         base.Start();
-        Particle?.Play();
+        Particle = transform.GetComponentInChildren<ParticleSystem>();
+        Particle.Play();
         if(OnProjectileFly != null) StartCoroutine(OnProjectileFly());
     }
 
@@ -29,7 +30,7 @@ public class MissileHandler : ProjectileHandler
             if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
             DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Environment")) { 
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Environment")) { 
             if(OnProjectileHit != null) StartCoroutine (OnProjectileHit());
             DestroyProjectile();
         }

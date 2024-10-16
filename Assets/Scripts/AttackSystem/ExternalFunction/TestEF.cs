@@ -17,4 +17,9 @@ public class TestEF : ExternalFunction
     {
         yield return base.ExternalFunc();
     }
+
+    public override ExternalFunction DeepCopy()
+    {
+        return base.DeepCopy();
+    }
 }
