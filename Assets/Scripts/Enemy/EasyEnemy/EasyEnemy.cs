@@ -96,7 +96,6 @@ public class EasyEnemy : Enemy
     protected override void FixedUpdate()
     {
         // 如果没有停留，则移动小怪
-        Debug.Log(isStopping);
         if (!isStopping)
         {
             targetPoint.y=transform.position.y;
