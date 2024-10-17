@@ -62,30 +62,51 @@ public class BirdEnemyStatePatrol : EnemyState
 /// </summary>
 public class BirdEnemyStateChase : EnemyState
 {
-
+    private BirdEnemy birdEnemy;
+    int num;
     public BirdEnemyStateChase(Enemy enemy, EnemyFSM enemyFSM, BirdEnemy birdEnemy) : base(enemy, enemyFSM)
     {
-
+        this.birdEnemy = birdEnemy;
     }
 
     public override void OnEnter()
     {
-
+        birdEnemy.SetTargetPosition();
+        num = 0;
+        birdEnemy.StartLaser();
+        birdEnemy.transform.rotation = Quaternion.Euler(0, 0, 50);
     }
 
     public override void LogicUpdate()
     {
-
+        birdEnemy.LaserAttack();
+        if(num==0)
+        {
+            if (Vector3.Distance(birdEnemy.transform.position,birdEnemy.targetPosition)<0.1f)
+            {
+                num++;
+                birdEnemy.target.transform.position=2*birdEnemy.InitialPosition-birdEnemy.targetPosition;
+                birdEnemy.targetPosition = birdEnemy.target.transform.position;
+            }
+        }
+        else if(num==1)
+        {
+            if (Vector3.Distance(birdEnemy.transform.position, birdEnemy.targetPosition) < 0.1f)
+            {
+                enemyFSM.ChangeState(enemy.patrolState);
+            }
+        }
     }
 
     public override void PhysicsUpdate()
     {
-
+        birdEnemy.MoveToTarget(enemy.patrolSpeed);
     }
 
     public override void OnExit()
     {
-
+        birdEnemy.FinishLaser();
+        birdEnemy.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
 

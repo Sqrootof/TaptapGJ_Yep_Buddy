@@ -11,6 +11,7 @@ public class LaserWeapon : MonoBehaviour
     public GameObject explosionPrefab; // 爆炸效果预制体
     public int maxReflections; //最大反射次数
     public GameObject laserStartParticlePrefab; // 粒子系统预制体
+    public float distanceFromCamera = 10f; // 距离相机的深度
     private void Start()
     {
         // 确保 LineRenderer 组件已添加
@@ -43,7 +44,6 @@ public class LaserWeapon : MonoBehaviour
     {
         // 获取鼠标屏幕位置
         Vector3 mouseScreenPosition = Input.mousePosition;
-        float distanceFromCamera = 20f; // 距离相机的深度
         mouseScreenPosition.z = distanceFromCamera;
         Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(mouseScreenPosition);
         return mouseWorldPosition;

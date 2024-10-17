@@ -64,7 +64,7 @@ public class BirdEnemy : Enemy
 
     protected override void OnEnable()
     {
-        enemyFSM.startState = barrageAttackState;
+        enemyFSM.startState = patrolState;
         base.OnEnable();
     }
 
@@ -91,10 +91,11 @@ public class BirdEnemy : Enemy
             timer += Time.deltaTime;
             if (timer > 5f)
             {
+                Bullets();
                 timer = 0f;
                 if (currentHealth>maxHealth/2)
                 {
-                    int p=Random.Range(0,2);
+                    int p=Random.Range(0,4);
                     if (p==0)
                     {
                         enemyFSM.ChangeState(attackState); return;
@@ -104,10 +105,18 @@ public class BirdEnemy : Enemy
                         enemyFSM.ChangeState(underLaserAttackState);
                         return;
                     }
+                    else if(p==2)
+                    {
+                        enemyFSM.ChangeState(chaseState); return;
+                    }
+                    else
+                    {
+                        enemyFSM.ChangeState(barrageAttackState); return;
+                    }
                 }
                 else
                 {
-                    int p = Random.Range(0, 3);
+                    int p = Random.Range(0, 5);
                     if (p == 0)
                     {
                         enemyFSM.ChangeState(attackState); return;
@@ -117,9 +126,13 @@ public class BirdEnemy : Enemy
                         enemyFSM.ChangeState(underLaserAttackState);
                         return;
                     }
-                    else if(p == 2)
+                    else if(p == 2 || p==4)
                     {
                         enemyFSM.ChangeState(barrageAttackState); return;
+                    }
+                    else if (p == 3)
+                    {
+                        enemyFSM.ChangeState(chaseState); return;
                     }
                 }
             }
@@ -170,6 +183,30 @@ public class BirdEnemy : Enemy
         targetPosition = target.transform.position; // 更新targetPosition
     }
 
+    public void SetTargetPosition()
+    {
+        // 获取敌人的当前坐标
+        Vector3 position = InitialPosition;
+
+        // 计算随机位置，基于巡逻范围
+        int pp = Random.Range(0, 2);
+        float randomX;
+        if (pp == 0)
+        {
+            randomX = position.x - patrolAreaSize.x / 2;
+        }
+        else
+        {
+            randomX = position.x + patrolAreaSize.x / 2;
+        }
+
+        float randomY = Random.Range(position.y - patrolAreaSize.y / 2, position.y + patrolAreaSize.y / 2);
+
+        // 将目标位置更新为新的随机位置
+        target.transform.position = new Vector3(randomX, randomY, 0); // Z轴保持为当前敌人Z坐标
+        targetPosition = target.transform.position; // 更新targetPosition
+    }
+
     public void SetPlayerTargetPosition()
     {
         target.transform.position = enemy.player.transform.position;
@@ -180,6 +217,7 @@ public class BirdEnemy : Enemy
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
+
 
     public void InstantiateSpecialEnd()
     {
@@ -210,7 +248,26 @@ public class BirdEnemy : Enemy
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void Bullets()
+    {
+        // 计算朝向玩家的方向
+        Vector3 direction = (enemy.player.transform.position - transform.position).normalized;
+
+        // 实例化子弹
+        GameObject bullets = Instantiate(bullet, transform.position, Quaternion.identity);
+
+        // 获取子弹的 Rigidbody 组件
+        Rigidbody bulletRigidbody = bullets.GetComponent<Rigidbody>();
+
+        // 确保子弹存在 Rigidbody 组件
+        if (bulletRigidbody != null)
+        {
+            bulletRigidbody.velocity = direction * bulletSpeed;
+        }
+    }
+
+        private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
