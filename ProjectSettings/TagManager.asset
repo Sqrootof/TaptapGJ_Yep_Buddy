@@ -6,12 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
-<<<<<<< Updated upstream
-  - Environment
-=======
   - Obstacles
   - Shield
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -19,14 +15,11 @@ TagManager:
   - 
   - Water
   - UI
+  - Obstacle
+  - Enemy
   - Player
   - PlayerBullet
-  - Enemy
-  - Environment
-  - Ground
-  - PLayer
-  - Light
-  - Shield
+  - 
   - 
   - 
   - 

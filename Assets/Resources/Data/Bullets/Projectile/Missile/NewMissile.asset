@@ -18,7 +18,7 @@ MonoBehaviour:
   ProjectileType: 0
   InitialVelocity: 15
   OffsetAngle: 2.5
-  Damage: 0
+  Damage: 1
   LifeTime: 100000
   CoolDown: 0
   SelfDamage: 0

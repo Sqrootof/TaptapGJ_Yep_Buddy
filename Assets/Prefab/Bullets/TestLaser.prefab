@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7150247062388800605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.92, y: 2.68, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,6 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd772418d62c54f81b3f97b0700109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileData: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
+  ExplosionPrefab: {fileID: 1021871776118716432, guid: 93899786d7ffe5a4ca80ffaace31164c,
+    type: 3}
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &9141807457396370774
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +107,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65155a939188cc9418f2b3e5c7034b5f, type: 2}
+  - {fileID: 2100000, guid: 11bb6c3ec8f18004b883bf5dca52df25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,7 +130,6 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 1, z: 0}
-  - {x: 1, y: 1, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

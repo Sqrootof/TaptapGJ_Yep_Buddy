@@ -8,13 +8,24 @@ public class MissileHandler : ProjectileHandler
     Rigidbody Rigidbody;
     ParticleSystem Particle;
 
+    private void Awake()
+    {
+        base.Awake();
+        Particle = transform.GetComponentInChildren<ParticleSystem>();
+        Particle.Play();
+        if (OnProjectileFly != null) StartCoroutine(OnProjectileFly());
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
-        Particle = transform.GetComponentInChildren<ParticleSystem>();
-        Particle.Play();
-        if(OnProjectileFly != null) StartCoroutine(OnProjectileFly());
+    }
+
+    protected override void ComponentInit()
+    {
+        Rigidbody = GetComponent<Rigidbody>();
+        Particle = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -26,7 +37,7 @@ public class MissileHandler : ProjectileHandler
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) {
-            //‘Ï≥……À∫¶
+            collision.gameObject.GetComponent<Enemy>().currentHealth -= ProjectileData.Damage;
             if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
             DestroyProjectile();
         }
@@ -44,7 +55,6 @@ public class MissileHandler : ProjectileHandler
     public override void BeShoot(Vector3 StartPos,Vector3 MousePos)
     {
         base.BeShoot(StartPos, MousePos);
-        ComponentInit();
         StartPos.z = 0;
         MousePos.z = 0;
         Vector3 Pointdir = (MousePos - StartPos).normalized;
@@ -63,12 +73,6 @@ public class MissileHandler : ProjectileHandler
         Quaternion rotate = Quaternion.AngleAxis(angleoffset,Vector3.forward);
         Vector3 realDir = rotate * Pointdir;
         Rigidbody.velocity = realDir * ProjectileData.InitialVelocity;
-    }
-
-    protected override void ComponentInit()
-    {
-        Rigidbody = GetComponent<Rigidbody>();
-        Particle = GetComponent<ParticleSystem>();
     }
 
     public MissileHandler(Projectile Projectile) : base(Projectile)

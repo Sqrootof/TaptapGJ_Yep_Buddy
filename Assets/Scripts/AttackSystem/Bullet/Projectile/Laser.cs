@@ -12,4 +12,6 @@ public class Laser : Projectile
     [Space]
     public float LaserWidth;
     public float LaserLength;
+    public int ReflectionTimes;
+    public float DisappearSpeed = 20;
 }

@@ -16,14 +16,14 @@ MonoBehaviour:
   Icon: {fileID: 0}
   BulletType: 0
   ProjectileType: 2
-  InitialVelocity: 0
-  OffsetAngle: 0
-  Damage: 0
-  LifeTime: 0
-  CoolDown: 0
+  InitialVelocity: 8
+  OffsetAngle: 5
+  Damage: 10
+  LifeTime: 100
+  CoolDown: 0.5
   SelfDamage: 0
   Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
   ExternalFunction: {fileID: 0}
   ProjectileHandler: {fileID: 0}
-  useGravity: 0
-  BombRadius: 0
+  useGravity: 1
+  BombRadius: 2
