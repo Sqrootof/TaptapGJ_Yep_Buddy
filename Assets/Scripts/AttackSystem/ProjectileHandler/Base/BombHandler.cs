@@ -6,9 +6,13 @@ using UnityEngine;
 public class BombHandler : ProjectileHandler
 {
     [Header("组件")]
-    Rigidbody Rigidbody;
+    [SerializeField]Rigidbody Rigidbody;
     ParticleSystem ExplosionParticle;
-    Explosion Explosion;
+
+    private void Awake()
+    {
+        base.Awake();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,22 +33,43 @@ public class BombHandler : ProjectileHandler
     public override void BeShoot(Vector3 StartPos, Vector3 MousePos)
     {
         base.BeShoot(StartPos, MousePos);
-        if ((ProjectileData as Bomb).useGravity) {
+        if ((ProjectileData as Bomb).useGravity)
+        {
             Rigidbody.useGravity = true;
         }
+        StartPos.z = 0;
+        MousePos.z = 0;
+
+        Vector3 Pointdir = (MousePos - StartPos).normalized;
+        transform.position = StartPos;
+
+        float angle = 180 - Vector3.Angle(Vector3.up, Pointdir);
+        if (Pointdir.x < 0)
+        {
+            angle = -angle;
+        }
+
+        float angleoffset = UnityEngine.Random.Range(-ProjectileData.OffsetAngle, ProjectileData.OffsetAngle);
+        angle += angleoffset;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        Quaternion rotate = Quaternion.AngleAxis(angleoffset, Vector3.forward);
+        Vector3 realDir = rotate * Pointdir;
+        Rigidbody.velocity = realDir * ProjectileData.InitialVelocity;
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            GameObject newBomb = transform.GetChild(0).gameObject;
-            newBomb.SetActive(true);
-            Explosion explosion  = newBomb.AddComponent<Explosion>();
-            newBomb.GetComponent<SphereCollider>().radius = (ProjectileData as Bomb).BombRadius;
-            explosion.DestroyBomb += DestroyProjectile;
-            GetComponent<SpriteRenderer>().enabled = false;
-            ExplosionParticle?.Play();
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground")) {
+            
+            var en = Physics.OverlapSphere(transform.position,(ProjectileData as Bomb).BombRadius,LayerMask.GetMask("Enemy"));
+            foreach (var co in en)
+            {
+                Enemy ene = co.GetComponent<Enemy>();
+                if(ene) ene.currentHealth -= 1;
+            }
+            DestroyProjectile();
         }
     }
 
@@ -58,18 +83,13 @@ public class BombHandler : ProjectileHandler
         base.ComponentInit();
         Rigidbody = GetComponent<Rigidbody>();
         ExplosionParticle = GetComponent<ParticleSystem>();
-        ExplosionParticle.loop = false;
+        OnProjectileDestroy += PlayExplosionParticle;
     }
-}
 
-public class Explosion : MonoBehaviour
-{
-    public event Action DestroyBomb;
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy")) { 
-            //造成伤害
-            DestroyBomb?.Invoke();
-        }
+    IEnumerator PlayExplosionParticle() { 
+        ExplosionParticle.Play();
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(ExplosionParticle.main.duration + ExplosionParticle.main.startLifetime.constantMax);
+        DestroyCoroutine = null;
     }
 }

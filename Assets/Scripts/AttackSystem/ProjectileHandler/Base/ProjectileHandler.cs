@@ -15,18 +15,23 @@ public class ProjectileHandler : MonoBehaviour
     public ProjectileLifeEvent OnProjectileAwake;
     /// <summary>
     /// 此事件在射弹销毁时触发，第一行必须为yield return new WaitForEndOfFrame();或其他非空的yield return语句
-    /// 最后一行必须为yield return null;
+    /// 最后一行必须为DestroyCoroutine = null;
     /// </summary>
     public ProjectileLifeEvent OnProjectileDestroy;
     public ProjectileLifeEvent OnProjectileHit;
     public ProjectileLifeEvent OnProjectileFly;
     private Coroutine FlyCortine;
-    private Coroutine DestroyCoroutine;
-    // Start is called before the first frame update
-    public void Start()
+    protected Coroutine DestroyCoroutine;
+
+    public void Awake()
     {
         AwakeTime = Time.time;
         ComponentInit();
+    }
+
+    // Start is called before the first frame update
+    public void Start()
+    {
         LoadExternalFuntion();
         InvokeProjectileLifeEvent(OnProjectileAwake);
         FlyCortine = InvokeProjectileLifeEvent(OnProjectileFly);
@@ -34,8 +39,10 @@ public class ProjectileHandler : MonoBehaviour
 
     public virtual void LoadExternalFuntion()
     {
-        ProjectileData.ExternalFunction.AttachTo = this;
-        ProjectileData.ExternalFunction.OnAwake();
+        if (ProjectileData.ExternalFunction != null){
+            ProjectileData.ExternalFunction.AttachTo = this;
+            ProjectileData.ExternalFunction.OnAwake();
+        }
     }
 
     protected virtual void ComponentInit() { }
@@ -47,6 +54,9 @@ public class ProjectileHandler : MonoBehaviour
             DestroyProjectile();
     }
 
+    /// <summary>
+    /// 调这个方法销毁射弹，不要直接Destroy
+    /// </summary>
     public void DestroyProjectile()
     {
         if (OnProjectileDestroy != null)

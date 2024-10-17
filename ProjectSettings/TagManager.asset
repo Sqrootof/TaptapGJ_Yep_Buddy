@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
   - Obstacles
   - Enemy
   - Shield
@@ -20,6 +21,9 @@ TagManager:
   - Enemy
   - Ground
   - Shield
+  - Player
+  - PlayerBullet
+  - 
   - 
   - 
   - 
