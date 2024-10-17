@@ -17,18 +17,7 @@ public class LaserWeapon : MonoBehaviour
         if (lineRenderer == null)
         {
             lineRenderer=Line.GetComponent<LineRenderer>();
-            //lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
-
-        //lineRenderer.startWidth = 0.1f; // 激光起始宽度
-        //lineRenderer.endWidth = 0.1f; // 激光结束宽度
-        //lineRenderer.material = new Material(Shader.Find("Unlit/Color")); // 使用无光照着色器
-        //lineRenderer.startColor = Color.red; // 激光颜色
-        //lineRenderer.endColor = Color.red; // 激光颜色
-        //lineRenderer.positionCount = 3; // 激光有三个点（起点、反射点和终点）
-
-        // 初始隐藏激光
-        //lineRenderer.enabled = false;
         Line.SetActive(false);
     }
 
@@ -103,7 +92,7 @@ public class LaserWeapon : MonoBehaviour
                     Enemy enemyHealth = hit.collider.GetComponent<Enemy>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.currentHealth -= damageAmount * (maxReflections - reflections); // 对敌人造成伤害
+                        enemyHealth.currentHealth -= damageAmount * (maxReflections - reflections+1); // 对敌人造成伤害
                         Instantiate(explosionPrefab, hit.point, Quaternion.identity);
                     }
 
@@ -131,75 +120,4 @@ public class LaserWeapon : MonoBehaviour
             }
         }
     }
-
-
-    //激光不穿透敌人版本
-    //private void UpdateLaser(Vector3 targetPosition)
-    //{
-    //    // 激光的起始点是武器的位置
-    //    Vector3 startPosition = transform.position;
-    //    Vector3 laserDirection = targetPosition - startPosition;
-
-    //    // 使用射线检测
-    //    RaycastHit hit;
-    //    float laserMaxDistance = 100f;
-    //    int reflections = 0; // 当前反射次数
-
-    //    // 初始化激光线段位置
-    //    lineRenderer.positionCount = 1; // 动态调整点的数量
-    //    lineRenderer.SetPosition(0, startPosition); // 激光的起点
-
-    //    Vector3 currentPosition = startPosition;
-    //    Vector3 currentDirection = laserDirection;
-
-    //    while (reflections <= maxReflections)
-    //    {
-    //        // 射线检测
-    //        if (Physics.Raycast(currentPosition, currentDirection, out hit, laserMaxDistance, obstacleLayer))
-    //        {
-    //            // 更新激光的终点或反射点
-    //            lineRenderer.positionCount++;
-    //            lineRenderer.SetPosition(reflections + 1, hit.point); // 添加新的激光点
-
-    //            // 检测是否击中敌人
-    //            if ((enemyLayer & (1 << hit.collider.gameObject.layer)) != 0)
-    //            {
-    //                // 击中敌人，停止反射
-    //                EnemyPYPTest enemyHealth = hit.collider.GetComponent<EnemyPYPTest>();
-    //                if (enemyHealth != null)
-    //                {
-    //                    enemyHealth.health -= damageAmount*(maxReflections-reflections); // 对敌人造成伤害
-    //                    Instantiate(explosionPrefab, hit.point, Quaternion.identity);
-    //                }
-    //                break; // 停止反射，因为激光击中了敌人
-    //            }
-    //            else
-    //            {
-    //                // 如果没有击中敌人，继续反射
-    //                Instantiate(explosionPrefab, hit.point, Quaternion.identity);
-    //                currentDirection = Vector3.Reflect(currentDirection.normalized, hit.normal); // 计算反射方向
-    //                currentPosition = hit.point; // 更新反射起点
-    //                reflections++; // 增加反射次数
-    //            }
-    //        }
-    //        else
-    //        {
-    //            // 如果没有碰到障碍物，激光达到最大射程
-    //            lineRenderer.positionCount++;
-    //            lineRenderer.SetPosition(reflections + 1, currentPosition + currentDirection.normalized * laserMaxDistance); // 激光的终点
-    //            break; // 退出循环，激光已经达到最大射程
-    //        }
-    //    }
-
-    //    // 检测是否在激光的最大范围内击中敌人
-    //    if (Physics.Raycast(currentPosition, currentDirection, out hit, laserMaxDistance, enemyLayer))
-    //    {
-    //        EnemyPYPTest enemyHealth = hit.collider.GetComponent<EnemyPYPTest>();
-    //        if (enemyHealth != null)
-    //        {
-    //            Instantiate(explosionPrefab, hit.point, Quaternion.identity);
-    //            enemyHealth.health -= damageAmount*maxReflections; // 对敌人造成伤害
-    //        }
-    //    }
-    //}
 }
