@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public interface IDamageable
 {
@@ -18,13 +19,20 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     [Header("移动属性相关")]
     [SerializeField] float WalkSpeed;
     [SerializeField] float JumpSpeed;
-    [SerializeField] float DashForce;
     [SerializeField] float rotationSpeed = 100f; // 旋转速度
-    float DashCoolDown = 5f;
+    [SerializeField] ParticleSystem WalkParticle;
     int RemainingJumpTime = 2;
 
+    [Header("冲刺相关")]
+    [SerializeField] float DashSpeed;
+    [SerializeField] float DashCoolDown = 5f;
+    [SerializeField] float DashInterval = 0.8f;
+    [SerializeField] ParticleSystem DashParticle;
+    bool isDashing = false;
+    
+
     #region"玩家状态相关"
-    private bool InTheAir;
+    [SerializeField]private bool InTheAir;
     int FaceDir = 1;//1为右，-1为左
     private float LastDashTime=-10;
     #endregion
@@ -66,6 +74,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     void ComponentInit()
     { 
         Rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     void DataInit()
@@ -84,6 +93,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     {
         Move();
         Jump();
+        Dash();
         if (Input.GetKeyDown(KeyCode.J)) {
             BeKnockBack(Vector3.zero,12);
         }
@@ -120,34 +130,108 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         Vector3 MoveVec = new Vector3(moveaxis * WalkSpeed, Rigidbody.velocity.y, 0);
         Rigidbody.velocity = MoveVec;
 
-        if (Input.GetKey(KeyCode.D)){
+        if (Input.GetKey(KeyCode.D))
+        {
             FaceDir = 1;
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
                 Quaternion.Euler(0, -45, 0),
                 rotationSpeed * Time.deltaTime);
+            if (!InTheAir) WalkParticle.Play();
+            else WalkParticle.Stop();
         }
-        else if (Input.GetKey(KeyCode.A)) {
+        else if (Input.GetKey(KeyCode.A))
+        {
             FaceDir = -1;
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
                 Quaternion.Euler(0, 45, 0),
                 rotationSpeed * Time.deltaTime);
+            if (!InTheAir){
+                WalkParticle.Play();
+                WalkParticle.transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            else WalkParticle.Stop();
         }
-        else{
+        else
+        {
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
                 Quaternion.Euler(0, 0, 0),
                 rotationSpeed * Time.deltaTime);
+            WalkParticle.Stop();
         }
+        transform.rotation = Quaternion.identity;
     }
 
     private void Dash()
     {
         if (Input.GetMouseButtonDown(1) && Time.time - LastDashTime >= DashCoolDown) {
-            
-            Rigidbody.AddForce(DashForce * FaceDir * Vector3.right,ForceMode.Impulse);
+            LastDashTime = Time.time;
+            StartCoroutine(dash());
         }
+    }
+
+    IEnumerator dash()
+    {
+        DashParticle.Play();
+        if(FaceDir > 0) DashParticle.transform.rotation = Quaternion.Euler(0, 0, 180);
+        else DashParticle.transform.rotation = Quaternion.Euler(0, 0, 0);
+        StartCoroutine(dash_phy());
+        
+        //var list = new List<GameObject>();
+        //int count = 1;
+        //while (count <= ShadowCount) {
+        //    var newDashShadow = DashShadowPool.Get();
+        //    newDashShadow.name = count.ToString();
+        //    list.Add(newDashShadow);
+        //    var mar = newDashShadow.GetComponent<Renderer>().material;
+        //    var newMar = Instantiate(mar);
+
+        //    newMar.SetFloat("_Mode", 3);
+        //    newMar.SetFloat("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        //    newMar.SetFloat("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        //    newMar.SetFloat("_ZWrite", 0); // 关闭深度写入
+        //    newMar.EnableKeyword("_ALPHAPREMULTIPLY_ON"); // 启用透明度预乘
+        //    newMar.renderQueue = 3000; // 设置渲染队列，透明物体通常需要一个较高的值
+        //    float newa = ((float)(count++))/(float)ShadowCount;
+        //    newMar.color = new Color(newMar.color.r, newMar.color.g, newMar.color.b,newa);
+        //    newDashShadow.GetComponent<Renderer>().material = newMar;
+
+        //    yield return new WaitForSeconds(ShadowInterval);
+        //}
+
+        //int pos = 0;
+        //while (pos < list.Count)
+        //{
+        //    for (int i = pos; i < list.Count; i++)
+        //    {
+        //        var mat = list[i].GetComponent<Renderer>().material;
+        //        mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, Mathf.Lerp(mat.color.a, 0, Time.deltaTime*15));
+        //        Debug.Log(list[i].name + "  " + mat.color.a);
+        //        if (mat.color.a <= 0.1f){
+        //            DashShadowPool.Release(list[pos++]);
+        //        }
+        //    }
+        //    yield return new WaitForSeconds(Time.deltaTime);
+        //}
+        //Debug.Log("dash finish");
+        //list.Clear();
+        yield return null;
+    }
+
+    IEnumerator dash_phy()
+    {
+        isDashing = true;
+        Rigidbody.useGravity = false;
+        while (Time.time - LastDashTime < DashInterval) {
+            Rigidbody.MovePosition(transform.position + FaceDir * DashSpeed * Time.fixedDeltaTime * Vector3.right);
+            yield return null;
+        }
+        Rigidbody.useGravity = true;
+        isDashing = false;
+        DashParticle.Stop();
+        yield return null;
     }
 
     /// <summary>
@@ -169,13 +253,11 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         Vector3 KonckBackVec = transform.position - Position;
         KonckBackVec.z = 0;
         KonckBackVec.Normalize();
-        Rigidbody.AddForce(KonckBackVec,ForceMode.Impulse);
+        Rigidbody.AddForce(KonckBackVec*Force,ForceMode.Impulse);
     }
 
     IEnumerator PlayerDie()
     { 
         yield return null;
-
-        
     }
 }
