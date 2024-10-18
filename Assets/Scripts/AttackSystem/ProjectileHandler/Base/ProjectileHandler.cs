@@ -75,8 +75,6 @@ public class ProjectileHandler : MonoBehaviour
     IEnumerator IEDestroy()
     {
         while (DestroyCoroutine!=null || HitCoroutine!=null){
-            if (DestroyCoroutine != null) Debug.Log("DestroyCoroutine");
-            if (HitCoroutine != null) Debug.Log("HitCoroutine");
             yield return null;
         }
         Destroy(gameObject);

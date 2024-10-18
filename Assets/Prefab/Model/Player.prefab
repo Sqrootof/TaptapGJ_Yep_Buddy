@@ -5843,7 +5843,7 @@ Rigidbody:
     m_Bits: 1857
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 6272
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -6231,6 +6231,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
   CurrentProjectileBlock: []
   CurrentGainsBlock: []
+  LastShootTime: -1
   BlockHeadIndex: 0
 --- !u!1 &8997411419711384377
 GameObject:

@@ -8,8 +8,10 @@ public class LaserHandler : ProjectileHandler
     LineRenderer LineRenderer;
     [SerializeField] GameObject ExplosionPrefab; // 激光击中目标的爆炸特效
 
+    [SerializeField] LayerMask GroundLayer;
     [SerializeField] LayerMask ObstacleLayer; // 用于检测的障碍物图层
     [SerializeField] LayerMask EnemyLayer; // 用于检测敌人的图层
+    [SerializeField] LayerMask EnemyShieldLayer;
 
     private void Awake()
     {
@@ -56,7 +58,7 @@ public class LaserHandler : ProjectileHandler
 
         while (reflection <= (ProjectileData as Laser).ReflectionTimes)
         {
-            if (Physics.Raycast(currentPos, currentDir, out hit, (ProjectileData as Laser).LaserLength, ObstacleLayer | EnemyLayer))
+            if (Physics.Raycast(currentPos, currentDir, out hit, (ProjectileData as Laser).LaserLength, ObstacleLayer | EnemyLayer | EnemyShieldLayer | GroundLayer))
             {
                 LineRenderer.positionCount++;
                 LineRenderer.SetPosition(reflection + 1, hit.point);
