@@ -286,16 +286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1659664093585236552, guid: c18cdc916d204a047b863ea83954dd28,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 2176
-      objectReference: {fileID: 0}
-    - target: {fileID: 1659664093585236552, guid: c18cdc916d204a047b863ea83954dd28,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 1857
-      objectReference: {fileID: 0}
     - target: {fileID: 6530315335514285724, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: m_Name
@@ -304,13 +294,13 @@ PrefabInstance:
     - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: Bullets.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: Bullets.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+      objectReference: {fileID: 11400000, guid: 302442b4456d4aa4bbcef1eb63d9aecd,
         type: 2}
     - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
@@ -322,31 +312,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Bullets.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
         type: 2}
     - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: Bullets.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
-        type: 2}
-    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
-        type: 3}
-      propertyPath: Bullets.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: df24a26a0c117b741ac603d4dfdd9203,
-        type: 2}
-    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
-        type: 3}
-      propertyPath: Bullets.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc,
-        type: 2}
-    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
-        type: 3}
-      propertyPath: Bullets.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
+      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

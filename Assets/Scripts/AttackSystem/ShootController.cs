@@ -13,7 +13,7 @@ public class ShootController : MonoBehaviour
     [SerializeField]List<Projectile> CurrentProjectileBlock = new();//下一个要射击的子弹块
     [SerializeField]List<Gain> CurrentGainsBlock = new();//下一个要搭载的增益块
     float Cooldown = 0;//射击冷却时间
-    float LastShootTime = -1;
+    [SerializeField]float LastShootTime = -1;
     [SerializeField]int BlockHeadIndex = 0;//下一个子弹块的头部索引
     #endregion
 
@@ -26,9 +26,10 @@ public class ShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0)) {
             if (Time.time - LastShootTime >= Cooldown) {
                 Shoot();
+                LastShootTime = Time.time;
             } 
         }
     }
@@ -83,28 +84,31 @@ public class ShootController : MonoBehaviour
             CurrentBullet = Bullets[Index++];
             if (Index == Bullets.Count)
                 Index = 0;
-            if (CurrentProjectileBlock.Contains(CurrentBullet as Projectile) || CurrentGainsBlock.Contains(CurrentBullet as Gain)){
-                break;
-            }
+            if (CurrentProjectileBlock.Count + CurrentGainsBlock.Count >= Bullets.Count)
+                return;
+
+            Cooldown += CurrentBullet.CoolDown;
             switch (CurrentBullet.BulletType)
             {
                 case BulletType.Extend:
                     stepcount += (CurrentBullet as Extend).StepExtension;
-                    break;
+                    continue;
 
                 case BulletType.Gain:
                     stepcount++;
                     CurrentGainsBlock.Add(CurrentBullet as Gain);
-                    break;
+                    continue;
 
                 case BulletType.Projectile:
                     CurrentProjectileBlock.Add(CurrentBullet as Projectile);
-                    break;
+                    continue;
 
                 default:
                     Debug.LogError("Undefined Bullet Type");
                     break;
             }
         }
+
+        if (Cooldown <= 0) Cooldown = Time.fixedDeltaTime; 
     }
 }

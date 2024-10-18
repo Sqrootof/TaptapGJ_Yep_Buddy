@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 481a4fe37af2cb04eadeaeb9b53808d4, type: 3}
-  m_Name: NewMissile
+  m_Name: GuangYu
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u5149\u7FBD"
   Icon: {fileID: 0}
   BulletType: 0
+  CoolDown: 0.1
   ProjectileType: 0
   InitialVelocity: 15
   OffsetAngle: 2.5
-  Damage: 1
-  LifeTime: 100000
-  CoolDown: 0
+  Damage: 5
+  LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 9163245249547095048, guid: 31bac093089466e4bb894e9cef7ada07, type: 3}
   ExternalFunction: {fileID: 11400000, guid: 57ed598b19cafa44fb0dd59f094f2093, type: 2}

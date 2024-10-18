@@ -14,4 +14,5 @@ public class Bullet : ScriptableObject
     public string BulletName;
     public Sprite Icon;
     public BulletType BulletType;
+    public float CoolDown;
 }
