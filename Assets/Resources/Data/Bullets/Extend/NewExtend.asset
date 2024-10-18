@@ -15,4 +15,4 @@ MonoBehaviour:
   BulletName: 
   Icon: {fileID: 0}
   BulletType: 1
-  StepExtension: 3
+  StepExtension: 1

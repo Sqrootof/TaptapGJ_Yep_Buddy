@@ -37,12 +37,13 @@ public class MissileHandler : ProjectileHandler
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) {
+            Debug.Log("Hit Enemy");
             collision.gameObject.GetComponent<Enemy>().currentHealth -= ProjectileData.Damage;
             if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
             DestroyProjectile();
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Environment")) { 
-            if(OnProjectileHit != null) StartCoroutine (OnProjectileHit());
+        else if (collision.gameObject.CompareTag("Ground")) { 
+            if(OnProjectileHit != null) HitCoroutine = StartCoroutine (OnProjectileHit());
             DestroyProjectile();
         }
     }

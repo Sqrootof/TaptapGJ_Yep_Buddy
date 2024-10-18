@@ -310,7 +310,43 @@ PrefabInstance:
         type: 3}
       propertyPath: Bullets.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: df24a26a0c117b741ac603d4dfdd9203,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc,
+        type: 2}
+    - target: {fileID: 7571181583671311970, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: Bullets.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -327,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2845281921997537124}
   - component: {fileID: 1802921215765799542}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PointB
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -428,7 +464,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 577
+    m_Bits: 4673
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -508,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109364981434682523}
   - component: {fileID: 8781685316139620307}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PointA
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -639,7 +675,7 @@ GameObject:
   - component: {fileID: 4634717188115366185}
   - component: {fileID: 2383844047649291495}
   - component: {fileID: 2075356169826243339}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EasyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -699,7 +735,7 @@ GameObject:
   - component: {fileID: 1523910150696848211}
   - component: {fileID: 7231300539193054984}
   - component: {fileID: 8486087827018692432}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

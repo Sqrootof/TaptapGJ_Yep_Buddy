@@ -90,7 +90,6 @@ public class LaserHandler : ProjectileHandler
                 break;  
             }
         }
-        Debug.Log("×¼±¸Ïú»Ù");
         OnProjectileDestroy += DestroyLaser;
         DestroyProjectile();
     }

@@ -20,8 +20,9 @@ public class ProjectileHandler : MonoBehaviour
     public ProjectileLifeEvent OnProjectileDestroy;
     public ProjectileLifeEvent OnProjectileHit;
     public ProjectileLifeEvent OnProjectileFly;
-    private Coroutine FlyCortine;
+    protected Coroutine FlyCortine;
     protected Coroutine DestroyCoroutine;
+    protected Coroutine HitCoroutine;
 
     public void Awake()
     {
@@ -69,7 +70,7 @@ public class ProjectileHandler : MonoBehaviour
 
     IEnumerator IEDestroy()
     {
-        while (DestroyCoroutine != null){
+        while (DestroyCoroutine!=null || HitCoroutine!=null){
             yield return null;
         }
         Destroy(gameObject);

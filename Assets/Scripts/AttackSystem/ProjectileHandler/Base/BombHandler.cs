@@ -9,6 +9,8 @@ public class BombHandler : ProjectileHandler
     [SerializeField]Rigidbody Rigidbody;
     ParticleSystem ExplosionParticle;
 
+    bool Exploded = false;
+
     private void Awake()
     {
         base.Awake();
@@ -61,14 +63,19 @@ public class BombHandler : ProjectileHandler
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground")) {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground") && !Exploded) {
             
             var en = Physics.OverlapSphere(transform.position,(ProjectileData as Bomb).BombRadius,LayerMask.GetMask("Enemy"));
+            List<GameObject> col = new List<GameObject>();
             foreach (var co in en)
             {
-                Enemy ene = co.GetComponent<Enemy>();
-                if(ene) ene.currentHealth -= 1;
+                if (!col.Contains(co.gameObject)) {
+                    col.Add(co.gameObject);
+                    Enemy ene = co.GetComponent<Enemy>();
+                    if (ene) ene.currentHealth -= 1;
+                } 
             }
+            Exploded = true;
             DestroyProjectile();
         }
     }
