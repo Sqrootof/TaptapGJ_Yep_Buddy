@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3766879853925895998}
   - component: {fileID: 7467134141380082310}
   - component: {fileID: 7118888242974429627}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 239096023781541204}
   - component: {fileID: 6706182786631565572}
   - component: {fileID: 2620736463158216599}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: MissilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4949,10 +4949,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1856
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4224
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -4976,10 +4976,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 1856
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4224
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0

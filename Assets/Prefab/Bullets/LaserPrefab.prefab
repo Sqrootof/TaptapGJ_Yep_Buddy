@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5691060568393769987}
   - component: {fileID: 281098221736212834}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: LaserPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,18 @@ MonoBehaviour:
   ProjectileData: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
   ExplosionPrefab: {fileID: 1881707312806699682, guid: 969da095467640d4bbca8bc2f562ea12,
     type: 3}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 512
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 64
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  EnemyShieldLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &9141807457396370774
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4700103196602134552}
   - component: {fileID: 1026641391499287147}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: LineContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

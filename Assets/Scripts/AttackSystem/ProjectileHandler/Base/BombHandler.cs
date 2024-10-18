@@ -63,7 +63,7 @@ public class BombHandler : ProjectileHandler
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground") && !Exploded) {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacles") || collision.gameObject.CompareTag("Shield") && !Exploded) {
             
             var en = Physics.OverlapSphere(transform.position,(ProjectileData as Bomb).BombRadius,LayerMask.GetMask("Enemy"));
             List<GameObject> col = new List<GameObject>();
@@ -82,7 +82,23 @@ public class BombHandler : ProjectileHandler
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Obstacles") || other.gameObject.CompareTag("Shield") && !Exploded)
+        {
+
+            var en = Physics.OverlapSphere(transform.position, (ProjectileData as Bomb).BombRadius, LayerMask.GetMask("Enemy"));
+            List<GameObject> col = new List<GameObject>();
+            foreach (var co in en)
+            {
+                if (!col.Contains(co.gameObject))
+                {
+                    col.Add(co.gameObject);
+                    Enemy ene = co.GetComponent<Enemy>();
+                    if (ene) ene.currentHealth -= 1;
+                }
+            }
+            Exploded = true;
+            DestroyProjectile();
+        }
     }
 
     protected override void ComponentInit()

@@ -42,7 +42,7 @@ public class MissileHandler : ProjectileHandler
             if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
             DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Ground")) { 
+        else if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacles") || collision.gameObject.CompareTag("Shield")) { 
             if(OnProjectileHit != null) HitCoroutine = StartCoroutine (OnProjectileHit());
             DestroyProjectile();
         }
@@ -50,7 +50,18 @@ public class MissileHandler : ProjectileHandler
 
     private void OnTriggerEnter(Collider trigger)
     {
-        
+        if (trigger.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Hit Enemy");
+            trigger.gameObject.GetComponent<Enemy>().currentHealth -= ProjectileData.Damage;
+            if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
+            DestroyProjectile();
+        }
+        else if (trigger.gameObject.CompareTag("Ground") || trigger.gameObject.CompareTag("Obstacles") || trigger.gameObject.CompareTag("Shield"))
+        {
+            if (OnProjectileHit != null) HitCoroutine = StartCoroutine(OnProjectileHit());
+            DestroyProjectile();
+        }
     }
 
     public override void BeShoot(Vector3 StartPos,Vector3 MousePos)
