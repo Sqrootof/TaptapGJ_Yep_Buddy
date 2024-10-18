@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de5a56837c51e1245acb4de3d5f9c669, type: 3}
-  m_Name: NewLaser
+  m_Name: LengJing
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u68F1\u6676"
   Icon: {fileID: 0}
   BulletType: 0
-  ProjectileType: 0
+  CoolDown: -0.1
+  ProjectileType: 1
   InitialVelocity: 0
   OffsetAngle: 0
-  Damage: 1
-  LifeTime: 1000
-  CoolDown: 0.3
+  Damage: 4
+  LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 7150247062388800605, guid: 91ef01eb8fa9fa3428cb67fa4ca438bd, type: 3}
   ExternalFunction: {fileID: 0}
   ProjectileHandler: {fileID: 0}
   LaserWidth: 0
   LaserLength: 12
-  ReflectionTimes: 3
+  ReflectionTimes: 1
+  DisappearSpeed: 20

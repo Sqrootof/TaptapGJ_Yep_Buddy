@@ -13,16 +13,19 @@ public class ProjectileHandler : MonoBehaviour
 
     public delegate IEnumerator ProjectileLifeEvent();
     public ProjectileLifeEvent OnProjectileAwake;
+    public ProjectileLifeEvent OnProjectileHit;
+    public ProjectileLifeEvent OnProjectileFly;
     /// <summary>
     /// 此事件在射弹销毁时触发，第一行必须为yield return new WaitForEndOfFrame();或其他非空的yield return语句
     /// 最后一行必须为DestroyCoroutine = null;
     /// </summary>
     public ProjectileLifeEvent OnProjectileDestroy;
-    public ProjectileLifeEvent OnProjectileHit;
-    public ProjectileLifeEvent OnProjectileFly;
+
     protected Coroutine FlyCortine;
     protected Coroutine DestroyCoroutine;
     protected Coroutine HitCoroutine;
+
+    private bool isDying = false;
 
     public void Awake()
     {
@@ -51,7 +54,7 @@ public class ProjectileHandler : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (Time.time - AwakeTime >= ProjectileData.LifeTime)
+        if (Time.time - AwakeTime >= ProjectileData.LifeTime && !isDying)
             DestroyProjectile();
     }
 
@@ -60,6 +63,7 @@ public class ProjectileHandler : MonoBehaviour
     /// </summary>
     public void DestroyProjectile()
     {
+        isDying = true;
         if (OnProjectileDestroy != null)
             DestroyCoroutine = StartCoroutine(OnProjectileDestroy());
         else
@@ -71,6 +75,8 @@ public class ProjectileHandler : MonoBehaviour
     IEnumerator IEDestroy()
     {
         while (DestroyCoroutine!=null || HitCoroutine!=null){
+            if (DestroyCoroutine != null) Debug.Log("DestroyCoroutine");
+            if (HitCoroutine != null) Debug.Log("HitCoroutine");
             yield return null;
         }
         Destroy(gameObject);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1355638782401915917}
   - component: {fileID: 7605192551799132977}
   - component: {fileID: 7043116707600976426}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block3
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3007599997407858385}
   - component: {fileID: 6917485830533010914}
   - component: {fileID: 2587453136413616321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1553603270160419252}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4955,7 +4955,7 @@ GameObject:
   - component: {fileID: 9212284109484968991}
   - component: {fileID: 663637898444535327}
   - component: {fileID: 3997745294462441966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5036,7 +5036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3523755362602722152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5075,7 +5075,7 @@ GameObject:
   - component: {fileID: 2371540695013825603}
   - component: {fileID: 3479462711172652290}
   - component: {fileID: 8617336425296571367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2 (3)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5159,7 +5159,7 @@ GameObject:
   - component: {fileID: 5930190571931453972}
   - component: {fileID: 8096958348383420190}
   - component: {fileID: 6079283444331650144}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -5293,7 +5293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7605600841111828015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5325,7 +5325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8379110736455766172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5359,7 +5359,7 @@ GameObject:
   - component: {fileID: 4338473189373691157}
   - component: {fileID: 3105860418676263303}
   - component: {fileID: 8598974298673104386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block3 1
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5440,7 +5440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461075676668931957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5474,7 +5474,7 @@ GameObject:
   - component: {fileID: 9104906903520159507}
   - component: {fileID: 7160162011735570098}
   - component: {fileID: 8954953499477326055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2 (4)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5557,7 +5557,7 @@ GameObject:
   - component: {fileID: 5800730264273987253}
   - component: {fileID: 5473309468035238692}
   - component: {fileID: 1043768623190238332}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block3 1 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5638,7 +5638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6000366423143655195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5676,7 +5676,7 @@ GameObject:
   - component: {fileID: 2674136418365134392}
   - component: {fileID: 8198536121660350605}
   - component: {fileID: 9159182660903094999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5795,7 +5795,7 @@ GameObject:
   - component: {fileID: 1659664093585236552}
   - component: {fileID: 5269769511592959512}
   - component: {fileID: 4085391066239829531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5840,10 +5840,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1793
+    m_Bits: 1857
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2240
+    m_Bits: 2176
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -5911,7 +5911,7 @@ GameObject:
   - component: {fileID: 7310069953100674606}
   - component: {fileID: 8819881817305384468}
   - component: {fileID: 596271101301167432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -5992,7 +5992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251879180470402800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6026,7 +6026,7 @@ GameObject:
   - component: {fileID: 8591829554345780770}
   - component: {fileID: 244280586308346843}
   - component: {fileID: 3583818311179611495}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block3 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -6109,7 +6109,7 @@ GameObject:
   - component: {fileID: 8750418017529457503}
   - component: {fileID: 5592804581994502412}
   - component: {fileID: 2542306195205508774}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2 (5)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -6191,7 +6191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541719725537238283}
   - component: {fileID: 7571181583671311970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6228,6 +6228,7 @@ MonoBehaviour:
   Bullets:
   - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
   - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
   CurrentProjectileBlock: []
   CurrentGainsBlock: []
   BlockHeadIndex: 0
@@ -6242,7 +6243,7 @@ GameObject:
   - component: {fileID: 8690013238918060017}
   - component: {fileID: 5926482071341156374}
   - component: {fileID: 8623697233424584554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block2 (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -6331,6 +6332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DashParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545730075028336661, guid: eafb5fe28c005164a92ca42f3f7532a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4545730075028336661, guid: eafb5fe28c005164a92ca42f3f7532a7,
         type: 3}
@@ -6981,6 +6987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545730075028336661, guid: eafb5fe28c005164a92ca42f3f7532a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4545730075028336661, guid: eafb5fe28c005164a92ca42f3f7532a7,
         type: 3}

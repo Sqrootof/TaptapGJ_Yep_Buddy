@@ -21,7 +21,6 @@ public class Projectile : Bullet
     public float OffsetAngle;//偏移角度
     public float Damage;//伤害
     public float LifeTime;//生命周期
-    public float CoolDown;//充能时间
     public bool SelfDamage;//是否对自己造成伤害
     public GameObject Prefab;//预制体
     public ExternalFunction ExternalFunction;

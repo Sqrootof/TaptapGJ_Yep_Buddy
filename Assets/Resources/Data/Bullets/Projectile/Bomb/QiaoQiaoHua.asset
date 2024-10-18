@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f0c3b79daa0e2428290370146cff6f, type: 3}
-  m_Name: NewBomb
+  m_Name: QiaoQiaoHua
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u6084\u6084\u8BDD"
   Icon: {fileID: 0}
   BulletType: 0
+  CoolDown: 0.03
   ProjectileType: 2
   InitialVelocity: 8
   OffsetAngle: 5
-  Damage: 10
-  LifeTime: 100
-  CoolDown: 0.5
+  Damage: 3
+  LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
   ExternalFunction: {fileID: 0}
   ProjectileHandler: {fileID: 0}
-  useGravity: 1
+  useGravity: 0
   BombRadius: 2
