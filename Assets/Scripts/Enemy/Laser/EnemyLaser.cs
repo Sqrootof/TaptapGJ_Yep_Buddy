@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,14 +7,14 @@ public class EnemyLaser : MonoBehaviour
     //public GameObject target;
     //public Vector3 targetPosition;
     public GameObject Line;
-    public LineRenderer lineRenderer; // ÓÃÓÚÏÔÊ¾¼¤¹â
-    public LayerMask obstacleLayer; // ÓÃÓÚ¼ì²âµÄÕÏ°­ÎïÍ¼²ã
-    public LayerMask playerLayer; // ÓÃÓÚ¼ì²âµĞÈËµÄÍ¼²ã
-    public float damageAmount; // Ã¿´Î¼¤¹âÔì³ÉµÄÉËº¦
-    public GameObject explosionPrefab; // ±¬Õ¨Ğ§¹ûÔ¤ÖÆÌå
-    public int maxReflections; //×î´ó·´Éä´ÎÊı
-    public GameObject laserStartParticlePrefab; // Á£×ÓÏµÍ³Ô¤ÖÆÌå
-
+    public LineRenderer lineRenderer; // ç”¨äºæ˜¾ç¤ºæ¿€å…‰
+    public LayerMask obstacleLayer; // ç”¨äºæ£€æµ‹çš„éšœç¢ç‰©å›¾å±‚
+    public LayerMask playerLayer; // ç”¨äºæ£€æµ‹æ•Œäººçš„å›¾å±‚
+    public float damageAmount; // æ¯æ¬¡æ¿€å…‰é€ æˆçš„ä¼¤å®³
+    public GameObject explosionPrefab; // çˆ†ç‚¸æ•ˆæœé¢„åˆ¶ä½“
+    public int maxReflections; //æœ€å¤§åå°„æ¬¡æ•°
+    public GameObject laserStartParticlePrefab; // ç²’å­ç³»ç»Ÿé¢„åˆ¶ä½“
+    public float laserMaxDistance = 100f;
     public Vector3 end;
 
     //private void Start()
@@ -24,24 +24,23 @@ public class EnemyLaser : MonoBehaviour
 
     public void UpdateLaser(Vector3 targetPosition)
     {
-        // ¼¤¹âµÄÆğÊ¼µãÊÇÎäÆ÷µÄÎ»ÖÃ
+        // æ¿€å…‰çš„èµ·å§‹ç‚¹æ˜¯æ­¦å™¨çš„ä½ç½®
         Vector3 startPosition = transform.position;
         Vector3 laserDirection = targetPosition - startPosition;
 
-        // Ê¹ÓÃÉäÏß¼ì²â
+        // ä½¿ç”¨å°„çº¿æ£€æµ‹
         RaycastHit hit;
-        float laserMaxDistance = 100f;
-        int reflections = 0; // µ±Ç°·´Éä´ÎÊı
+        int reflections = 0; // å½“å‰åå°„æ¬¡æ•°
 
-        // ³õÊ¼»¯¼¤¹âÏß¶ÎÎ»ÖÃ
-        lineRenderer.positionCount = 1; // ¶¯Ì¬µ÷ÕûµãµÄÊıÁ¿
-        lineRenderer.SetPosition(0, startPosition); // ¼¤¹âµÄÆğµã
+        // åˆå§‹åŒ–æ¿€å…‰çº¿æ®µä½ç½®
+        lineRenderer.positionCount = 1; // åŠ¨æ€è°ƒæ•´ç‚¹çš„æ•°é‡
+        lineRenderer.SetPosition(0, startPosition); // æ¿€å…‰çš„èµ·ç‚¹
 
-        Transform lineChild = Line.transform.GetChild(0); // »ñÈ¡µÚÒ»¸ö×ÓÎïÌå
+        Transform lineChild = Line.transform.GetChild(0); // è·å–ç¬¬ä¸€ä¸ªå­ç‰©ä½“
         lineChild.position = startPosition;
-        if (laserDirection != Vector3.zero) // È·±£·½Ïò²»ÎªÁã
+        if (laserDirection != Vector3.zero) // ç¡®ä¿æ–¹å‘ä¸ä¸ºé›¶
         {
-            lineChild.rotation = Quaternion.LookRotation(laserDirection); // ¸ù¾İ¼¤¹â·½ÏòÉèÖÃĞı×ª
+            lineChild.rotation = Quaternion.LookRotation(laserDirection); // æ ¹æ®æ¿€å…‰æ–¹å‘è®¾ç½®æ—‹è½¬
         }
 
 
@@ -50,48 +49,48 @@ public class EnemyLaser : MonoBehaviour
 
         while (reflections <= maxReflections)
         {
-            // ÉäÏß¼ì²â
+            // å°„çº¿æ£€æµ‹
             if (Physics.Raycast(currentPosition, currentDirection, out hit, laserMaxDistance, obstacleLayer | playerLayer))
             {
-                // ¸üĞÂ¼¤¹âµÄÖÕµã»ò·´Éäµã
+                // æ›´æ–°æ¿€å…‰çš„ç»ˆç‚¹æˆ–åå°„ç‚¹
                 lineRenderer.positionCount++;
-                lineRenderer.SetPosition(reflections + 1, hit.point); // Ìí¼ÓĞÂµÄ¼¤¹âµã
+                lineRenderer.SetPosition(reflections + 1, hit.point); // æ·»åŠ æ–°çš„æ¿€å…‰ç‚¹
 
-                // ¼ì²âÊÇ·ñ»÷ÖĞµĞÈË
+                // æ£€æµ‹æ˜¯å¦å‡»ä¸­æ•Œäºº
                 if ((playerLayer & (1 << hit.collider.gameObject.layer)) != 0)
                 {
-                    // »÷ÖĞµĞÈË£¬µ«¼ÌĞø´©Í¸
+                    // å‡»ä¸­æ•Œäººï¼Œä½†ç»§ç»­ç©¿é€
                     Player Health = hit.collider.GetComponent<Player>();
                     if (Health != null)
                     {
-                        Health.health -= damageAmount * (maxReflections - reflections+1); // ¶ÔµĞÈËÔì³ÉÉËº¦
+                        Health.health -= damageAmount * (maxReflections - reflections+1); // å¯¹æ•Œäººé€ æˆä¼¤å®³
                         Instantiate(explosionPrefab, hit.point, Quaternion.identity);
                     }
 
-                    // ¼õÉÙÒ»´Î·´Éä»ú»á£¬µ«¼ÌĞø´©Í¸µĞÈË
+                    // å‡å°‘ä¸€æ¬¡åå°„æœºä¼šï¼Œä½†ç»§ç»­ç©¿é€æ•Œäºº
                     reflections++;
-                    currentPosition = hit.point + currentDirection.normalized * 0.01f; // ¼ÌĞø´ÓµĞÈËºóÃæÒ»µãµÄÎ»ÖÃ
-                                                                                       // ÕâÀï¼ÌĞøÓÃÏàÍ¬µÄ `currentDirection`£¬±íÊ¾´©Í¸ºó¼ÌĞøÏòÇ°
-                    continue; // ¼ÌĞøÏÂÒ»´Î·´Éä»ò´©Í¸¼ì²â
+                    currentPosition = hit.point + currentDirection.normalized * 0.01f; // ç»§ç»­ä»æ•Œäººåé¢ä¸€ç‚¹çš„ä½ç½®
+                                                                                       // è¿™é‡Œç»§ç»­ç”¨ç›¸åŒçš„ `currentDirection`ï¼Œè¡¨ç¤ºç©¿é€åç»§ç»­å‘å‰
+                    continue; // ç»§ç»­ä¸‹ä¸€æ¬¡åå°„æˆ–ç©¿é€æ£€æµ‹
                 }
                 else
                 {
-                    // Ã»ÓĞ»÷ÖĞµĞÈË£¬·´Éä
+                    // æ²¡æœ‰å‡»ä¸­æ•Œäººï¼Œåå°„
                     Instantiate(explosionPrefab, hit.point, Quaternion.identity);
-                    currentDirection = Vector3.Reflect(currentDirection.normalized, hit.normal); // ¼ÆËã·´Éä·½Ïò
-                    currentPosition = hit.point; // ¸üĞÂ·´ÉäÆğµã
-                    reflections++; // Ôö¼Ó·´Éä´ÎÊı
+                    currentDirection = Vector3.Reflect(currentDirection.normalized, hit.normal); // è®¡ç®—åå°„æ–¹å‘
+                    currentPosition = hit.point; // æ›´æ–°åå°„èµ·ç‚¹
+                    reflections++; // å¢åŠ åå°„æ¬¡æ•°
                 }
             }
             else
             {
-                // Èç¹ûÃ»ÓĞÅöµ½ÕÏ°­Îï£¬¼¤¹â´ïµ½×î´óÉä³Ì
+                // å¦‚æœæ²¡æœ‰ç¢°åˆ°éšœç¢ç‰©ï¼Œæ¿€å…‰è¾¾åˆ°æœ€å¤§å°„ç¨‹
                 lineRenderer.positionCount++;
-                lineRenderer.SetPosition(reflections + 1, currentPosition + currentDirection.normalized * laserMaxDistance); // ¼¤¹âµÄÖÕµã
-                break; // ÍË³öÑ­»·£¬¼¤¹âÒÑ¾­´ïµ½×î´óÉä³Ì
+                lineRenderer.SetPosition(reflections + 1, currentPosition + currentDirection.normalized * laserMaxDistance); // æ¿€å…‰çš„ç»ˆç‚¹
+                break; // é€€å‡ºå¾ªç¯ï¼Œæ¿€å…‰å·²ç»è¾¾åˆ°æœ€å¤§å°„ç¨‹
             }
         }
 
-        end = currentPosition; // ¸üĞÂendÎª×îºóÒ»¸ö·´ÉäµÄÖÕµã
+        end = currentPosition; // æ›´æ–°endä¸ºæœ€åä¸€ä¸ªåå°„çš„ç»ˆç‚¹
     }
 }
