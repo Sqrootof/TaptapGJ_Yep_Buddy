@@ -41,7 +41,7 @@ public class ShootController : MonoBehaviour
         Cooldown = 0;
         foreach (var Projectile in CurrentProjectileBlock)
         {
-            Projectile newData = Projectile.DeepCopy();
+            Projectile newData = Projectile.DeepCopy() as Projectile;
             Cooldown += newData.CoolDown;
             foreach (var gain in CurrentGainsBlock)
             {
