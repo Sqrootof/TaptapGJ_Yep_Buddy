@@ -11,7 +11,7 @@ public class LaserWeapon : MonoBehaviour
     public GameObject explosionPrefab; // 爆炸效果预制体
     public int maxReflections; //最大反射次数
     public GameObject laserStartParticlePrefab; // 粒子系统预制体
-    public float distanceFromCamera = 10f; // 距离相机的深度
+    float distanceFromCamera;
     private void Start()
     {
         // 确保 LineRenderer 组件已添加
@@ -20,6 +20,7 @@ public class LaserWeapon : MonoBehaviour
             lineRenderer=Line.GetComponent<LineRenderer>();
         }
         Line.SetActive(false);
+        distanceFromCamera = -Camera.transform.position.z;
     }
 
     private void Update()

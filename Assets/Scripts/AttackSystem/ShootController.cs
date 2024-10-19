@@ -15,6 +15,7 @@ public class ShootController : MonoBehaviour
     float Cooldown = 0;//射击冷却时间
     [SerializeField]float LastShootTime = -1;
     [SerializeField]int BlockHeadIndex = 0;//下一个子弹块的头部索引
+    public Camera Camera;
     #endregion
 
     // Start is called before the first frame update
@@ -58,9 +59,9 @@ public class ShootController : MonoBehaviour
     {
         // 获取鼠标屏幕位置
         Vector3 mouseScreenPosition = Input.mousePosition;
-        float distanceFromCamera = 20f; // 距离相机的深度
+        float distanceFromCamera = -Camera.transform.position.z;
         mouseScreenPosition.z = distanceFromCamera;
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(mouseScreenPosition);
         return mouseWorldPosition;
     }
 
