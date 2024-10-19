@@ -40,7 +40,7 @@ public class ShootController : MonoBehaviour
         Cooldown = 0;
         foreach (var Projectile in CurrentProjectileBlock)
         {
-            Projectile newData = Projectile.DeepCopy();
+            Projectile newData = Projectile.DeepCopy() as Projectile;
             Cooldown += newData.CoolDown;
             foreach (var gain in CurrentGainsBlock)
             {
@@ -58,7 +58,7 @@ public class ShootController : MonoBehaviour
     {
         // 获取鼠标屏幕位置
         Vector3 mouseScreenPosition = Input.mousePosition;
-        float distanceFromCamera = 20f; // 距离相机的深度
+        float distanceFromCamera = -Camera.main.gameObject.transform.position.z; // 距离相机的深度
         mouseScreenPosition.z = distanceFromCamera;
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         return mouseWorldPosition;

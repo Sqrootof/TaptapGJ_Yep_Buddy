@@ -30,7 +30,7 @@ public class Projectile : Bullet
     /// </summary>
     public ProjectileHandler ProjectileHandler;
 
-    public Projectile DeepCopy(){ 
+    public override Bullet DeepCopy(){ 
         Projectile target = Instantiate(this);
         if(ExternalFunction) target.ExternalFunction = ExternalFunction.DeepCopy();
         return target;
