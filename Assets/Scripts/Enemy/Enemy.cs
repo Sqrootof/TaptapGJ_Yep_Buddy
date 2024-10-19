@@ -27,11 +27,6 @@ public class Enemy : MonoBehaviour
     [Tooltip("玩家层")] public LayerMask playerLayer = 1 << 6;
     [Tooltip("障碍物层")] public LayerMask obstacleLayer = 1 << 7;
 
-    // 定义巡逻点
-    public GameObject PointA;
-    public GameObject PointB;
-    public Vector3 patrolPointA;
-    public Vector3 patrolPointB;
 
     private void OnDrawGizmosSelected()
     {
@@ -58,10 +53,6 @@ public class Enemy : MonoBehaviour
         enemyFSM = new EnemyFSM();   // 创建敌人状态机实例
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();     // 获取刚体组件
-        patrolPointA=PointA.transform.position;
-        patrolPointB=PointB.transform.position;
-        PointA.SetActive(false);
-        PointB.SetActive(false);
     }
 
     /// <summary>

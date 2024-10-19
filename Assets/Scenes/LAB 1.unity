@@ -1018,7 +1018,6 @@ MonoBehaviour:
   maxReflections: 4
   laserStartParticlePrefab: {fileID: 5732873572753888242, guid: 78b40ed32ed855945bf7ba3966e7fd24,
     type: 3}
-  distanceFromCamera: 10
 --- !u!1 &275912224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1083,6 @@ MonoBehaviour:
   maxReflections: 4
   laserStartParticlePrefab: {fileID: 5732873572753888242, guid: 78b40ed32ed855945bf7ba3966e7fd24,
     type: 3}
-  distanceFromCamera: 10
 --- !u!114 &275912228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,6 +1302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 733736819997674924, guid: af640a435e338bc408938a9de77e7148,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 733736819997674924, guid: af640a435e338bc408938a9de77e7148,
         type: 3}

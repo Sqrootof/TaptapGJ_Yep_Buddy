@@ -18,6 +18,12 @@ public class EasyEnemy : Enemy
     public float stopTimer; // 停留计时器
     public bool movingToA = true; // 当前是否朝A点移动
     public bool isStopping = false; // 是否正在停留
+                                    // 定义巡逻点
+    public GameObject PointA;
+    public GameObject PointB;
+    public Vector3 patrolPointA;
+    public Vector3 patrolPointB;
+
     // 调用这个方法来尝试攻击
     public void TryAttack()
     {
@@ -39,6 +45,10 @@ public class EasyEnemy : Enemy
         attackState = new EasyEnemyStateAttack(this, enemyFSM, this);
         deadState = new EasyEnemyStateDead(this, enemyFSM, this);
         enemyFSM.startState = patrolState;
+        patrolPointA = PointA.transform.position;
+        patrolPointB = PointB.transform.position;
+        PointA.SetActive(false);
+        PointB.SetActive(false);
     }
 
     protected override void OnEnable()
@@ -56,7 +66,7 @@ public class EasyEnemy : Enemy
     protected override void Start()
     {
         enemy = FindObjectOfType<Enemy>();
-        targetPoint = enemy.patrolPointA; // 初始目标点为A点
+        targetPoint = patrolPointA; // 初始目标点为A点
         base.Start();
     }
 
@@ -76,7 +86,7 @@ public class EasyEnemy : Enemy
             {
                 // 停留时间结束，切换目标点
                 movingToA = !movingToA;
-                targetPoint = movingToA ? enemy.patrolPointA : enemy.patrolPointB;
+                targetPoint = movingToA ? patrolPointA : patrolPointB;
                 isStopping = false; // 重置停留状态
             }
             return; // 停留时不执行其他逻辑

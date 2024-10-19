@@ -43,14 +43,10 @@ public class BirdEnemy : Enemy
         enemyLaser = GetComponent<EnemyLaser>();
         patrolState = new BirdEnemyStatePatrol(this, enemyFSM, this);
         chaseState = new BirdEnemyStateChase(this, enemyFSM, this);
-
         attackState = new BirdEnemyStateAttack(this, enemyFSM, this);
-
         deadState = new BirdEnemyStateDead(this, enemyFSM, this);
         laserAttackState = new BirdEnemyLaserAttackState(this, enemyFSM, this);
-
         underLaserAttackState=new BirdEnemyUnderLaserAttackState(this, enemyFSM, this);
-
         barrageAttackState=new BirdEnemyBarrageAttackState(this, enemyFSM, this);
 
         InitialPosition =transform.position;
@@ -267,7 +263,7 @@ public class BirdEnemy : Enemy
         }
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
