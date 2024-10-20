@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     #region"×é¼þ"
     [SerializeField] GameObject PlayerBody;
     Rigidbody Rigidbody;
+    Animator Animator;
     #endregion
 
     void Awake()
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     void ComponentInit()
     { 
         Rigidbody = GetComponent<Rigidbody>();
-        
+        Animator = GetComponent<Animator>();
     }
 
     void DataInit()
@@ -136,9 +137,12 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
             FaceDir = 1;
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
-                Quaternion.Euler(0, -45, 0),
+                Quaternion.Euler(-5, -45, 0),
                 rotationSpeed * Time.deltaTime);
-            if (!InTheAir) WalkParticle.Play();
+            if (!InTheAir){
+                WalkParticle.Play();
+                Animator.SetBool("Walking",true);
+            }
             else WalkParticle.Stop();
         }
         else if (Input.GetKey(KeyCode.A))
@@ -146,11 +150,12 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
             FaceDir = -1;
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
-                Quaternion.Euler(0, 45, 0),
+                Quaternion.Euler(5, 45, 0),
                 rotationSpeed * Time.deltaTime);
             if (!InTheAir){
                 WalkParticle.Play();
                 WalkParticle.transform.rotation = Quaternion.Euler(0, 0, 180);
+                Animator.SetBool("Walking",true);
             }
             else WalkParticle.Stop();
         }
@@ -161,6 +166,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
                 Quaternion.Euler(0, 0, 0),
                 rotationSpeed * Time.deltaTime);
             WalkParticle.Stop();
+            Animator.SetBool("Walking",false);
         }
         transform.rotation = Quaternion.identity;
     }
