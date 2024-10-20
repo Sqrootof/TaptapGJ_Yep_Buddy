@@ -29,6 +29,7 @@ public class FillinAchievement : MonoBehaviour
         Whole.achievements.AddRange(achievements);
         SaveAchievements();
     }
+
     public void SaveAchievements()
     {
         // 将成就数据转为JSON字符串并保存到PlayerPrefs
@@ -47,3 +48,4 @@ public class FillinAchievement : MonoBehaviour
         Whole.achievements = loadedAchievements;
     }
 }
+
