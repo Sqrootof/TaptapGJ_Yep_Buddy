@@ -5822,6 +5822,7 @@ Transform:
   - {fileID: 1185060973709943488}
   - {fileID: 1375723490676048659}
   - {fileID: 1541719725537238283}
+  - {fileID: 5685578512361810820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1659664093585236552
@@ -6225,14 +6226,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec1239118e87084c848e976b79cde0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullets:
-  - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
   CurrentProjectileBlock: []
   CurrentGainsBlock: []
   LastShootTime: -1
   BlockHeadIndex: 0
+--- !u!1 &8604038493140785801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5685578512361810820}
+  - component: {fileID: 6466511944386201142}
+  m_Layer: 0
+  m_Name: WeaponBackpack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5685578512361810820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604038493140785801}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 931.8563, y: 449.88028, z: -15.081707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 670212167354128559}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6466511944386201142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604038493140785801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765182a73b8967e4a88c405de35332a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquippedBullets: []
+  BulletInBackpack: []
+  LayerIgnore_DroppedThings:
+    serializedVersion: 2
+    m_Bits: 5504
 --- !u!1 &8997411419711384377
 GameObject:
   m_ObjectHideFlags: 0

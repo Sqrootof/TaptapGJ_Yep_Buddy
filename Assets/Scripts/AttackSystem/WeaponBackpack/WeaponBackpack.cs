@@ -59,6 +59,7 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
         if (EquippedBullets.Contains(equippedBulletData)){ 
             EquippedBullets.Remove(equippedBulletData);
             BulletInBackpack.Add(equippedBulletData);
+            ShootController.Instance.BlockHeadIndex = 0;
             OnBulletDataUpdate?.Invoke();
         }
     }
@@ -68,6 +69,7 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
         if (BulletInBackpack.Contains(Bullet)) { 
             BulletInBackpack.Remove(Bullet);
             EquippedBullets.Add(Bullet);
+            ShootController.Instance.BlockHeadIndex = 0;
             OnBulletDataUpdate?.Invoke();
         }
     }

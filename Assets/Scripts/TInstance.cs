@@ -17,7 +17,7 @@ public class TIntance<T> : MonoBehaviour where T : TIntance<T>, new()
         }
     }
 
-    private void Awake()
+    public void Awake()
     {
         if(instance == null){
             instance = (T)this;

@@ -5,16 +5,14 @@ using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ShootController : MonoBehaviour
+public class ShootController : TIntance<ShootController>
 {
     #region"射击相关"
-    [SerializeField]List<Bullet> Bullets = new();//当前搭载的子弹
-
     [SerializeField]List<Projectile> CurrentProjectileBlock = new();//下一个要射击的子弹块
     [SerializeField]List<Gain> CurrentGainsBlock = new();//下一个要搭载的增益块
     float Cooldown = 0;//射击冷却时间
     [SerializeField]float LastShootTime = -1;
-    [SerializeField]int BlockHeadIndex = 0;//下一个子弹块的头部索引
+    [SerializeField]public int BlockHeadIndex = 0;//下一个子弹块的头部索引
     #endregion
 
     // Start is called before the first frame update
@@ -71,23 +69,25 @@ public class ShootController : MonoBehaviour
     void  GetNextBulletBlock()
     {
         int Index = BlockHeadIndex++;
-        if(BlockHeadIndex == Bullets.Count) 
+        if(BlockHeadIndex == WeaponBackpack.Instance.GetEquippedBullets().Count) 
             BlockHeadIndex = 0;
 
         CurrentProjectileBlock.Clear();
         CurrentGainsBlock.Clear();
         int stepcount = 1;
+        int totalStep = 0;
         Bullet CurrentBullet;
         while (stepcount > 0)
         {
             stepcount--;
-            CurrentBullet = Bullets[Index++];
-            if (Index == Bullets.Count)
+            CurrentBullet = WeaponBackpack.Instance.GetEquippedBullets()[Index++];
+            if (Index == WeaponBackpack.Instance.GetEquippedBullets().Count)
                 Index = 0;
-            if (CurrentProjectileBlock.Count + CurrentGainsBlock.Count >= Bullets.Count)
+            if (totalStep >= WeaponBackpack.Instance.GetEquippedBullets().Count)
                 return;
 
             Cooldown += CurrentBullet.CoolDown;
+            totalStep++;
             switch (CurrentBullet.BulletType)
             {
                 case BulletType.Extend:
