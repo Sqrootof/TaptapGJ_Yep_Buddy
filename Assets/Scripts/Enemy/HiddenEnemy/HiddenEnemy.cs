@@ -109,13 +109,9 @@ public class HiddenEnemy : Enemy
         {
             targetRotation = Quaternion.Euler(0, 40, 0); // 向左转向
         }
-        else if (direction.x >= 0) // 向右
+        else// 向右
         {
             targetRotation = Quaternion.Euler(0, 0, 0); // 向右转向
-        }
-        else
-        {
-            return;
         }
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 15f); // 5f 为转向速度
         // 将方向归一化

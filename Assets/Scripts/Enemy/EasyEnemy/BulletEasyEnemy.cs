@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,28 +10,28 @@ public class BulletEasyEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¸üĞÂ¼ÆÊ±Æ÷
+        // æ›´æ–°è®¡æ—¶å™¨
         timer += Time.deltaTime;
 
-        // ¼ì²é¼ÆÊ±Æ÷ÊÇ·ñ³¬¹ıÉè¶¨Ê±¼ä
+        // æ£€æŸ¥è®¡æ—¶å™¨æ˜¯å¦è¶…è¿‡è®¾å®šæ—¶é—´
         if (timer >= destroyTime)
         {
-            // ´İ»Ùµ±Ç°ÎïÌå
+            // æ‘§æ¯å½“å‰ç‰©ä½“
             Destroy(gameObject);
         }
     }
 
-    // Åö×²¼ì²â·½·¨
+    // ç¢°æ’æ£€æµ‹æ–¹æ³•
     private void OnTriggerEnter(Collider other)
     {
-        // ¼ì²éÅö×²µÄÎïÌåÊÇ·ñÊÇÍæ¼Ò
+        // æ£€æŸ¥ç¢°æ’çš„ç‰©ä½“æ˜¯å¦æ˜¯ç©å®¶
         if (other.CompareTag("Player"))
         {
-            // »ñÈ¡Íæ¼Ò½Å±¾×é¼ş
-            Player player = other.GetComponent<Player>();
+            // è·å–ç©å®¶è„šæœ¬ç»„ä»¶
+            PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.GetHit(damage);
+                player.ReciveDamage(damage);
             }
 
             Destroy(gameObject);

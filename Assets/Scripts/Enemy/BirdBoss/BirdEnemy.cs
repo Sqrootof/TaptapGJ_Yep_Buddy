@@ -267,10 +267,10 @@ public class BirdEnemy : Enemy
     {
         if (other.CompareTag("Player"))
         {
-            Player Health = other.GetComponent<Player>();
+            PlayerController Health = other.GetComponent<PlayerController>();
             if (Health != null)
             {
-                Health.health -= damage;
+                Health.ReciveDamage(damage);
             }
         }
     }

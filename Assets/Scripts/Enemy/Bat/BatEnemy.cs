@@ -92,6 +92,18 @@ public class BatEnemy : Enemy
 
     public void MoveToTarget(float speed)
     {
+        // 计算目标方向
+        Vector3 direction = targetPosition - enemy.transform.position;
+        Quaternion targetRotation;
+        if (direction.x < 0) // 向左
+        {
+            targetRotation = Quaternion.Euler(0, 30, 0); // 向左转向
+        }
+        else
+        {
+            targetRotation = Quaternion.Euler(0, 0, 0); // 向右转向
+        }
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 720f);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 
@@ -120,10 +132,10 @@ public class BatEnemy : Enemy
     {
         if (other.CompareTag("Player"))
         {
-            Player Health = other.GetComponent<Player>();
+            PlayerController Health = other.GetComponent<PlayerController>();
             if (Health != null)
             {
-                Health.health -= damage;
+                Health.ReciveDamage(damage);
             }
         }
     }

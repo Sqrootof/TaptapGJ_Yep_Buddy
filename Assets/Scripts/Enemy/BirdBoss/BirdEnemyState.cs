@@ -1,11 +1,11 @@
-using Unity.Burst.CompilerServices;
+ï»¿using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using static Enemy;
 
 /// <summary>
-/// Ğ¡¹ÖµÄ»ù´¡Ñ²Âß×´Ì¬£¬ËùÓĞĞ¡¹ÖµÄÑ²Âß×´Ì¬¼Ì³Ğ´Ë×´Ì¬
+/// å·¡é€»
 /// </summary>
 public class BirdEnemyStatePatrol : EnemyState
 {
@@ -58,7 +58,7 @@ public class BirdEnemyStatePatrol : EnemyState
 }
 
 /// <summary>
-/// Ğ¡¹ÖµÄ»ù´¡×·»÷×´Ì¬£¬ËùÓĞĞ¡¹Ö×·»÷×´Ì¬¼Ì³Ğ´Ë×´Ì¬
+/// å‘å‰æ¿€å…‰
 /// </summary>
 public class BirdEnemyStateChase : EnemyState
 {
@@ -75,6 +75,7 @@ public class BirdEnemyStateChase : EnemyState
         num = 0;
         birdEnemy.StartLaser();
         birdEnemy.transform.rotation = Quaternion.Euler(0, 0, 50);
+        birdEnemy.Square1.SetActive(true);
     }
 
     public override void LogicUpdate()
@@ -107,11 +108,12 @@ public class BirdEnemyStateChase : EnemyState
     {
         birdEnemy.FinishLaser();
         birdEnemy.transform.rotation = Quaternion.Euler(0, 0, 0);
+        birdEnemy.Square1.SetActive(false);
     }
 }
 
 /// <summary>
-/// Ğ¡¹ÖµÄ»ù´¡¹¥»÷×´Ì¬£¬ËùÓĞĞ¡¹Ö¹¥»÷×´Ì¬¼Ì³Ğ´Ë×´Ì¬
+/// å°æ€ªçš„åŸºç¡€æ”»å‡»çŠ¶æ€ï¼Œæ‰€æœ‰å°æ€ªæ”»å‡»çŠ¶æ€ç»§æ‰¿æ­¤çŠ¶æ€
 /// </summary>
 public class BirdEnemyStateAttack : EnemyState
 {
@@ -156,7 +158,7 @@ public class BirdEnemyStateAttack : EnemyState
     }
 }
 
-//¼¤¹â¹¥»÷
+//æ¿€å…‰æ”»å‡»
 public class BirdEnemyLaserAttackState : EnemyState
 {
     BirdEnemy birdEnemy;
@@ -176,20 +178,20 @@ public class BirdEnemyLaserAttackState : EnemyState
 
     public override void LogicUpdate()
     {
-        elapsedTime += Time.deltaTime; // ¸üĞÂ¾­¹ıµÄÊ±¼ä
+        elapsedTime += Time.deltaTime; // æ›´æ–°ç»è¿‡çš„æ—¶é—´
         birdEnemy.LaserAttack();
     }
 
     public override void PhysicsUpdate()
     {
 
-        if (elapsedTime < 2f) // ÔÚ5ÃëÄÚ½øĞĞĞı×ª
+        if (elapsedTime < 2f) // åœ¨5ç§’å†…è¿›è¡Œæ—‹è½¬
         {
-            float t = elapsedTime / 2f; // ¼ÆËãÊ±¼ä±ÈÀı£¨0µ½1Ö®¼ä£©
+            float t = elapsedTime / 2f; // è®¡ç®—æ—¶é—´æ¯”ä¾‹ï¼ˆ0åˆ°1ä¹‹é—´ï¼‰
 
-            // ¼ÆËãµ±Ç°µÄĞı×ª½Ç¶È£¨0µ½360£©
+            // è®¡ç®—å½“å‰çš„æ—‹è½¬è§’åº¦ï¼ˆ0åˆ°360ï¼‰
             float currentRotationZ = Mathf.Lerp(0f, 160f, t);
-            enemy.transform.rotation = Quaternion.Euler(0f, 0f, currentRotationZ); // Ó¦ÓÃĞı×ª
+            enemy.transform.rotation = Quaternion.Euler(0f, 0f, currentRotationZ); // åº”ç”¨æ—‹è½¬
         }
         else
         {
@@ -208,7 +210,7 @@ public class BirdEnemyLaserAttackState : EnemyState
     }
 }
 
-//ÏòÏÂ¼¤¹â¹¥»÷
+//å‘ä¸‹æ¿€å…‰æ”»å‡»
 public class BirdEnemyUnderLaserAttackState : EnemyState
 {
     BirdEnemy birdEnemy;
@@ -259,17 +261,17 @@ public class BirdEnemyUnderLaserAttackState : EnemyState
         }
         else if (num==1)
         {
-            // Ä¿±êĞı×ª½Ç¶È
+            // ç›®æ ‡æ—‹è½¬è§’åº¦
             Quaternion targetRotation = Quaternion.Euler(0, 0, 68);
 
-            // µ±Ç°Ğı×ª½Ç¶È
+            // å½“å‰æ—‹è½¬è§’åº¦
             Quaternion currentRotation = birdEnemy.transform.rotation;
 
-            // Ê¹ÓÃ Slerp ½øĞĞÆ½»¬Ğı×ª
+            // ä½¿ç”¨ Slerp è¿›è¡Œå¹³æ»‘æ—‹è½¬
             birdEnemy.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-            // ¿ÉÑ¡£º¼ì²éÊÇ·ñÒÑ½Ó½üÄ¿±ê½Ç¶È£¬Èô½Ó½üÔò¿ÉÄÜĞŞ¸Ä num µÄÖµ
-            if (Quaternion.Angle(currentRotation, targetRotation) < 0.1f) // 1¶ÈµÄÈİ²î
+            // å¯é€‰ï¼šæ£€æŸ¥æ˜¯å¦å·²æ¥è¿‘ç›®æ ‡è§’åº¦ï¼Œè‹¥æ¥è¿‘åˆ™å¯èƒ½ä¿®æ”¹ num çš„å€¼
+            if (Quaternion.Angle(currentRotation, targetRotation) < 0.1f) // 1åº¦çš„å®¹å·®
             {
                 num++;
             }
@@ -287,13 +289,13 @@ public class BirdEnemyBarrageAttackState : EnemyState
 {
     BirdEnemy birdEnemy;
     float timer;
-    float rotationSpeed = 20f; // Ğı×ªËÙ¶È£¨¶È/Ãë£©
-    float rotationDuration = 0.5f; // Ğı×ªÊ±¼ä£¨Ãë£©
-    public float bulletInterval = 0.75f; // ×Óµ¯·¢Éä¼ä¸ôÊ±¼ä
-    private float bulletTimer = 0f; // ×Óµ¯¼ÆÊ±Æ÷
+    float rotationSpeed = 20f; // æ—‹è½¬é€Ÿåº¦ï¼ˆåº¦/ç§’ï¼‰
+    float rotationDuration = 0.5f; // æ—‹è½¬æ—¶é—´ï¼ˆç§’ï¼‰
+    public float bulletInterval = 0.75f; // å­å¼¹å‘å°„é—´éš”æ—¶é—´
+    private float bulletTimer = 0f; // å­å¼¹è®¡æ—¶å™¨
 
-    private float rotationTimer; // ÓÃÓÚ¹ÜÀíĞı×ªºÍµÈ´ıµÄ¼ÆÊ±Æ÷
-    private bool rotatingRight; // Ğı×ª·½Ïò±ê¼Ç
+    private float rotationTimer; // ç”¨äºç®¡ç†æ—‹è½¬å’Œç­‰å¾…çš„è®¡æ—¶å™¨
+    private bool rotatingRight; // æ—‹è½¬æ–¹å‘æ ‡è®°
     int num;
     int q;
     public BirdEnemyBarrageAttackState(Enemy enemy, EnemyFSM enemyFSM, BirdEnemy birdEnemy) : base(enemy, enemyFSM)
@@ -305,7 +307,7 @@ public class BirdEnemyBarrageAttackState : EnemyState
     {
         timer = 0f;
         rotationTimer = 0f;
-        rotatingRight = true; // ´ÓÓÒ²à¿ªÊ¼Ğı×ª
+        rotatingRight = true; // ä»å³ä¾§å¼€å§‹æ—‹è½¬
         num = 0;
         q = Random.Range(0, 2);
     }
@@ -316,13 +318,13 @@ public class BirdEnemyBarrageAttackState : EnemyState
         {
             timer += Time.deltaTime;
 
-            // ¼ì²éÊÇ·ñ³¬¹ı¹¥»÷³ÖĞøÊ±¼ä£¬ÈôÊÇÔò·µ»ØÑ²Âß×´Ì¬
+            // æ£€æŸ¥æ˜¯å¦è¶…è¿‡æ”»å‡»æŒç»­æ—¶é—´ï¼Œè‹¥æ˜¯åˆ™è¿”å›å·¡é€»çŠ¶æ€
             if (timer > 10f)
             {
                 enemyFSM.ChangeState(enemy.patrolState);
             }
 
-            // ´¦ÀíĞı×ªĞĞÎª
+            // å¤„ç†æ—‹è½¬è¡Œä¸º
             rotationTimer += Time.deltaTime;
 
             if (rotationTimer < rotationDuration)
@@ -336,7 +338,7 @@ public class BirdEnemyBarrageAttackState : EnemyState
                 if (rotationTimer >= rotationDuration + 0.5f)
                 {
                     rotatingRight = !rotatingRight;
-                    rotationTimer = 0f; // ÖØÖÃĞı×ª¼ÆÊ±Æ÷
+                    rotationTimer = 0f; // é‡ç½®æ—‹è½¬è®¡æ—¶å™¨
                     if (num==0)
                     {
                         birdEnemy.FireBullets();
@@ -349,22 +351,22 @@ public class BirdEnemyBarrageAttackState : EnemyState
         {
             timer += Time.deltaTime;
             bulletTimer += Time.deltaTime;
-            rotationSpeed = 30f; // Ğı×ªËÙ¶È£¨¶È/Ãë£©
-            // ¼ì²éÊÇ·ñ³¬¹ı¹¥»÷³ÖĞøÊ±¼ä£¬ÈôÊÇÔò·µ»ØÑ²Âß×´Ì¬
+            rotationSpeed = 30f; // æ—‹è½¬é€Ÿåº¦ï¼ˆåº¦/ç§’ï¼‰
+            // æ£€æŸ¥æ˜¯å¦è¶…è¿‡æ”»å‡»æŒç»­æ—¶é—´ï¼Œè‹¥æ˜¯åˆ™è¿”å›å·¡é€»çŠ¶æ€
             if (timer > 10f)
             {
                 enemyFSM.ChangeState(enemy.patrolState);
             }
 
-            // ´¦Àí³ÖĞøĞı×ªĞĞÎª
+            // å¤„ç†æŒç»­æ—‹è½¬è¡Œä¸º
             float angle = rotatingRight ? rotationSpeed * Time.deltaTime : -rotationSpeed * Time.deltaTime;
             birdEnemy.transform.Rotate(0, 0, angle);
 
-            // ¿ØÖÆ·¢Éä×Óµ¯µÄÂß¼­
-            if (bulletTimer >= bulletInterval) // ¸ù¾İÉè¶¨µÄ¼ä¸ô·¢Éä×Óµ¯
+            // æ§åˆ¶å‘å°„å­å¼¹çš„é€»è¾‘
+            if (bulletTimer >= bulletInterval) // æ ¹æ®è®¾å®šçš„é—´éš”å‘å°„å­å¼¹
             {
                 birdEnemy.FireBullets();
-                bulletTimer = 0f; // ÖØÖÃ¼ÆÊ±Æ÷
+                bulletTimer = 0f; // é‡ç½®è®¡æ—¶å™¨
             }
         }
 
@@ -372,7 +374,7 @@ public class BirdEnemyBarrageAttackState : EnemyState
 
     public override void PhysicsUpdate()
     {
-        // ÔÚÕâÀï¿ÉÒÔ´¦ÀíÎïÀíÏà¹ØµÄ¸üĞÂ
+        // åœ¨è¿™é‡Œå¯ä»¥å¤„ç†ç‰©ç†ç›¸å…³çš„æ›´æ–°
     }
 
     public override void OnExit()
@@ -383,7 +385,7 @@ public class BirdEnemyBarrageAttackState : EnemyState
 
 
 /// <summary>
-/// Ğ¡¹ÖµÄ»ù´¡ËÀÍö×´Ì¬£¬ËùÓĞĞ¡¹ÖËÀÍö×´Ì¬¼Ì³Ğ´Ë×´Ì¬
+/// å°æ€ªçš„åŸºç¡€æ­»äº¡çŠ¶æ€ï¼Œæ‰€æœ‰å°æ€ªæ­»äº¡çŠ¶æ€ç»§æ‰¿æ­¤çŠ¶æ€
 /// </summary>
 public class BirdEnemyStateDead : EnemyState
 {

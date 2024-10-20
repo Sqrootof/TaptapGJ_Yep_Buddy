@@ -60,10 +60,10 @@ public class EnemyLaser : MonoBehaviour
                 if ((playerLayer & (1 << hit.collider.gameObject.layer)) != 0)
                 {
                     // 击中敌人，但继续穿透
-                    Player Health = hit.collider.GetComponent<Player>();
+                    PlayerController Health = hit.collider.GetComponent<PlayerController>();
                     if (Health != null)
                     {
-                        Health.health -= damageAmount * (maxReflections - reflections+1); // 对敌人造成伤害
+                        Health.ReciveDamage(damageAmount * (maxReflections - reflections + 1));
                         Instantiate(explosionPrefab, hit.point, Quaternion.identity);
                     }
 
