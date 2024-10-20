@@ -4,14 +4,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler
+public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBeginDragHandler
 {
-    Bullet BulletData;
+    public Bullet BulletData;
     Image BulletImage;
+    bool FromBackpack = false;
+    Vector3 OriginPos;
+    Transform OriginParent;
+
+    void Awake()
+    {
+        BulletImage = transform.GetChild(0).GetComponent<Image>();
+    }
 
     void Start()
     {
-        BulletImage = transform.GetChild(0).GetComponent<Image>();
+        
+    }
+    
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        OriginPos = transform.position;
+        OriginParent = transform.parent;
+        transform.parent = transform.parent.parent.parent.parent;
+        if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.BulletBackpackRect, eventData.position))
+        {
+            FromBackpack = true;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -21,15 +40,38 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(WeaponPanelMgr.Instance.BulletBackpack.GetComponent<RectTransform>(), eventData.position, Camera.main))
+        Debug.Log(eventData.position);
+
+        //如果拖拽到了背包里
+        if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.BulletBackpackRect, eventData.position))
         {
-            WeaponBackpack.Instance.StoreEquippedBullet(BulletData,WeaponPanelMgr.Instance.OnBulletDataChanged);
+            Debug.Log("拖拽到了背包里");
+            if (!FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count > 1){
+                WeaponBackpack.Instance.StoreEquippedBullet(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.position = OriginPos;
+                transform.parent = OriginParent;
+            }
         }
-        else if (RectTransformUtility.RectangleContainsScreenPoint(WeaponPanelMgr.Instance.EquppiedBulletContainer.GetComponent<RectTransform>(), eventData.position, Camera.main))
+        //如果拖拽到了已装备的子弹上
+        else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position) && FromBackpack)
         {
-            WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData,WeaponPanelMgr.Instance.OnBulletDataChanged);
+            Debug.Log("拖拽到了已装备的子弹上");
+            if (FromBackpack){
+                WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.position = OriginPos;
+                transform.parent = OriginParent;
+            }
         }
-        else {
+        else
+        {
             WeaponBackpack.Instance.DropBullet(BulletData);
             Destroy(gameObject);
         }
