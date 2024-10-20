@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     Animator Animator;
     #endregion
 
+    [SerializeField] GameObject Head;
+
     void Awake()
     {
         ComponentInit();
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
     // Update is called once per frame
     void Update()
     {
+        LookAtMouse();
         Move();
         Jump();
         Dash();
@@ -114,6 +117,14 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         if (collision.gameObject.CompareTag("Ground")) { 
             InTheAir = true;
         }
+    }
+    void LookAtMouse()
+    {
+        Vector3 MousePos = Input.mousePosition;
+        MousePos.z = Camera.main.transform.position.z;
+        Vector3 WorldPos = Camera.main.ScreenToWorldPoint(MousePos);
+        WorldPos.z = -Camera.main.transform.position.z;
+        Head.transform.LookAt(WorldPos);
     }
 
     private void Jump()

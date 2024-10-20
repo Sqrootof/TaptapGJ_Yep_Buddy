@@ -5795,6 +5795,7 @@ GameObject:
   - component: {fileID: 1659664093585236552}
   - component: {fileID: 5269769511592959512}
   - component: {fileID: 4085391066239829531}
+  - component: {fileID: 1624664738650647266}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -5901,6 +5902,27 @@ MonoBehaviour:
   BasicKnockbackResistance: 0
   currentHealth: 0
   PlayerBody: {fileID: 1007750251990868763}
+--- !u!95 &1624664738650647266
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530315335514285724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1aec1aa78f8eac74bbb99c496001a77f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6790905663404064133
 GameObject:
   m_ObjectHideFlags: 0
@@ -6230,6 +6252,7 @@ MonoBehaviour:
   CurrentGainsBlock: []
   LastShootTime: -1
   BlockHeadIndex: 0
+  Camera: {fileID: 5930190571931453972}
 --- !u!1 &8604038493140785801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6274,8 +6297,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765182a73b8967e4a88c405de35332a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquippedBullets: []
-  BulletInBackpack: []
+  EquippedBullets:
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
+  - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
+  BulletInBackpack:
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
+  - {fileID: 11400000, guid: 302442b4456d4aa4bbcef1eb63d9aecd, type: 2}
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
   LayerIgnore_DroppedThings:
     serializedVersion: 2
     m_Bits: 5504
