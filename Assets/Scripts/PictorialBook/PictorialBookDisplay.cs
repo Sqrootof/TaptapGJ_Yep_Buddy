@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class PictorialBookDisplay : MonoBehaviour
 {
-    public GameObject pictorialEntryPrefab; // ÓÃÓÚ´´½¨Í¼¼øÌõÄ¿µÄPrefab
-    public Transform contentPanel; // UIÖĞÏÔÊ¾ÌõÄ¿µÄ¸¸¶ÔÏó
+    public GameObject pictorialEntryPrefab; // ç”¨äºåˆ›å»ºå›¾é‰´æ¡ç›®çš„Prefab
+    public Transform contentPanel; // UIä¸­æ˜¾ç¤ºæ¡ç›®çš„çˆ¶å¯¹è±¡
 
     private void Start()
     {
@@ -14,36 +14,36 @@ public class PictorialBookDisplay : MonoBehaviour
 
     public void DisplayPictorialBooks()
     {
-        //// Çå¿ÕÏÖÓĞµÄUIÔªËØ
+        //// æ¸…ç©ºç°æœ‰çš„UIå…ƒç´ 
         //foreach (Transform child in contentPanel)
         //{
         //    Destroy(child.gameObject);
         //}
 
-        // ´ÓFillPictorialBook»ñÈ¡Í¼¼øÁĞ±í
+        // ä»FillPictorialBookè·å–å›¾é‰´åˆ—è¡¨
         List<PictorialBook> pictorialBooks = Whole.pictorialBooks;
         foreach (var book in pictorialBooks)
         {
             if (book.entryName != "")
             {
-                // ÊµÀı»¯Í¼¼øÌõÄ¿
+                // å®ä¾‹åŒ–å›¾é‰´æ¡ç›®
                 GameObject entry = Instantiate(pictorialEntryPrefab, contentPanel);
-                // »ñÈ¡ImageºÍText×é¼ş
+                // è·å–Imageå’ŒTextç»„ä»¶
                 Image entryImage = entry.transform.Find("Image").GetComponent<Image>();
                 Text entryText = entry.transform.Find("Text").GetComponent<Text>();
 
-                // ÉèÖÃÍ¼¼øÃû³ÆºÍÍ¼Æ¬
+                // è®¾ç½®å›¾é‰´åç§°å’Œå›¾ç‰‡
                 if (book.isUnlocked)
                 {
                     entryText.text = book.entryName;
 
-                    // ´´½¨Sprite²¢¸³Öµ¸øImage×é¼ş
+                    // åˆ›å»ºSpriteå¹¶èµ‹å€¼ç»™Imageç»„ä»¶
                     entryImage.sprite = book.entryImage;
                 }
                 else
                 {
-                    entryText.text = "XXXX"; // Î´½âËø×´Ì¬
-                    entryImage.sprite = null; // »òÕßÏÔÊ¾Ò»¸öÄ¬ÈÏÍ¼Ïñ
+                    entryText.text = "XXXX"; // æœªè§£é”çŠ¶æ€
+                    entryImage.sprite = null; // æˆ–è€…æ˜¾ç¤ºä¸€ä¸ªé»˜è®¤å›¾åƒ
                 }
             }
 
