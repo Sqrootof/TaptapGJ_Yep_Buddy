@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class AnchorPoint
 {
+    public string AnchorPointName;  //传送点名字
     public GameObject anchorObject; // 关联的 GameObject
     public bool isUnlocked; // 解锁状态
 }

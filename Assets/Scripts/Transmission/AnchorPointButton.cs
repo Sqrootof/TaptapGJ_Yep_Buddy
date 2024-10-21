@@ -31,16 +31,24 @@ public class AnchorPointButton : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void ToAnchorPoint(int p)
+    public void ToAnchorPoint(string name)
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = Whole.anchorPoints[p].anchorObject.transform.position;
-        BlackScreen blackScreen = Black.GetComponent<BlackScreen>();
-        blackScreen.gameObject.SetActive(true);
-        blackScreen.fadeInOut = true;
-        Time.timeScale = 1; // 恢复时间
-        //CloseMapUI延迟1s执行
-        StartCoroutine(CloseMapUICoroutine(0.5f));
+        AnchorPoint anchorPoint=Whole.anchorPoints.Find(a => a.AnchorPointName == name);
+        if (anchorPoint != null)
+        {
+            player.transform.position=anchorPoint.anchorObject.transform.position;
+            BlackScreen blackScreen = Black.GetComponent<BlackScreen>();
+            blackScreen.gameObject.SetActive(true);
+            blackScreen.fadeInOut = true;
+            Time.timeScale = 1; // 恢复时间
+            //CloseMapUI延迟1s执行
+            StartCoroutine(CloseMapUICoroutine(0.5f));
+        }
+        else
+        {
+            Debug.Log("NULL");
+        }
 
     }
 

@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AchievementDisplay : MonoBehaviour
 {
-    public GameObject achievementItemPrefab; // Ô¤Éè
-    public Transform achievementListParent; // ³É¾ÍÁĞ±íµÄ¸¸¶ÔÏó
+    public GameObject achievementItemPrefab; // é¢„è®¾
+    public Transform achievementListParent; // æˆå°±åˆ—è¡¨çš„çˆ¶å¯¹è±¡
 
     void Start()
     {
@@ -14,33 +14,33 @@ public class AchievementDisplay : MonoBehaviour
 
     void DisplayAchievements()
     {
-        // Çå¿Õ³É¾ÍÁĞ±í
+        // æ¸…ç©ºæˆå°±åˆ—è¡¨
         foreach (Transform child in achievementListParent)
         {
             Destroy(child.gameObject);
         }
 
-        // Ñ­»·±éÀú³É¾ÍÁĞ±í²¢ÏÔÊ¾
+        // å¾ªç¯éå†æˆå°±åˆ—è¡¨å¹¶æ˜¾ç¤º
         foreach (Achievement achievement in Whole.achievements)
         {
             GameObject achievementItem = Instantiate(achievementItemPrefab, achievementListParent);
             Image itemImage = achievementItem.GetComponent<Image>();
             Text[] texts = achievementItem.GetComponentsInChildren<Text>();
 
-            // ÉèÖÃ³É¾ÍÃû³Æ
+            // è®¾ç½®æˆå°±åç§°
             texts[0].text = achievement.name +":"+ achievement.conditions;
 
             if (achievement.isUnlocked)
             {
-                // Ê¹ÓÃ Color.white
-                itemImage.color = new Color(1f, 1f, 1f, 1f); // Image ÑÕÉ«
-                texts[0].color = new Color(0f, 0f, 0f, 1f); // ÎÄ±¾ÑÕÉ«¸ÄÎªºÚÉ«£¬²»Í¸Ã÷
+                // ä½¿ç”¨ Color.white
+                itemImage.color = new Color(1f, 1f, 1f, 1f); // Image é¢œè‰²
+                texts[0].color = new Color(0f, 0f, 0f, 1f); // æ–‡æœ¬é¢œè‰²æ”¹ä¸ºé»‘è‰²ï¼Œä¸é€æ˜
             }
             else
             {
-                // ¿ÉÒÔÑ¡ÔñÉèÖÃ³É¾ÍÎ´½âËøµÄÑÕÉ«£¬±ÈÈç»ÒÉ«
-                itemImage.color = new Color(0.5f, 0.5f, 0.5f, 0.5f); // Image ÑÕÉ«
-                texts[0].color = new Color(0.5f, 0.5f, 0.5f,0.5f); // ÉèÖÃÎª»ÒÉ«
+                // å¯ä»¥é€‰æ‹©è®¾ç½®æˆå°±æœªè§£é”çš„é¢œè‰²ï¼Œæ¯”å¦‚ç°è‰²
+                itemImage.color = new Color(0.5f, 0.5f, 0.5f, 0.5f); // Image é¢œè‰²
+                texts[0].color = new Color(0.5f, 0.5f, 0.5f,0.5f); // è®¾ç½®ä¸ºç°è‰²
             }
         }
     }
