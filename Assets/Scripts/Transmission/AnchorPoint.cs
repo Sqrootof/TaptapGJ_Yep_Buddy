@@ -8,7 +8,7 @@ public class AnchorPoint
     public bool isUnlocked; // ½âËø×´Ì¬
 }
 
-public class AnchorPointFillAndManager:MonoBehaviour
+public class AnchorPointFill:MonoBehaviour
 {
     public List<AnchorPoint> anchorPoints;
 
