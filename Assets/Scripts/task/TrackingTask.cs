@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class TrackingTask : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //¼¤¹â,Á¬½ÓÍæ¼ÒºÍÃªµã
+        //æ¿€å…‰,è¿žæŽ¥çŽ©å®¶å’Œé”šç‚¹
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
         lineRenderer.startWidth = 0.1f;

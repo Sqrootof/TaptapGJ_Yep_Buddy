@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class AnchorPoint
 {
-    public GameObject anchorObject; // ¹ØÁªµÄ GameObject
-    public bool isUnlocked; // ½âËø×´Ì¬
+    public GameObject anchorObject; // å…³è”çš„ GameObject
+    public bool isUnlocked; // è§£é”çŠ¶æ€
 }
 
 public class AnchorPointFill:MonoBehaviour
@@ -17,6 +17,10 @@ public class AnchorPointFill:MonoBehaviour
         if (Whole.isAnchorPoints)
         {
             anchorPoints=Whole.anchorPoints;
+        }
+        else
+        {
+            Whole.anchorPoints=anchorPoints;
         }
     }
 }

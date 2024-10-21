@@ -12,4 +12,16 @@ public class Whole : MonoBehaviour
     public static GameObject[] anchorPoint;
     public static List<AnchorPoint> anchorPoints = new List<AnchorPoint>();
     public static bool isAnchorPoints=false;
+
+    public static AnchorPoint FindAnchorPointByGameObject(GameObject targetObject)
+    {
+        foreach (var anchorPoint in anchorPoints)
+        {
+            if (anchorPoint.anchorObject == targetObject)
+            {
+                return anchorPoint; // 找到对应的 AnchorPoint
+            }
+        }
+        return null; // 未找到，返回 null
+    }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,71 +7,71 @@ public class Enemy : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-    public EnemyFSM enemyFSM;   // µĞÈË×´Ì¬»ú
+    public EnemyFSM enemyFSM;   // æ•ŒäººçŠ¶æ€æœº
     public EnemyState patrolState;
     public EnemyState chaseState;
     public EnemyState attackState;
     public EnemyState deadState;
-    public Rigidbody rb; // ¸ÕÌå×é¼ş
+    public Rigidbody rb; // åˆšä½“ç»„ä»¶
     public GameObject player;
 
-    [Tooltip("Ñ²ÂßËÙ¶È")] public float patrolSpeed;
-    [Tooltip("×·»÷ËÙ¶È")] public float chaseSpeed;
-    [Tooltip("µ±Ç°ËÙ¶È")] public float currentSpeed;
+    [Tooltip("å·¡é€»é€Ÿåº¦")] public float patrolSpeed;
+    [Tooltip("è¿½å‡»é€Ÿåº¦")] public float chaseSpeed;
+    [Tooltip("å½“å‰é€Ÿåº¦")] public float currentSpeed;
 
-    [Tooltip("¹¥»÷·¶Î§¼ì²âÖĞĞÄ")] public Vector3 attackPoint;
-    [Tooltip("ÊÓÒ°·¶Î§¼ì²âÖĞĞÄ")] public Vector3 visualPoint;
-    [Tooltip("ÊÓÒ°·¶Î§")] public float visualRange;
-    [Tooltip("¹¥»÷·¶Î§")] public float attackRange;
+    [Tooltip("æ”»å‡»èŒƒå›´æ£€æµ‹ä¸­å¿ƒ")] public Vector3 attackPoint;
+    [Tooltip("è§†é‡èŒƒå›´æ£€æµ‹ä¸­å¿ƒ")] public Vector3 visualPoint;
+    [Tooltip("è§†é‡èŒƒå›´")] public float visualRange;
+    [Tooltip("æ”»å‡»èŒƒå›´")] public float attackRange;
 
-    [Tooltip("Íæ¼Ò²ã")] public LayerMask playerLayer = 1 << 6;
-    [Tooltip("ÕÏ°­Îï²ã")] public LayerMask obstacleLayer = 1 << 7;
+    [Tooltip("ç©å®¶å±‚")] public LayerMask playerLayer = 1 << 6;
+    [Tooltip("éšœç¢ç‰©å±‚")] public LayerMask obstacleLayer = 1 << 7;
 
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + attackPoint, attackRange);   //»­³ö¹¥»÷·¶Î§
+        Gizmos.DrawWireSphere(transform.position + attackPoint, attackRange);   //ç”»å‡ºæ”»å‡»èŒƒå›´
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + visualPoint, visualRange);   //»­³öÊÓÒ°·¶Î§
+        Gizmos.DrawWireSphere(transform.position + visualPoint, visualRange);   //ç”»å‡ºè§†é‡èŒƒå›´
 
-        //Gizmos.color = Color.red; // ÉèÖÃÑÕÉ«ÎªºìÉ«
-        //Gizmos.DrawSphere(patrolPointA, 0.3f); // »æÖÆ A µã
-        //Gizmos.DrawSphere(patrolPointB, 0.3f); // »æÖÆ B µã
+        //Gizmos.color = Color.red; // è®¾ç½®é¢œè‰²ä¸ºçº¢è‰²
+        //Gizmos.DrawSphere(patrolPointA, 0.3f); // ç»˜åˆ¶ A ç‚¹
+        //Gizmos.DrawSphere(patrolPointB, 0.3f); // ç»˜åˆ¶ B ç‚¹
 
-        //// »æÖÆ A µãºÍ B µãÖ®¼äµÄÏß
+        //// ç»˜åˆ¶ A ç‚¹å’Œ B ç‚¹ä¹‹é—´çš„çº¿
         //Gizmos.color = Color.blue;
         //Gizmos.DrawLine(patrolPointA, patrolPointB);
     }
 
     /// <summary>
-    /// AwakeÉúÃüÖÜÆÚº¯Êı£¬³õÊ¼»¯µĞÈË×´Ì¬»ú
+    /// Awakeç”Ÿå‘½å‘¨æœŸå‡½æ•°ï¼Œåˆå§‹åŒ–æ•ŒäººçŠ¶æ€æœº
     /// </summary>
     protected virtual void Awake()
     {
-        enemyFSM = new EnemyFSM();   // ´´½¨µĞÈË×´Ì¬»úÊµÀı
+        enemyFSM = new EnemyFSM();   // åˆ›å»ºæ•ŒäººçŠ¶æ€æœºå®ä¾‹
         player = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody>();     // »ñÈ¡¸ÕÌå×é¼ş
+        rb = GetComponent<Rigidbody>();     // è·å–åˆšä½“ç»„ä»¶
     }
 
     /// <summary>
-    /// OnEnableÉúÃüÖÜÆÚº¯Êı£¬ÆôÓÃµĞÈËÊ±³õÊ¼»¯×´Ì¬»ú²¢¿ªÊ¼Ö´ĞĞµÚÒ»¸ö×´Ì¬
+    /// OnEnableç”Ÿå‘½å‘¨æœŸå‡½æ•°ï¼Œå¯ç”¨æ•Œäººæ—¶åˆå§‹åŒ–çŠ¶æ€æœºå¹¶å¼€å§‹æ‰§è¡Œç¬¬ä¸€ä¸ªçŠ¶æ€
     /// </summary>
     protected virtual void OnEnable()
     {
         currentHealth = maxHealth;
 
-        /*×ÓÀàÖĞÔÚbase.OnEnable()Ö®Ç°ÎªenemyFSM.startState¸³Öµ*/
-        enemyFSM.InitializeState(enemyFSM.startState);  // ³õÊ¼»¯µĞÈË×´Ì¬»ú²¢¿ªÊ¼Ö´ĞĞµÚÒ»¸ö×´Ì¬
+        /*å­ç±»ä¸­åœ¨base.OnEnable()ä¹‹å‰ä¸ºenemyFSM.startStateèµ‹å€¼*/
+        enemyFSM.InitializeState(enemyFSM.startState);  // åˆå§‹åŒ–æ•ŒäººçŠ¶æ€æœºå¹¶å¼€å§‹æ‰§è¡Œç¬¬ä¸€ä¸ªçŠ¶æ€
     }
 
     /// <summary>
-    /// OnDisableÉúÃüÖÜÆÚº¯Êı£¬½ûÓÃµĞÈËÊ±Ö´ĞĞµ±Ç°×´Ì¬µÄOnExitº¯Êı
+    /// OnDisableç”Ÿå‘½å‘¨æœŸå‡½æ•°ï¼Œç¦ç”¨æ•Œäººæ—¶æ‰§è¡Œå½“å‰çŠ¶æ€çš„OnExitå‡½æ•°
     /// </summary>
     protected virtual void OnDisable()
     {
-        enemyFSM.currentState.OnExit(); // Ö´ĞĞµ±Ç°×´Ì¬µÄOnExitº¯Êı
+        enemyFSM.currentState.OnExit(); // æ‰§è¡Œå½“å‰çŠ¶æ€çš„OnExitå‡½æ•°
     }
 
     protected virtual void Start()
@@ -80,37 +80,37 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// FixedUpdateÉúÃüÖÜÆÚº¯Êı£¬Ã¿¸ö¹Ì¶¨Ö¡Ö´ĞĞµ±Ç°×´Ì¬»ú×´Ì¬µÄPhysicsUpdateº¯Êı
+    /// FixedUpdateç”Ÿå‘½å‘¨æœŸå‡½æ•°ï¼Œæ¯ä¸ªå›ºå®šå¸§æ‰§è¡Œå½“å‰çŠ¶æ€æœºçŠ¶æ€çš„PhysicsUpdateå‡½æ•°
     /// </summary>
     protected virtual void FixedUpdate()
     {
-        enemyFSM.currentState.PhysicsUpdate(); // Ö´ĞĞµ±Ç°×´Ì¬»ú×´Ì¬µÄPhysicsUpdateº¯Êı
+        enemyFSM.currentState.PhysicsUpdate(); // æ‰§è¡Œå½“å‰çŠ¶æ€æœºçŠ¶æ€çš„PhysicsUpdateå‡½æ•°
     }
 
     /// <summary>
-    /// UpdateÉúÃüÖÜÆÚº¯Êı£¬Ã¿Ö¡Ö´ĞĞµ±Ç°×´Ì¬»ú×´Ì¬µÄLogicUpdateº¯Êı
+    /// Updateç”Ÿå‘½å‘¨æœŸå‡½æ•°ï¼Œæ¯å¸§æ‰§è¡Œå½“å‰çŠ¶æ€æœºçŠ¶æ€çš„LogicUpdateå‡½æ•°
     /// </summary>
     protected virtual void Update()
     {
-        enemyFSM.currentState.LogicUpdate(); // Ö´ĞĞµ±Ç°×´Ì¬»ú×´Ì¬µÄLogicUpdateº¯Êı
+        enemyFSM.currentState.LogicUpdate(); // æ‰§è¡Œå½“å‰çŠ¶æ€æœºçŠ¶æ€çš„LogicUpdateå‡½æ•°
     }
     /// <summary>
-    /// ¹¥»÷·¶Î§¼ì²â·½·¨ (3D°æ±¾)
+    /// æ”»å‡»èŒƒå›´æ£€æµ‹æ–¹æ³• (3Dç‰ˆæœ¬)
     /// </summary>
-    /// <returns>Íæ¼ÒÔÚ¹¥»÷·¶Î§ÄÚÎªtrue£¬·ñÔòÎªfalse</returns>
+    /// <returns>ç©å®¶åœ¨æ”»å‡»èŒƒå›´å†…ä¸ºtrueï¼Œå¦åˆ™ä¸ºfalse</returns>
     public bool IsPlayerInAttackRange()
     {
-        // ¼ì²â¹¥»÷·¶Î§ÄÚÊÇ·ñÓĞÍæ¼Ò
+        // æ£€æµ‹æ”»å‡»èŒƒå›´å†…æ˜¯å¦æœ‰ç©å®¶
         return Physics.OverlapSphere(transform.position + attackPoint, attackRange, playerLayer).Length > 0;
     }
 
     /// <summary>
-    /// ÊÓÒ°·¶Î§¼ì²â·½·¨ (3D°æ±¾)
+    /// è§†é‡èŒƒå›´æ£€æµ‹æ–¹æ³• (3Dç‰ˆæœ¬)
     /// </summary>
-    /// <returns>Íæ¼ÒÔÚÊÓÒ°·¶Î§ÄÚÎªtrue£¬·ñÔòÎªfalse</returns>
+    /// <returns>ç©å®¶åœ¨è§†é‡èŒƒå›´å†…ä¸ºtrueï¼Œå¦åˆ™ä¸ºfalse</returns>
     public bool IsPlayerInVisualRange()
     {
-        // ¼ì²âÊÓÒ°·¶Î§ÄÚÊÇ·ñÓĞÍæ¼Ò
+        // æ£€æµ‹è§†é‡èŒƒå›´å†…æ˜¯å¦æœ‰ç©å®¶
         return Physics.OverlapSphere(transform.position + visualPoint, visualRange, playerLayer).Length > 0;
     }
 

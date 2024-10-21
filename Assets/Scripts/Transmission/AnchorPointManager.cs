@@ -1,18 +1,24 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AnchorManager : MonoBehaviour
 {
-    public List<AnchorPoint> anchorPoints; // ËùÓĞÃªµã
-    public GameObject unlockButton; // ½âËø°´Å¥
-    public GameObject interactButton; // ½Ó´¥°´Å¥
-    private GameObject currentAnchor; // µ±Ç°½Ó´¥µÄÃªµã
+    public List<AnchorPoint> anchorPoints; // æ‰€æœ‰é”šç‚¹
+    public GameObject unlockButton; // è§£é”æŒ‰é’®
+    public GameObject interactButton; // æ¥è§¦æŒ‰é’®
+    public GameObject currentAnchor; // å½“å‰æ¥è§¦çš„é”šç‚¹
+
+    private void Start()
+    {
+        //anchorPoints = Whole.anchorPoints;
+        Whole.anchorPoints=anchorPoints;
+    }
 
     private void Update()
     {
-        // ¼ì²âÓëÃªµãµÄ½Ó´¥
+        // æ£€æµ‹ä¸é”šç‚¹çš„æ¥è§¦
         CheckAnchorProximity();
     }
 
@@ -22,7 +28,7 @@ public class AnchorManager : MonoBehaviour
         foreach (var anchor in anchorPoints)
         {
             float distance = Vector3.Distance(transform.position, anchor.anchorObject.transform.position);
-            if (distance < 3f) // Éè¶¨½Ó´¥¾àÀë
+            if (distance < 3f) // è®¾å®šæ¥è§¦è·ç¦»
             {
                 flag = true;
                 currentAnchor = anchor.anchorObject;
@@ -48,10 +54,12 @@ public class AnchorManager : MonoBehaviour
     private void ShowUnlockButton()
     {
         unlockButton.SetActive(true);
+        interactButton.SetActive(false);
     }
 
     private void ShowInteractButton()
     {
+        unlockButton.SetActive(false);
         interactButton.SetActive(true);
     }
 

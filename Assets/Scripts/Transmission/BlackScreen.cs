@@ -1,62 +1,64 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // å¼•å…¥ UI å‘½åç©ºé—´
 
 public class BlackScreen : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private Image image; // å°† SpriteRenderer æ›¿æ¢ä¸º Image
 
-    public bool fadeInOut = false; // ¿ØÖÆ½¥±äµÄ¹«¹²±äÁ¿
-    private bool fadingIn = true; // ÊÇ·ñÔÚ½¥±äµ½²»Í¸Ã÷
-    private bool fading = false; // ÊÇ·ñÕıÔÚ½øĞĞ½¥±ä¹ı³Ì
+    public bool fadeInOut = false; // æ§åˆ¶æ¸å˜çš„å…¬å…±å˜é‡
+    private bool fadingIn = true; // æ˜¯å¦åœ¨æ¸å˜åˆ°ä¸é€æ˜
+    private bool fading = false; // æ˜¯å¦æ­£åœ¨è¿›è¡Œæ¸å˜è¿‡ç¨‹
 
-    public float stayTime;
-    public float fadeSpeed = 1.0f; // ½¥±äËÙ¶È
-    private float currentAlpha = 0f; // µ±Ç°Í¸Ã÷¶È
+    public float stayTime; // åœç•™æ—¶é—´
+    public float fadeSpeed = 1.0f; // æ¸å˜é€Ÿåº¦
+    private float currentAlpha = 0f; // å½“å‰é€æ˜åº¦
     private float time;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = new Color(0, 0, 0, 0); // ³õÊ¼»¯ÎªÍêÈ«Í¸Ã÷
+        image = GetComponent<Image>(); // è·å– Image ç»„ä»¶
+        image.color = new Color(0, 0, 0, 0); // åˆå§‹åŒ–ä¸ºå®Œå…¨é€æ˜
     }
 
     private void Update()
     {
-        // µ±¹«¹²±äÁ¿±äÎª true ÇÒ²»ÔÚ½øĞĞ½¥±äÊ±£¬¿ªÊ¼½¥±ä¹ı³Ì
+        // å½“å…¬å…±å˜é‡å˜ä¸º true ä¸”ä¸åœ¨è¿›è¡Œæ¸å˜æ—¶ï¼Œå¼€å§‹æ¸å˜è¿‡ç¨‹
         if (fadeInOut && !fading)
         {
-            fading = true; // ¿ªÊ¼½¥±ä
-            currentAlpha = 0f; // ÖØÖÃµ±Ç°Í¸Ã÷¶È
-            fadingIn = true; // ÉèÖÃÎª´ÓÍ¸Ã÷µ½²»Í¸Ã÷
+            fading = true; // å¼€å§‹æ¸å˜
+            currentAlpha = 0f; // é‡ç½®å½“å‰é€æ˜åº¦
+            fadingIn = true; // è®¾ç½®ä¸ºä»é€æ˜åˆ°ä¸é€æ˜
         }
 
-        // ½¥±ä¹ı³Ì
-        if (fading && time<=0f)
+        // æ¸å˜è¿‡ç¨‹
+        if (fading && time <= 0f)
         {
-            // ĞŞ¸ÄÍ¸Ã÷¶È
+            // ä¿®æ”¹é€æ˜åº¦
             currentAlpha = Mathf.MoveTowards(currentAlpha, fadingIn ? 1f : 0f, fadeSpeed * Time.deltaTime);
-            spriteRenderer.color = new Color(0, 0, 0, currentAlpha);
+            image.color = new Color(0, 0, 0, currentAlpha); // æ›´æ–° Image ç»„ä»¶çš„é¢œè‰²
 
-            // ¼ì²éÊÇ·ñ´ïµ½ÁËÄ¿±êÍ¸Ã÷¶È
-            if (currentAlpha == (fadingIn ? 1f : 0f))
+            // æ£€æŸ¥æ˜¯å¦è¾¾åˆ°äº†ç›®æ ‡é€æ˜åº¦
+            if (Mathf.Approximately(currentAlpha, fadingIn ? 1f : 0f)) // ä½¿ç”¨ Mathf.Approximately æ£€æŸ¥æµ®ç‚¹æ•°ç›¸ç­‰
             {
-                // Èç¹ûÒÑ¾­Íê³É½¥±ä£¬Í£Ö¹½¥±ä
+                // å¦‚æœå·²ç»å®Œæˆæ¸å˜ï¼Œåœæ­¢æ¸å˜
                 if (fadingIn)
                 {
-                    fadingIn = false; // ·´×ªÎª½¥±ä»ØÍ¸Ã÷
-                    time = stayTime;
+                    fadingIn = false; // åè½¬ä¸ºæ¸å˜å›é€æ˜
+                    time = stayTime; // è®¾ç½®åœç•™æ—¶é—´
                 }
                 else
                 {
-                    fading = false; // Íê³ÉÕû¸ö½¥±ä¹ı³Ì
-                    fadeInOut = false; // ÖØĞÂÉèÖÃ¿ØÖÆ±äÁ¿Îª false
+                    fading = false; // å®Œæˆæ•´ä¸ªæ¸å˜è¿‡ç¨‹
+                    fadeInOut = false; // é‡æ–°è®¾ç½®æ§åˆ¶å˜é‡ä¸º false
+                    gameObject.SetActive(false);
                 }
             }
         }
-        if (time>=0f)
+        if (time >= 0f)
         {
-            time -= Time.deltaTime;
+            time -= Time.deltaTime; // å‡å°‘è®¡æ—¶å™¨
         }
     }
 }

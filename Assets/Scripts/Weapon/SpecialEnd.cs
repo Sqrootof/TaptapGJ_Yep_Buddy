@@ -1,32 +1,32 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialEnd : MonoBehaviour
 {
-    public GameObject bullet; // ×Óµ¯Ô¤ÖÆÌå
-    public float bulletSpeed;  // ×Óµ¯ËÙ¶È
+    public GameObject bullet; // å­å¼¹é¢„åˆ¶ä½“
+    public float bulletSpeed;  // å­å¼¹é€Ÿåº¦
 
     // Start is called before the first frame update
     void Start()
     {
-        // ·¢Éä×Óµ¯
+        // å‘å°„å­å¼¹
         FireBullets();
-        Destroy(gameObject); // Ïú»Ù×Ô¼º
+        Destroy(gameObject); // é”€æ¯è‡ªå·±
     }
 
-    // ·¢Éä36¸ö×Óµ¯£¬Ã¿¸ö·½ÏòÏà¸ô10¶È
+    // å‘å°„36ä¸ªå­å¼¹ï¼Œæ¯ä¸ªæ–¹å‘ç›¸éš”10åº¦
     void FireBullets()
     {
         for (int i = 0; i < 18; i++)
         {
-            // ¼ÆËãµ±Ç°½Ç¶È
-            float angle = i * 20f; // 15¶È¼ä¸ô
+            // è®¡ç®—å½“å‰è§’åº¦
+            float angle = i * 20f; // 15åº¦é—´éš”
 
-            // ¼ÆËã·½ÏòÏòÁ¿£¨Ö»ÔÚXYÆ½ÃæÉÏ£©
+            // è®¡ç®—æ–¹å‘å‘é‡ï¼ˆåªåœ¨XYå¹³é¢ä¸Šï¼‰
             Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
 
-            // ´´½¨×Óµ¯
+            // åˆ›å»ºå­å¼¹
             GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
             Rigidbody bulletRigidbody = newBullet.GetComponent<Rigidbody>();
             if (bulletRigidbody != null)

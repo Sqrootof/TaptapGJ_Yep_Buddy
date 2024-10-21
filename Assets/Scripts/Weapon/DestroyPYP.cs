@@ -1,22 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyPYP : MonoBehaviour
 {
-    private float timer = 0f;  // ÓÃÓÚ¼ÆÊ±
-    public float destroyTime = 1f;  // Éè¶¨´İ»ÙµÄÊ±¼ä£¨1Ãë£©
+    private float timer = 0f;  // ç”¨äºè®¡æ—¶
+    public float destroyTime = 1f;  // è®¾å®šæ‘§æ¯çš„æ—¶é—´ï¼ˆ1ç§’ï¼‰
 
     // Update is called once per frame
     void Update()
     {
-        // ¸üĞÂ¼ÆÊ±Æ÷
+        // æ›´æ–°è®¡æ—¶å™¨
         timer += Time.deltaTime;
 
-        // ¼ì²é¼ÆÊ±Æ÷ÊÇ·ñ³¬¹ıÉè¶¨Ê±¼ä
+        // æ£€æŸ¥è®¡æ—¶å™¨æ˜¯å¦è¶…è¿‡è®¾å®šæ—¶é—´
         if (timer >= destroyTime)
         {
-            // ´İ»Ùµ±Ç°ÎïÌå
+            // æ‘§æ¯å½“å‰ç‰©ä½“
             Destroy(gameObject);
         }
     }
