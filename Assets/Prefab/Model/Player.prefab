@@ -5902,6 +5902,7 @@ MonoBehaviour:
   BasicKnockbackResistance: 0
   currentHealth: 0
   PlayerBody: {fileID: 1007750251990868763}
+  Head: {fileID: 0}
 --- !u!95 &1624664738650647266
 Animator:
   serializedVersion: 5
