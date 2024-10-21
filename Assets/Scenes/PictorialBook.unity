@@ -257,6 +257,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271507236}
   m_CullTransparentMesh: 1
+--- !u!1 &357951271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357951273}
+  - component: {fileID: 357951272}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &357951272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357951271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4e6c0e6157bb74eba4cf76770017cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  task:
+    taskName: "\u4EFB\u52A1\u540D\u79F0"
+    description:
+    - "\u4EFB\u52A1\u63CF\u8FF0"
+    trackingCoordinates:
+    - {x: 1, y: 1, z: 1}
+    - {x: 123, y: 4, z: 1212}
+    - {x: 124, y: 42, z: 24}
+    - {x: 442, y: 112, z: 412}
+    Process: 0
+    EndProcess: 123
+--- !u!4 &357951273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357951271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 356.93582, y: 707.1459, z: 4.3723497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645650409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,3 +1106,4 @@ SceneRoots:
   - {fileID: 1249082590}
   - {fileID: 2079426289}
   - {fileID: 1797303046}
+  - {fileID: 357951273}
