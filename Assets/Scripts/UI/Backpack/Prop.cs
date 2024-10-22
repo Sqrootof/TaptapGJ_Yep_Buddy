@@ -5,6 +5,7 @@ using UnityEngine;
 public enum PropType
 { 
     Material,
+    Collection
 }
 
 [CreateAssetMenu(fileName ="Prop",menuName ="Data/Prop",order = 0)]
@@ -15,8 +16,7 @@ public class Prop : ScriptableObject
     public Sprite Icon;
     public PropType Type;
     public int Count_Max;
-    private int count_current;
-    [SerializeField]
+    public int count_current;
     public int Count_Current
     {
         get {

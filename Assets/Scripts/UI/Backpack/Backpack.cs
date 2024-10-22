@@ -19,6 +19,7 @@ public class Backpack : TIntance<Backpack>
 
     void LoadAllPropData()
     {
+        AllProp.Clear();
         var Props= Resources.LoadAll(PropDataPath,typeof(Prop));
         foreach (var prop in Props) {
             AllProp.Add(prop as Prop);

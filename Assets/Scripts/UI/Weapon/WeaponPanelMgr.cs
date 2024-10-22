@@ -133,7 +133,6 @@ public class WeaponPanelMgr : TIntance<WeaponPanelMgr>
         for (int i= EquippiedBulletContainer.transform.childCount-1; i >= 0 ;i-- )
         {
             Child = EquippiedBulletContainer.transform.GetChild(i).gameObject;
-            Debug.Log(Child.name);
             Destroy(Child);
         }
 
@@ -182,10 +181,6 @@ public class WeaponPanelMgr : TIntance<WeaponPanelMgr>
     public bool PointerInRect(Rect UIRect ,Vector2 PointerPos)
     {
         Vector2 RelativePos = PointerPos - UIRect.Origin;
-        Debug.Log("Origin:" + UIRect.Origin);
-        Debug.Log("RelativePos" + RelativePos);
-        Debug.Log("X:" + (RelativePos.x <= UIRect.Width && RelativePos.x >= 0));
-        Debug.Log("Y:" + (RelativePos.y <= UIRect.Height && RelativePos.y >= 0));
         return ((RelativePos.x <= UIRect.Width && RelativePos.x >= 0) && (RelativePos.y <= UIRect.Height && RelativePos.y >= 0));
     }
 }
