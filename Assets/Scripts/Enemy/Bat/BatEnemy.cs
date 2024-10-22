@@ -19,6 +19,7 @@ public class BatEnemy : Enemy
     public float stopDuration = 2f; // 停留时间
     public float stopTimer; // 停留计时器
     public float damage;
+    public float force = 2f;
 
     public bool movingToA = true; // 当前是否朝A点移动
     public bool isStopping = false; // 是否正在停留
@@ -136,6 +137,11 @@ public class BatEnemy : Enemy
             if (Health != null)
             {
                 Health.ReciveDamage(damage);
+                Health.BeKnockBack(transform.position-Health.transform.position,force);
+            }
+            else
+            {
+                Debug.Log("NULL");
             }
         }
     }

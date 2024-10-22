@@ -7,6 +7,7 @@ public class BulletEasyEnemy : MonoBehaviour
     private float timer = 0f;
     public float destroyTime = 5f;
     public float damage;
+    public float force=2f;
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +33,7 @@ public class BulletEasyEnemy : MonoBehaviour
             if (player != null)
             {
                 player.ReciveDamage(damage);
+                player.BeKnockBack(transform.position - player.transform.position, force);
             }
 
             Destroy(gameObject);

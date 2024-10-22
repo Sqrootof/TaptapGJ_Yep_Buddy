@@ -25,6 +25,7 @@ public class BirdEnemy : Enemy
     public float bulletSpeed;
     public float timer = 0f;
     public float damage;
+    public float force = 2f;
 
     public bool showGizmos = false; // 允许在Inspector中控制是否显示Gizmos
     // 设置巡逻范围的大小
@@ -271,6 +272,7 @@ public class BirdEnemy : Enemy
             if (Health != null)
             {
                 Health.ReciveDamage(damage);
+                Health.BeKnockBack(transform.position - Health.transform.position, force);
             }
         }
     }

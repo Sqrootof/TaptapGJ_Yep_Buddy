@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,IDamageable, IKnockBackable
 {
     public float maxHealth;
     public float currentHealth;
@@ -117,5 +117,27 @@ public class Enemy : MonoBehaviour
     public void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 接受伤害
+    /// </summary>
+    /// <param name="Damage">伤害白值</param>
+    public void ReciveDamage(float Damage)
+    {
+        currentHealth -= Damage;
+    }
+
+    /// <summary>
+    /// 受到击退
+    /// </summary>
+    /// <param name="Position">造成击退的人的位置</param>
+    /// <param name="Force">击退力</param>
+    public void BeKnockBack(Vector3 Position, float Force)
+    {
+        Vector3 KonckBackVec = transform.position - Position;
+        KonckBackVec.z = 0;
+        KonckBackVec.Normalize();
+        rb.AddForce(KonckBackVec * Force, ForceMode.Impulse);
     }
 }
