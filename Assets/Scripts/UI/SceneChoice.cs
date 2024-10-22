@@ -11,12 +11,14 @@ public class SceneChoice : MonoBehaviour
     // 立即跳转到指定场景
     public void SceneAlt()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 
     // 延时跳转到指定场景
     public void SceneAltWithDelay()
     {
+        Time.timeScale = 1;
         StartCoroutine(DelayedSceneChange(ifDelayTime));
     }
 

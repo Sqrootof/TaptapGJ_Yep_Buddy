@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHightLight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonHighLight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     /*用于按钮动画*/
     
@@ -29,7 +29,9 @@ public class ButtonHightLight : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void ClickAnim()
     {
         animator.SetTrigger("Pressed");
-        if (!silenceIt){}
-            //Sounds_Effect.SoundsClick();
+        if (!silenceIt)
+        {
+            SoundsManager.PanelClip();
+        }
     }
 }
