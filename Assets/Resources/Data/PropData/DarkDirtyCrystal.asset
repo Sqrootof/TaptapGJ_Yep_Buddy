@@ -17,3 +17,4 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Type: 0
   Count_Max: 1
+  count_current: 1
