@@ -33,7 +33,7 @@ public class BulletEasyEnemy : MonoBehaviour
             if (player != null)
             {
                 player.ReciveDamage(damage);
-                player.BeKnockBack(transform.position - player.transform.position, force);
+                player.BeKnockBack(transform.position, force);
             }
 
             Destroy(gameObject);

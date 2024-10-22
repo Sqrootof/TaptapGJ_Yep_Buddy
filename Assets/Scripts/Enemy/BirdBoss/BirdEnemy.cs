@@ -272,7 +272,7 @@ public class BirdEnemy : Enemy
             if (Health != null)
             {
                 Health.ReciveDamage(damage);
-                Health.BeKnockBack(transform.position - Health.transform.position, force);
+                Health.BeKnockBack(transform.position, force);
             }
         }
     }

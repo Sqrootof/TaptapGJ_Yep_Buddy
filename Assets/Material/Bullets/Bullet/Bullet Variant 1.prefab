@@ -9722,4 +9722,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyTime: 10
   damage: 5
-  force: 3
+  force: 10
