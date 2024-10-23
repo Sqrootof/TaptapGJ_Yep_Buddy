@@ -9,12 +9,7 @@ public class PanelChoice : MonoBehaviour
     public GameObject[] ui;
     public GameObject[] buttons;
 
-    public static int Num;
-
-    private void Start()
-    {
-        Num = 0;
-    }
+    public static int Num = 0;
 
     private void OnEnable()
     {

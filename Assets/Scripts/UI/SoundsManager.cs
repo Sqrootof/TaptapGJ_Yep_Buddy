@@ -17,6 +17,9 @@ public class SoundsManager : MonoBehaviour
 
     public static void PanelClip()
     {
-        effect.PlayOneShot(panel);
+        if (panel)
+        {
+            effect.PlayOneShot(panel);
+        }
     }
 }

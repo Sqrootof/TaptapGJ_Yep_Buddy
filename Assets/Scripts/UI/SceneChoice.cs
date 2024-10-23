@@ -7,11 +7,13 @@ public class SceneChoice : MonoBehaviour
 {
     public string sceneName; // 要跳转的场景名称
     public float ifDelayTime;
+    public GameObject effect;
 
     // 立即跳转到指定场景
     public void SceneAlt()
     {
         Time.timeScale = 1;
+        Instantiate(effect, transform.position, transform.rotation);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -19,6 +21,7 @@ public class SceneChoice : MonoBehaviour
     public void SceneAltWithDelay()
     {
         Time.timeScale = 1;
+        Instantiate(effect, transform.position, transform.rotation);
         StartCoroutine(DelayedSceneChange(ifDelayTime));
     }
 
