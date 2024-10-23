@@ -117,8 +117,16 @@ public class HiddenEnemy : Enemy
         // 将方向归一化
         direction.Normalize();
         // 计算目标位置，敌人的当前位置 + 方向 * 2
-        targetPosition = enemy.transform.position + new Vector3(direction.x * 2, 0, 0);
-        hitCollider.transform.position = enemy.transform.position + new Vector3(direction.x * 1, 0, 0);
+        if (direction.x>0)
+        {
+            targetPosition = enemy.transform.position + new Vector3(2, 0, 0);
+            hitCollider.transform.position = enemy.transform.position + new Vector3(1, 0, 0);
+        }
+        else
+        {
+            targetPosition = enemy.transform.position + new Vector3(-2, 0, 0);
+            hitCollider.transform.position = enemy.transform.position + new Vector3(-1, 0, 0);
+        }
         hitCollider.SetActive(true);
     }
 

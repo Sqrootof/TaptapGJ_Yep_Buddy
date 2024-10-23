@@ -83,6 +83,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1013539742662047820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2943752234408019584}
+  - component: {fileID: 8518401135179692257}
+  m_Layer: 8
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2943752234408019584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013539742662047820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6896407454884268086}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8518401135179692257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013539742662047820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1c98967b688844bb1ec54d14ac585e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1944430609938146646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,13 +5302,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7597514719431229691}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.19, y: 13.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7341844154569822227}
   - {fileID: 192155960053045673}
+  - {fileID: 2943752234408019584}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &655401668209551960
@@ -5345,7 +5390,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1600
   enemy: {fileID: 0}
-  target: {fileID: 0}
+  target: {fileID: 1013539742662047820}
   targetPoint: {x: 0, y: 0, z: 0}
   InitialPosition: {x: 4.19, y: 13.57, z: 0}
   targetPosition: {x: 0, y: 0, z: 0}
@@ -5354,6 +5399,7 @@ MonoBehaviour:
   stopDuration: 2
   stopTimer: 0
   damage: 0
+  force: 0
   movingToA: 1
   isStopping: 0
   bullet: 0
