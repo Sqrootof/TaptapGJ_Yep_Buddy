@@ -8,6 +8,12 @@ public class AnchorPointButton : MonoBehaviour
     public GameObject MapUI;
     public GameObject Black;
 
+    private PanelManager panelManager;
+    private void Start()
+    {
+        panelManager = GetComponent<PanelManager>();
+    }
+
     public void Unlocked()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -19,7 +25,6 @@ public class AnchorPointButton : MonoBehaviour
         }
         else
         {
-
             Debug.Log("NULL");
         }
     }
@@ -43,23 +48,23 @@ public class AnchorPointButton : MonoBehaviour
             blackScreen.fadeInOut = true;
             Time.timeScale = 1; // 恢复时间
             //CloseMapUI延迟1s执行
-            StartCoroutine(CloseMapUICoroutine(0.5f));
+            StartCoroutine(CloseMapUICoroutine(0.32f));
         }
         else
         {
             Debug.Log("NULL");
         }
-
     }
 
     private IEnumerator CloseMapUICoroutine(float delay)
     {
         yield return new WaitForSeconds(delay); // 等待指定的延迟时间
-        CloseMapUI(); // 关闭地图 UI
+        panelManager.SettingOpen();
+        //CloseMapUI(); // 关闭地图 UI
     }
 
-    public void CloseMapUI()
+    /*public void CloseMapUI()
     {
         MapUI.SetActive(false);
-    }
+    }*/
 }

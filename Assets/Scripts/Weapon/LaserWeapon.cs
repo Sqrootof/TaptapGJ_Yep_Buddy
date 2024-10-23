@@ -12,6 +12,7 @@ public class LaserWeapon : MonoBehaviour
     public int maxReflections; //最大反射次数
     public GameObject laserStartParticlePrefab; // 粒子系统预制体
     float distanceFromCamera;
+    public bool clickButton;
     private void Start()
     {
         // 确保 LineRenderer 组件已添加
@@ -26,7 +27,7 @@ public class LaserWeapon : MonoBehaviour
     private void Update()
     {
         // 检测鼠标左键是否按下
-        if (Input.GetMouseButton(0)) // 0 表示鼠标左键
+        if (Input.GetMouseButton(0) && clickButton) // 0 表示鼠标左键
         {
             // 获取鼠标位置并更新激光
             Vector3 mouseWorldPosition = GetMousePosition();
@@ -48,6 +49,16 @@ public class LaserWeapon : MonoBehaviour
         mouseScreenPosition.z = distanceFromCamera;
         Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(mouseScreenPosition);
         return mouseWorldPosition;
+    }
+
+    public void setButtonTrue()
+    {
+        clickButton = true;
+    }
+
+    public void setButtonFalse()
+    {
+        clickButton = false;
     }
 
     //激光穿透敌人版本

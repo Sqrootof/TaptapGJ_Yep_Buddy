@@ -22,10 +22,10 @@ public class ButtonHighLight : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         animator.SetBool("Highlighted",false);
     }
-    private void OnDisable()
-    {
-        animator.SetBool("Highlighted",false);
-    }
+    // private void OnDisable()
+    // {
+    //     animator.SetBool("Highlighted",false);
+    // }
     public void ClickAnim()
     {
         animator.SetTrigger("Pressed");
