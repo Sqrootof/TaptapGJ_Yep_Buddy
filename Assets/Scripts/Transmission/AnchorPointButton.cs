@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnchorPointButton : MonoBehaviour
 {
@@ -9,9 +11,28 @@ public class AnchorPointButton : MonoBehaviour
     public GameObject Black;
 
     private PanelManager panelManager;
+
+    public static string Where = "未选择";
+    public Text text;
+    
     private void Start()
     {
         panelManager = GetComponent<PanelManager>();
+    }
+
+    private void Update()
+    {
+        if (text.text != Where)
+        {
+            if (Whole.anchorPoints.Find(a => a.AnchorPointName == Where).isUnlocked)
+            {
+                text.text = "前往：" + Where;
+            }
+            else
+            {
+                text.text = "暂未解锁";
+            }
+        }
     }
 
     public void Unlocked()
@@ -23,10 +44,6 @@ public class AnchorPointButton : MonoBehaviour
         {
             anchorPoint.isUnlocked = true;
         }
-        else
-        {
-            Debug.Log("NULL");
-        }
     }
 
     public void OpenMapUI()
@@ -36,11 +53,11 @@ public class AnchorPointButton : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void ToAnchorPoint(string name)
+    public void ToAnchorPoint()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        AnchorPoint anchorPoint=Whole.anchorPoints.Find(a => a.AnchorPointName == name);
-        if (anchorPoint != null)
+        AnchorPoint anchorPoint=Whole.anchorPoints.Find(a => a.AnchorPointName == Where);
+        if (anchorPoint != null && anchorPoint.isUnlocked)
         {
             player.transform.position=anchorPoint.anchorObject.transform.position;
             BlackScreen blackScreen = Black.GetComponent<BlackScreen>();
@@ -49,10 +66,6 @@ public class AnchorPointButton : MonoBehaviour
             Time.timeScale = 1; // 恢复时间
             //CloseMapUI延迟1s执行
             StartCoroutine(CloseMapUICoroutine(0.32f));
-        }
-        else
-        {
-            Debug.Log("NULL");
         }
     }
 

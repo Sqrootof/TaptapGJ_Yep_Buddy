@@ -21,14 +21,58 @@ public class PanelManager : MonoBehaviour
         //键盘监听Esc是简单开关
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PanelChoice.Num = 0; panelChoice.AltButton(PanelChoice.Num); panelChoice.AltUI(PanelChoice.Num);
-            SettingOpen();
+            PanelChoice.Num = 0;
+            KeyCodeOpen();
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            PanelChoice.Num = 7; panelChoice.AltButton(PanelChoice.Num); panelChoice.AltUI(PanelChoice.Num);
-            SettingOpen();
+            PanelChoice.Num = 7;
+            KeyCode1();
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            PanelChoice.Num = 2;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            PanelChoice.Num = 3;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PanelChoice.Num = 4;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            PanelChoice.Num = 5;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PanelChoice.Num = 6;
+            KeyCode1();
+        }
+    }
+
+    private void KeyCodeOpen()
+    {
+        panelChoice.AltButton(PanelChoice.Num);
+        panelChoice.AltUI(PanelChoice.Num);
+        SettingOpen();
+    }
+    private void KeyCodeAlt()
+    {
+        panelChoice.AltButton(PanelChoice.Num);
+        panelChoice.AltUI(PanelChoice.Num);
+    }
+    private void KeyCode1()
+    {
+        if (isOpen)
+            KeyCodeAlt();
+        else
+            KeyCodeOpen();
     }
 
     public void SettingOpen()
