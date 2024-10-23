@@ -29,6 +29,11 @@ public class PanelManager : MonoBehaviour
             PanelChoice.Num = 7;
             KeyCode1();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            PanelChoice.Num = 1;
+            KeyCode1();
+        }
         if (Input.GetKeyDown(KeyCode.J))
         {
             PanelChoice.Num = 2;
