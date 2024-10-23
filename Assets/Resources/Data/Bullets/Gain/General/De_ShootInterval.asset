@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a2515a2e0de624192bbbbe8c8b7ead, type: 3}
-  m_Name: NewExtend
+  m_Script: {fileID: 11500000, guid: 927c68a10e5c23e41a9e524e448c00dc, type: 3}
+  m_Name: De_ShootInterval
   m_EditorClassIdentifier: 
   BulletName: 
   Icon: {fileID: 0}
-  BulletType: 1
-  CoolDown: 0
-  StepExtension: 3
+  BulletType: 2
+  ShootInterval: -0.23
+  GainType: 0
+  Gain_InitVelocity: 1
+  Gain_OffsetAngle: 0
+  Gain_Damage: 1
+  Gain_LifeTime: 1

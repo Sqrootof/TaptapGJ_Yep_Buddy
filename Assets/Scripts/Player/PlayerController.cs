@@ -146,19 +146,20 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         if (Input.GetKey(KeyCode.D))
         {
             FaceDir = 1;
+            Animator.SetBool("Walking", true);
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
                 Quaternion.Euler(-5, -45, 0),
                 rotationSpeed * Time.deltaTime);
             if (!InTheAir){
                 WalkParticle.Play();
-                Animator.SetBool("Walking",true);
             }
             else WalkParticle.Stop();
         }
         else if (Input.GetKey(KeyCode.A))
         {
             FaceDir = -1;
+            Animator.SetBool("Walking", true);
             PlayerBody.transform.rotation = Quaternion.RotateTowards(
                 PlayerBody.transform.rotation,
                 Quaternion.Euler(5, 45, 0),
@@ -166,7 +167,6 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
             if (!InTheAir){
                 WalkParticle.Play();
                 WalkParticle.transform.rotation = Quaternion.Euler(0, 0, 180);
-                Animator.SetBool("Walking",true);
             }
             else WalkParticle.Stop();
         }

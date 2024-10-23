@@ -10,7 +10,7 @@ public class ShootController : TIntance<ShootController>
     #region"射击相关"
     [SerializeField]List<Projectile> CurrentProjectileBlock = new();//下一个要射击的子弹块
     [SerializeField]List<Gain> CurrentGainsBlock = new();//下一个要搭载的增益块
-    float Cooldown = 0;//射击冷却时间
+    float ShootInterval = 0;//射击冷却时间
     [SerializeField]float LastShootTime = -1;
     [SerializeField]public int BlockHeadIndex = 0;//下一个子弹块的头部索引
     public Camera Camera;
@@ -26,7 +26,7 @@ public class ShootController : TIntance<ShootController>
     void Update()
     {
         if (Input.GetMouseButton(0)) {
-            if (Time.time - LastShootTime >= Cooldown) {
+            if (Time.time - LastShootTime >= ShootInterval) {
                 Shoot();
                 LastShootTime = Time.time;
             } 
@@ -36,20 +36,23 @@ public class ShootController : TIntance<ShootController>
     public void Shoot()
     { 
         GetNextBulletBlock();
-        Cooldown = 0;
+        ShootInterval = 0;
+        int index = 0;
         foreach (var Projectile in CurrentProjectileBlock)
         {
             Projectile newData = Projectile.DeepCopy() as Projectile;
-            Cooldown += newData.CoolDown;
+            ShootInterval += newData.ShootInterval;
             foreach (var gain in CurrentGainsBlock)
             {
                 gain.DeployGain(newData);
             }
             GameObject newbullet = Instantiate(Projectile.Prefab);
             ProjectileHandler Handler = newbullet.GetComponent<ProjectileHandler>();
+            newData.ExternalFunction?.LoadExternalFuncDepend(CurrentProjectileBlock, index);
             newData.ProjectileHandler = Handler;
             Handler.SetProjectileData(newData);
             Handler.BeShoot(transform.position, GetMousePosition());
+            index++;
         }
     }
 
@@ -67,7 +70,7 @@ public class ShootController : TIntance<ShootController>
     /// 获取下一个子弹块
     /// </summary>
     /// <returns></returns>
-    void  GetNextBulletBlock()
+    void GetNextBulletBlock()
     {
         int Index = BlockHeadIndex++;
         if(BlockHeadIndex == WeaponBackpack.Instance.GetEquippedBullets().Count) 
@@ -87,7 +90,7 @@ public class ShootController : TIntance<ShootController>
             if (totalStep >= WeaponBackpack.Instance.GetEquippedBullets().Count)
                 return;
 
-            Cooldown += CurrentBullet.CoolDown;
+            ShootInterval += CurrentBullet.ShootInterval;
             totalStep++;
             switch (CurrentBullet.BulletType)
             {
@@ -110,6 +113,6 @@ public class ShootController : TIntance<ShootController>
             }
         }
 
-        if (Cooldown <= 0) Cooldown = Time.fixedDeltaTime; 
+        if (ShootInterval <= 0) ShootInterval = Time.fixedDeltaTime; 
     }
 }

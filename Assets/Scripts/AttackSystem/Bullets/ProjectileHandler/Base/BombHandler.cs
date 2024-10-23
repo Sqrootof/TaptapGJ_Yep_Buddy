@@ -35,8 +35,7 @@ public class BombHandler : ProjectileHandler
     public override void BeShoot(Vector3 StartPos, Vector3 MousePos)
     {
         base.BeShoot(StartPos, MousePos);
-        if ((ProjectileData as Bomb).useGravity)
-        {
+        if ((ProjectileData as Bomb).useGravity){
             Rigidbody.useGravity = true;
         }
         StartPos.z = 0;
@@ -67,8 +66,7 @@ public class BombHandler : ProjectileHandler
             
             var en = Physics.OverlapSphere(transform.position,(ProjectileData as Bomb).BombRadius,LayerMask.GetMask("Enemy"));
             List<GameObject> col = new List<GameObject>();
-            foreach (var co in en)
-            {
+            foreach (var co in en){
                 if (!col.Contains(co.gameObject)) {
                     col.Add(co.gameObject);
                     Enemy ene = co.GetComponent<Enemy>();
@@ -82,15 +80,12 @@ public class BombHandler : ProjectileHandler
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Obstacles") || other.gameObject.CompareTag("Shield") && !Exploded)
-        {
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Obstacles") || other.gameObject.CompareTag("Shield") && !Exploded){
 
             var en = Physics.OverlapSphere(transform.position, (ProjectileData as Bomb).BombRadius, LayerMask.GetMask("Enemy"));
             List<GameObject> col = new List<GameObject>();
-            foreach (var co in en)
-            {
-                if (!col.Contains(co.gameObject))
-                {
+            foreach (var co in en){
+                if (!col.Contains(co.gameObject)){
                     col.Add(co.gameObject);
                     Enemy ene = co.GetComponent<Enemy>();
                     if (ene) ene.currentHealth -= 1;
