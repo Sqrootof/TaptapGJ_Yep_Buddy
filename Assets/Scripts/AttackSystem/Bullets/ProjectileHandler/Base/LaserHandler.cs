@@ -82,7 +82,7 @@ public class LaserHandler : ProjectileHandler
                     // 没有击中敌人，反射
                     Instantiate(ExplosionPrefab, hit.point, Quaternion.identity);
                     currentDir = Vector3.Reflect(currentDir.normalized, hit.normal); // 计算反射方向
-                    currentDir = hit.point; // 更新反射起点
+                    currentPos = hit.point; // 更新反射起点
                     reflection++; // 增加反射次数
                 }
             }

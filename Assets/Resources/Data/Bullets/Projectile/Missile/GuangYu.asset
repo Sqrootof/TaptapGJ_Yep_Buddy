@@ -15,7 +15,7 @@ MonoBehaviour:
   BulletName: "\u5149\u7FBD"
   Icon: {fileID: 0}
   BulletType: 0
-  CoolDown: 0.1
+  ShootInterval: 0.21
   ProjectileType: 0
   InitialVelocity: 15
   OffsetAngle: 2.5
@@ -23,6 +23,6 @@ MonoBehaviour:
   LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 9163245249547095048, guid: 31bac093089466e4bb894e9cef7ada07, type: 3}
-  ExternalFunction: {fileID: 11400000, guid: 57ed598b19cafa44fb0dd59f094f2093, type: 2}
+  ExternalFunction: {fileID: 0}
   ProjectileHandler: {fileID: 0}
   Tail: {fileID: 0}

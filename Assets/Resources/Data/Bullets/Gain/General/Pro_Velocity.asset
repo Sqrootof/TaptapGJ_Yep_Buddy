@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 927c68a10e5c23e41a9e524e448c00dc, type: 3}
-  m_Name: NewGain_General
+  m_Name: Pro_Velocity
   m_EditorClassIdentifier: 
   BulletName: 
   Icon: {fileID: 0}
   BulletType: 2
+  ShootInterval: 0
   GainType: 0
-  Gain_InitVelocity: 1
+  Gain_InitVelocity: 1.4
   Gain_OffsetAngle: 0
   Gain_Damage: 1
   Gain_LifeTime: 1

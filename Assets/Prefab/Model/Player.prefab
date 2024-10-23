@@ -5902,7 +5902,7 @@ MonoBehaviour:
   BasicKnockbackResistance: 0
   currentHealth: 0
   PlayerBody: {fileID: 1007750251990868763}
-  Head: {fileID: 0}
+  Head: {fileID: 5457237015240246129}
 --- !u!95 &1624664738650647266
 Animator:
   serializedVersion: 5
@@ -7159,6 +7159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.arc.value
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545730075028336663, guid: eafb5fe28c005164a92ca42f3f7532a7,
+        type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4545730075028336663, guid: eafb5fe28c005164a92ca42f3f7532a7,
         type: 3}

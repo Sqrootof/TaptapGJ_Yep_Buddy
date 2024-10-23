@@ -15,7 +15,7 @@ MonoBehaviour:
   BulletName: "\u6084\u6084\u8BDD"
   Icon: {fileID: 0}
   BulletType: 0
-  CoolDown: 0.03
+  ShootInterval: 0.5
   ProjectileType: 2
   InitialVelocity: 8
   OffsetAngle: 5
