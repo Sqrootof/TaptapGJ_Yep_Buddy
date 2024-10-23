@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground")) {
+        if (collision.gameObject.CompareTag("Ground") && collision.transform.position .y < transform.position.y) {
             InTheAir = false;
             RemainingJumpTime = 2;
         }
