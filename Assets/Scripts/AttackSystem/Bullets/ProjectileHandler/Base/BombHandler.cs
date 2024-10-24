@@ -70,10 +70,11 @@ public class BombHandler : ProjectileHandler
                 if (!col.Contains(co.gameObject)) {
                     col.Add(co.gameObject);
                     Enemy ene = co.GetComponent<Enemy>();
-                    if (ene) ene.currentHealth -= 1;
+                    if (ene) ene.currentHealth -= ProjectileData.Damage;
                 } 
             }
             Exploded = true;
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit);
             DestroyProjectile();
         }
     }
@@ -88,10 +89,11 @@ public class BombHandler : ProjectileHandler
                 if (!col.Contains(co.gameObject)){
                     col.Add(co.gameObject);
                     Enemy ene = co.GetComponent<Enemy>();
-                    if (ene) ene.currentHealth -= 1;
+                    if (ene) ene.currentHealth -= ProjectileData.Damage;
                 }
             }
             Exploded = true;
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit);
             DestroyProjectile();
         }
     }
