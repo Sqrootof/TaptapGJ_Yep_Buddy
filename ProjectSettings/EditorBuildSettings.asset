@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldUI.unity
     guid: 8b6aece79e8e6314eb3c7fcfa88a642b
+  - enabled: 1
+    path: Assets/Scenes/Achievement.unity
+    guid: f13233e00a2b48446a851daf8a9723c0
+  - enabled: 1
+    path: Assets/Scenes/AchievementShow.unity
+    guid: 1d10c26107d641e47b16ffd11dedd139
   m_configObjects: {}

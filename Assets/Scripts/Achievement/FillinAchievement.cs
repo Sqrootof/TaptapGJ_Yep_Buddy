@@ -9,8 +9,8 @@ public class FillinAchievement : MonoBehaviour
     void Start()
     {
         //读取和保存成就
-        //Whole.firstLogin = PlayerPrefs.GetInt("firstLogin");
-        Whole.firstLogin = 0;
+        Whole.firstLogin = PlayerPrefs.GetInt("firstLogin");
+        //Whole.firstLogin = 0;
         if (Whole.firstLogin == 0)
         {
             FillAchievement();
