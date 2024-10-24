@@ -99,9 +99,6 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         Move();
         Jump();
         Dash();
-        if (Input.GetKeyDown(KeyCode.J)) {
-            BeKnockBack(Vector3.zero,12);
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -132,6 +129,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (RemainingJumpTime > 0) {
                 RemainingJumpTime--;
+                //¸ÄËÙ¶È
                 Rigidbody.AddForce(Vector3.up * JumpSpeed,ForceMode.Impulse);
             }
         }

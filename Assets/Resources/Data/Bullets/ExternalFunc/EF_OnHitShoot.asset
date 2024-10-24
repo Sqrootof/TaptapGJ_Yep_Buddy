@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0f2f020f78a92429f41c7d331d44c0, type: 3}
+  m_Name: EF_OnHitShoot
+  m_EditorClassIdentifier: 
+  AttachTo: {fileID: 0}
+  CurrentBulletBlock: []
+  CurrentIndex: 0
+  hasLooped: 0
+  ProjectileToShootWhenHit: {fileID: 0}
+  HitLayer:
+    serializedVersion: 2
+    m_Bits: 1856

@@ -71,7 +71,6 @@ public class ProjectileHandler : MonoBehaviour
 
         StartCoroutine(IEDestroy());
     }
-
     IEnumerator IEDestroy()
     {
         while (DestroyCoroutine!=null || HitCoroutine!=null){
