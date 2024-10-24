@@ -15,6 +15,7 @@ public class Gain : Bullet
         get => BulletType.Gain;
     }
     public GainType GainType;
+    public string Description;
 
     public virtual void DeployGain(Projectile Projectile) { }
 }

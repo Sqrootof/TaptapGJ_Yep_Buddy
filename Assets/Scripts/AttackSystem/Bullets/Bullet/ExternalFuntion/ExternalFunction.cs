@@ -6,6 +6,7 @@ public class ExternalFunction : ScriptableObject
 {
     public ProjectileHandler AttachTo;//¶¯Ì¬°ó¶¨µÄProjectileHandler
     public List<Bullet> CurrentBulletBlock;
+    public string Description;
     [HideInInspector] public int CurrentIndex;
     [HideInInspector] public bool hasLooped = false; 
     public virtual void OnAwake() { }

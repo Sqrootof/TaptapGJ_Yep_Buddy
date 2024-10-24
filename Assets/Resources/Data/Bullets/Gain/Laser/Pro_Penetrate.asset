@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a634d4d1d226d5347964bdb62e3e0e5d, type: 3}
   m_Name: Pro_Penetrate
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u4E8C\u7EF4\u68F1\u955C"
   Icon: {fileID: 0}
   BulletType: 2
   ShootInterval: 0
   GainType: 1
+  Description: "\u589E\u52A0\u4E24\u6B21\u6FC0\u5149\u53CD\u5C04\u6B21\u6570"
   Gain_LaserLength: 1
   Gain_LaserWidth: 1
   Gain_ReflectionTime: 2

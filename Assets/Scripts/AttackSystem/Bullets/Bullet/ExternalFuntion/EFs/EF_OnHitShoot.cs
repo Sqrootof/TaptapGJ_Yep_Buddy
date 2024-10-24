@@ -52,7 +52,6 @@ public class EF_OnHitShoot : ExternalFunction
             Vector3 RotateAngle = AttachTo.transform.rotation.eulerAngles;
             Quaternion rotate = Quaternion.AngleAxis(RotateAngle.z,Vector3.forward);
             CurrentDir = rotate * CurrentDir;
-            Debug.Log(CurrentDir);
             Physics.Raycast(AttachTo.transform.position, CurrentDir, out RaycastHit hit, 1, HitLayer);
             Vector3 NewVelocity = Vector3.Reflect(CurrentDir, hit.normal);
             Handler.BeShoot(AttachTo.transform.position + NewVelocity * 0.4f, AttachTo.transform.position + NewVelocity + NewVelocity);

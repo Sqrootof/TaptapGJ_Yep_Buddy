@@ -1584,43 +1584,132 @@ PrefabInstance:
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.size
-      value: 4
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0,
+      objectReference: {fileID: 11400000, guid: 7add89c40cb08e64aa884a1d8d149aab,
         type: 2}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 8be48e47f810a434b92d61ace7797193,
+      objectReference: {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc,
         type: 2}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
+      objectReference: {fileID: 11400000, guid: 46b5ebbb8c9e1ea458b3e61f05d17f4f,
         type: 2}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
+      objectReference: {fileID: 11400000, guid: 7384d48fe259831499d50fc009140bbb,
         type: 2}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+      objectReference: {fileID: 11400000, guid: 9a31cffd6381b4b4299dfcf7a361a7bd,
         type: 2}
     - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: EquippedBullets.Array.data[5]
       value: 
+      objectReference: {fileID: 11400000, guid: 8be48e47f810a434b92d61ace7797193,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[7]
+      value: 
       objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7add89c40cb08e64aa884a1d8d149aab,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 46b5ebbb8c9e1ea458b3e61f05d17f4f,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7384d48fe259831499d50fc009140bbb,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a31cffd6381b4b4299dfcf7a361a7bd,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8be48e47f810a434b92d61ace7797193,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
         type: 2}
     - target: {fileID: 6530315335514285724, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
