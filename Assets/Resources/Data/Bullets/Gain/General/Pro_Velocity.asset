@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927c68a10e5c23e41a9e524e448c00dc, type: 3}
   m_Name: Pro_Velocity
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u65E0\u5149\u63A8\u8FDB\u5668"
   Icon: {fileID: 0}
   BulletType: 2
   ShootInterval: 0
   GainType: 0
+  Description: "\u589E\u52A0\u5B50\u5F39\u521D\u59CB\u901F\u5EA6"
   Gain_InitVelocity: 1.4
   Gain_OffsetAngle: 0
   Gain_Damage: 1

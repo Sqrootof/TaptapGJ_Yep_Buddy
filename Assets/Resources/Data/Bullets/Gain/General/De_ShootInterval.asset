@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927c68a10e5c23e41a9e524e448c00dc, type: 3}
   m_Name: De_ShootInterval
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u51B7\u5374\u56DE\u8F6C"
   Icon: {fileID: 0}
   BulletType: 2
   ShootInterval: -0.23
   GainType: 0
+  Description: "\u964D\u4F4E0.23\u79D2\u5C04\u51FB\u95F4\u9694"
   Gain_InitVelocity: 1
   Gain_OffsetAngle: 0
   Gain_Damage: 1

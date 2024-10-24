@@ -155,7 +155,6 @@ public class WeaponPanelMgr : TIntance<WeaponPanelMgr>
         for (int i = BulletBackpack.transform.childCount - 1; i >= 0; i--)
         {
             Child = BulletBackpack.transform.GetChild(i).gameObject;
-            Debug.Log(Child.name);
             Destroy(Child);
         }
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttachTo: {fileID: 0}
   CurrentBulletBlock: []
+  Description: "\u5F53\u51FB\u4E2D\u65F6\u65BD\u653E\u4E0B\u4E00\u5B50\u5F39"
   CurrentIndex: 0
   hasLooped: 0
   ProjectileToShootWhenHit: {fileID: 0}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a2515a2e0de624192bbbbe8c8b7ead, type: 3}
   m_Name: ExtendDouble
   m_EditorClassIdentifier: 
-  BulletName: 
+  BulletName: "\u4E8C\u91CD\u65BD\u653E"
   Icon: {fileID: 0}
   BulletType: 1
-  CoolDown: 0
+  ShootInterval: 0
   StepExtension: 3

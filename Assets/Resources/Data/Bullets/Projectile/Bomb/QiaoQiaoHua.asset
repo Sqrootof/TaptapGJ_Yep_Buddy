@@ -23,7 +23,7 @@ MonoBehaviour:
   LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
-  ExternalFunction: {fileID: 0}
+  ExternalFunction: {fileID: 11400000, guid: 64f86b8c5fdb08d4897a570b992508d4, type: 2}
   ProjectileHandler: {fileID: 0}
   useGravity: 0
   BombRadius: 2
