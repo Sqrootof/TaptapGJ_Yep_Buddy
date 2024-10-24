@@ -6,12 +6,13 @@ public class AddTaskTest : MonoBehaviour
     private TaskManager taskManager;
     public void add()
     {
+        taskManager = new TaskManager();
         taskManager.AddTask(task);
+        Debug.Log("1");
     }
     void Start()
     {
-        taskManager = new TaskManager();
-        add();
+
     }
 
     void Update()

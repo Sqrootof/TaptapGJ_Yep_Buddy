@@ -28,7 +28,7 @@ public class AnchorManager : MonoBehaviour
         foreach (var anchor in anchorPoints)
         {
             float distance = Vector3.Distance(transform.position, anchor.anchorObject.transform.position);
-            if (distance < 3f) // 设定接触距离
+            if (distance < 2f) // 设定接触距离
             {
                 flag = true;
                 currentAnchor = anchor.anchorObject;

@@ -24,17 +24,12 @@ public class PanelManager : MonoBehaviour
             PanelChoice.Num = 0;
             KeyCodeOpen();
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PanelChoice.Num = 7;
-            KeyCode1();
-        }
         if (Input.GetKeyDown(KeyCode.M))
         {
             PanelChoice.Num = 1;
             KeyCode1();
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        /*if (Input.GetKeyDown(KeyCode.J))
         {
             PanelChoice.Num = 2;
             KeyCode1();
@@ -57,6 +52,21 @@ public class PanelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             PanelChoice.Num = 6;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            PanelChoice.Num = 7;
+            KeyCode1();
+        }*/
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PanelChoice.Num = 3;
+            KeyCode1();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PanelChoice.Num = 2;
             KeyCode1();
         }
     }

@@ -75,7 +75,7 @@ public class TaskManager : ITaskManager
     public void OnTaskComplete(Task completedTask)
     {
         Debug.Log("任务完成获得奖励");
-        Whole.questList.Remove(completedTask);
+        //Whole.questList.Remove(completedTask);
         if (Whole.theQuest == completedTask)
         {
             Whole.theQuest = null;

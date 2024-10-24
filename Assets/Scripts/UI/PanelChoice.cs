@@ -37,7 +37,8 @@ public class PanelChoice : MonoBehaviour
         {
             foreach (var t in images)
             {
-                t.color = Color.white;
+                if (t)
+                    t.color = Color.white;
             }
             images[a].color = Color.yellow;
         }
@@ -49,7 +50,8 @@ public class PanelChoice : MonoBehaviour
         {
             foreach (var t in ui)
             {
-                t.SetActive(false);
+                if (t)
+                    t.SetActive(false);
             }
             ui[a].SetActive(true);
         }
