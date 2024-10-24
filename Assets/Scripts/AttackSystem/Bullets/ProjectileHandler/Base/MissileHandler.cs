@@ -39,11 +39,11 @@ public class MissileHandler : ProjectileHandler
         if (collision.gameObject.CompareTag("Enemy")) {
             Debug.Log("Hit Enemy");
             collision.gameObject.GetComponent<Enemy>().currentHealth -= ProjectileData.Damage;
-            if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit); 
             DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacles") || collision.gameObject.CompareTag("Shield")) { 
-            if(OnProjectileHit != null) HitCoroutine = StartCoroutine (OnProjectileHit());
+        else if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacles") || collision.gameObject.CompareTag("Shield")) {
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit);
             DestroyProjectile();
         }
     }
@@ -54,12 +54,12 @@ public class MissileHandler : ProjectileHandler
         {
             Debug.Log("Hit Enemy");
             trigger.gameObject.GetComponent<Enemy>().currentHealth -= ProjectileData.Damage;
-            if (OnProjectileHit != null) StartCoroutine(OnProjectileHit());
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit);
             DestroyProjectile();
         }
         else if (trigger.gameObject.CompareTag("Ground") || trigger.gameObject.CompareTag("Obstacles") || trigger.gameObject.CompareTag("Shield"))
         {
-            if (OnProjectileHit != null) HitCoroutine = StartCoroutine(OnProjectileHit());
+            HitCoroutine = InvokeProjectileLifeEvent(OnProjectileHit);
             DestroyProjectile();
         }
     }

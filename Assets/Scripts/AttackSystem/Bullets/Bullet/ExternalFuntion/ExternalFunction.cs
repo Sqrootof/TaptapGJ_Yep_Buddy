@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ExternalFunction : ScriptableObject
 {
-    [HideInInspector]
     public ProjectileHandler AttachTo;//¶¯Ì¬°ó¶¨µÄProjectileHandler
-    public List<Projectile> CurrentBulletBlock;
-    public int CurrentIndex;
+    public List<Bullet> CurrentBulletBlock;
+    [HideInInspector] public int CurrentIndex;
+    [HideInInspector] public bool hasLooped = false; 
     public virtual void OnAwake() { }
 
-    public virtual IEnumerator ExternalFunc() { yield return null; }
+    public virtual IEnumerator ExternalFunc() { yield return new WaitForEndOfFrame(); }
 
     public virtual ExternalFunction DeepCopy() {
         ExternalFunction instance = Instantiate(this);
         return instance;
     }
 
-    public virtual void LoadExternalFuncDepend(List<Projectile> CBB,int CI) {
+    public virtual void LoadExternalFuncDepend(List<Bullet> CBB,int CI,bool whetherLooped) {
         CurrentBulletBlock = CBB;
         CurrentIndex = CI;
     }

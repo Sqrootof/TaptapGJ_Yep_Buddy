@@ -25,7 +25,7 @@ public class ShootController : TIntance<ShootController>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && OnEmpty.ClickButton) {
+        if (Input.GetMouseButton(0) /*&& OnEmpty.ClickButton*/) {
             if (Time.time - LastShootTime >= ShootInterval) {
                 Shoot();
                 LastShootTime = Time.time;
@@ -48,7 +48,8 @@ public class ShootController : TIntance<ShootController>
             }
             GameObject newbullet = Instantiate(Projectile.Prefab);
             ProjectileHandler Handler = newbullet.GetComponent<ProjectileHandler>();
-            newData.ExternalFunction?.LoadExternalFuncDepend(CurrentProjectileBlock, index);
+            if(newData.ExternalFunction) newData.ExternalFunction.AttachTo = Handler;
+            newData.ExternalFunction?.LoadExternalFuncDepend(WeaponBackpack.Instance.GetEquippedBullets(),WeaponBackpack.Instance.GetEquippedBullets().IndexOf(Projectile),false);
             newData.ProjectileHandler = Handler;
             Handler.SetProjectileData(newData);
             Handler.BeShoot(transform.position, GetMousePosition());
