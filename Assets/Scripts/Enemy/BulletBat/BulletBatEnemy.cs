@@ -83,6 +83,7 @@ public class BulletBatEnemy : Enemy
     protected override void Start()
     {
         showGizmos = false;
+        InitialPosition=transform.position;
         enemy = FindObjectOfType<Enemy>();
         base.Start();
     }

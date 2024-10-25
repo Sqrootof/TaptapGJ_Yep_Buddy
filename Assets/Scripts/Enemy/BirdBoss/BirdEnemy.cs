@@ -73,6 +73,7 @@ public class BirdEnemy : Enemy
     protected override void Start()
     {
         showGizmos=false;
+        InitialPosition = transform.position;
         base.Start();
         timer = 0f;
     }
