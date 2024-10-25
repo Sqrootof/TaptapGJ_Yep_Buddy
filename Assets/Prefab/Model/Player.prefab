@@ -5798,7 +5798,7 @@ GameObject:
   - component: {fileID: 1624664738650647266}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6299,17 +6299,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquippedBullets:
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
+  - {fileID: 11400000, guid: 7add89c40cb08e64aa884a1d8d149aab, type: 2}
+  - {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc, type: 2}
+  - {fileID: 11400000, guid: 46b5ebbb8c9e1ea458b3e61f05d17f4f, type: 2}
+  - {fileID: 11400000, guid: 7384d48fe259831499d50fc009140bbb, type: 2}
+  - {fileID: 11400000, guid: 9a31cffd6381b4b4299dfcf7a361a7bd, type: 2}
+  - {fileID: 11400000, guid: 8be48e47f810a434b92d61ace7797193, type: 2}
+  - {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0, type: 2}
   - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
-  BulletInBackpack:
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
   - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
-  - {fileID: 11400000, guid: 302442b4456d4aa4bbcef1eb63d9aecd, type: 2}
   - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  BulletInBackpack:
+  - {fileID: 11400000, guid: 7add89c40cb08e64aa884a1d8d149aab, type: 2}
+  - {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc, type: 2}
+  - {fileID: 11400000, guid: 46b5ebbb8c9e1ea458b3e61f05d17f4f, type: 2}
+  - {fileID: 11400000, guid: 7384d48fe259831499d50fc009140bbb, type: 2}
+  - {fileID: 11400000, guid: 9a31cffd6381b4b4299dfcf7a361a7bd, type: 2}
+  - {fileID: 11400000, guid: 8be48e47f810a434b92d61ace7797193, type: 2}
+  - {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0, type: 2}
+  - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
+  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
   - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
   LayerIgnore_DroppedThings:
     serializedVersion: 2
