@@ -7761,6 +7761,20 @@ MonoBehaviour:
   currentHealth: 1000
   rb: {fileID: 0}
   player: {fileID: 0}
+  dropGameObject:
+  - {fileID: 8352140513640148334, guid: 8335e21ee8a2f0644923c49b66fb3db7, type: 3}
+  - {fileID: 8352140513640148334, guid: fc25807dbbce1f34d80d023029e09058, type: 3}
+  dropNumber:
+  - min: 1
+    max: 2
+    probably:
+    - 60
+    - 40
+  - min: 1
+    max: 1
+    probably:
+    - 100
+    - 100
   patrolSpeed: 4
   chaseSpeed: 10
   currentSpeed: 0
@@ -7790,6 +7804,7 @@ MonoBehaviour:
   bulletSpeed: 2
   timer: 0
   damage: 5
+  force: 2
   showGizmos: 1
   patrolAreaSize: {x: 20, y: 10, z: 0}
 --- !u!114 &4616596626736529593

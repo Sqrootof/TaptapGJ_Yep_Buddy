@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pro_Penetrate
   m_EditorClassIdentifier: 
   BulletName: "\u4E8C\u7EF4\u68F1\u955C"
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 42d01b6064bf4a34eae393a0309a9e0c, type: 3}
   BulletType: 2
   ShootInterval: 0
   GainType: 1

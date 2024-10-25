@@ -152,6 +152,13 @@ MonoBehaviour:
   currentHealth: 0
   rb: {fileID: 0}
   player: {fileID: 0}
+  dropGameObject:
+  - {fileID: 8352140513640148334, guid: 2b4c005827ea2a04eaff95843a0173e7, type: 3}
+  dropNumber:
+  - min: 1
+    max: 1
+    probably:
+    - 100
   patrolSpeed: 3
   chaseSpeed: 7
   currentSpeed: 0
