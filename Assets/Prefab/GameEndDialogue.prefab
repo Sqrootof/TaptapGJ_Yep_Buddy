@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1441238562584421507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4820967599333874739}
+  - component: {fileID: 4149523784420703784}
+  - component: {fileID: 7733952235332737737}
+  m_Layer: 0
+  m_Name: GameEndDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4820967599333874739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441238562584421507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5948143945605634861}
+  - {fileID: 8510965362743655000}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4149523784420703784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441238562584421507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32e4b851ebd8fa4ea0645b99be1cf97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedExposedParameters: []
+  _boundGraphSerialization: '{"type":"NodeCanvas.DialogueTrees.DialogueTree","nodes":[{"statement":{"_text":"\uff08\u4e0e\u91d1\u4e4c\u7684\u6218\u6597\uff0c\u7ed3\u675f\u4e86\uff09"},"_actorName":"\u73a9\u5bb6","_actorParameterID":"d72be92c-c8d5-491e-b5e0-fb31b32e7bff","_position":{"x":1059.217,"y":1046.459},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"0"},{"statement":{"_text":"\uff08\u762b\u5012\u5728\u5730\uff09"},"_actorName":"\u91d1\u4e4c","_actorParameterID":"5e0e7d03-5c1f-4201-877e-4ab55fd0c860","_position":{"x":1093.799,"y":1152.512},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"1"},{"statement":{"_text":"\uff08\u4e0d\u5999\u7684\u9884\u611f\uff0c\u5468\u56f4\u7684\u80fd\u91cf\u4ecd\u5728\u805a\u96c6\uff0c\u96be\u9053\u8bf4\u2026\u2026\u2026\u2026\u4e0d\u597d\uff01\uff09"},"_actorName":"\u73a9\u5bb6","_actorParameterID":"d72be92c-c8d5-491e-b5e0-fb31b32e7bff","_position":{"x":983.5822,"y":1287.403},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"2"},{"_position":{"x":1133.0,"y":1415.0},"$type":"NodeCanvas.DialogueTrees.FinishNode","$id":"3"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.DialogueTrees.DTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.DialogueTrees.DTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.DialogueTrees.DTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"actorParameters":[{"_keyName":"\u73a9\u5bb6","_id":"d72be92c-c8d5-491e-b5e0-fb31b32e7bff","_actorObject":1},{"_keyName":"\uff1f\uff1f\uff1f","_id":"d1cae77d-471b-4f3a-bfc5-93fdf4245351","_actorObject":2},{"_keyName":"\u91d1\u4e4c","_id":"5e0e7d03-5c1f-4201-877e-4ab55fd0c860","_actorObject":3}],"$type":"NodeCanvas.DialogueTrees.DialogueTree+DerivedSerializationData"}}'
+  _boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 6548914599197262542}
+  _boundGraphSource:
+    _version: 3.28
+    _category: 
+    _comments: 
+    _translation: {x: -563, y: -686}
+    _zoomFactor: 1
+  _firstActivation: 1
+  _enableAction: 0
+  _disableAction: 0
+  _lockBoundGraphPrefabOverrides: 1
+  _preInitializeSubGraphs: 0
+  _updateMode: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 7733952235332737737}
+--- !u!114 &7733952235332737737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441238562584421507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+  _serializedVariables: []
+--- !u!1 &8020940815359527512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8510965362743655000}
+  - component: {fileID: 7681971842720424625}
+  m_Layer: 0
+  m_Name: "\u73A9\u5BB6 (1)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8510965362743655000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020940815359527512}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 692.5, y: 387.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4820967599333874739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7681971842720424625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020940815359527512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d71fb7c52372e244baf2e69a9d0d116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: "\u73A9\u5BB6"
+  _portrait: {fileID: 0}
+  _dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+  _dialogueOffset: {x: 0, y: 0, z: 0}
+--- !u!1 &8739415459586329201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5948143945605634861}
+  - component: {fileID: 6548914599197262542}
+  m_Layer: 0
+  m_Name: "\u91D1\u4E4C"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5948143945605634861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739415459586329201}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 692.5, y: 387.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4820967599333874739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6548914599197262542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739415459586329201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d71fb7c52372e244baf2e69a9d0d116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: "\u91D1\u4E4C"
+  _portrait: {fileID: 0}
+  _dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+  _dialogueOffset: {x: 0, y: 0, z: 0}
