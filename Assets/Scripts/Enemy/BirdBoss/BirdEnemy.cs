@@ -72,6 +72,7 @@ public class BirdEnemy : Enemy
 
     protected override void Start()
     {
+        showGizmos=false;
         base.Start();
         timer = 0f;
     }
@@ -153,9 +154,12 @@ public class BirdEnemy : Enemy
     // 在场景视图中绘制巡逻范围
     private void OnDrawGizmos()
     {
-        if (!showGizmos) return; // 如果不想显示，直接返回
 
         // 获取敌人的当前坐标
+        if (showGizmos)
+        {
+            InitialPosition = transform.position;
+        }
         Vector3 position = InitialPosition;
 
         // 设置Gizmos的颜色

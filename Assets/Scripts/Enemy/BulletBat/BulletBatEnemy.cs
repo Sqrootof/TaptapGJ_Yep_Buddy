@@ -30,9 +30,12 @@ public class BulletBatEnemy : Enemy
 
     private void OnDrawGizmos()
     {
-        if (!showGizmos) return; // 如果不想显示，直接返回
 
         // 获取敌人的当前坐标
+        if (showGizmos)
+        {
+            InitialPosition = transform.position;
+        }
         Vector3 position = InitialPosition;
 
         // 设置Gizmos的颜色
@@ -79,6 +82,7 @@ public class BulletBatEnemy : Enemy
 
     protected override void Start()
     {
+        showGizmos = false;
         enemy = FindObjectOfType<Enemy>();
         base.Start();
     }

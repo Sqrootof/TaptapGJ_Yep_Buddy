@@ -24,18 +24,21 @@ public class BatEnemy : Enemy
     public bool movingToA = true; // 当前是否朝A点移动
     public bool isStopping = false; // 是否正在停留
     public bool bullet;
-    public bool showGizmos = false; // 允许在Inspector中控制是否显示Gizmos
+    public bool showGizmos=true; // 允许在Inspector中控制是否显示Gizmos
 
     // 设置巡逻范围的大小
     public Vector3 patrolAreaSize = new Vector3(5f, 5f, 0f); // X, Y, Z 轴的大小
 
     private void OnDrawGizmos()
     {
-        if (!showGizmos) return; // 如果不想显示，直接返回
 
         // 获取敌人的当前坐标
+        if (showGizmos)
+        {
+            InitialPosition = transform.position;
+        }
         Vector3 position = InitialPosition;
-
+        
         // 设置Gizmos的颜色
         Gizmos.color = Color.green;
 
@@ -71,6 +74,7 @@ public class BatEnemy : Enemy
 
     protected override void Start()
     {
+        showGizmos=false;
         enemy = FindObjectOfType<Enemy>();
         base.Start();
     }
