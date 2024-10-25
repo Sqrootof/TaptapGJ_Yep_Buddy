@@ -29,6 +29,7 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
     [SerializeField] float DashCoolDown = 5f;
     [SerializeField] float DashInterval = 0.8f;
     [SerializeField] ParticleSystem DashParticle;
+    [SerializeField] LayerMask DashStop;
     bool isDashing = false;
     
 
@@ -241,8 +242,10 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
     {
         isDashing = true;
         Rigidbody.useGravity = false;
-        while (Time.time - LastDashTime < DashInterval) {
+        bool ifhit = false;
+        while (Time.time - LastDashTime < DashInterval && !ifhit) {
             Rigidbody.MovePosition(transform.position + FaceDir * DashSpeed * Time.fixedDeltaTime * Vector3.right);
+            ifhit = Physics.Raycast(transform.position,FaceDir * Vector3.right,0.2f,DashStop);
             yield return null;
         }
         Rigidbody.useGravity = true;
