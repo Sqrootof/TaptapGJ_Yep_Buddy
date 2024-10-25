@@ -5,18 +5,30 @@ using UnityEngine;
 using NodeCanvas.DialogueTrees;
 public class DialogueManager : MonoBehaviour
 {
-    public DialogueTreeController _dialogueTreeController;
-    
+    //public DialogueTreeController _dialogueTreeController;
+    private PlayerController _playerController;
+    private Rigidbody _playerRigidbody;
+    private RigidbodyConstraints _playerRigidbodyConstraints;
     public void Start()
     {
-
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        _playerRigidbody = GameObject.Find("Player").GetComponent<Rigidbody>();
+        _playerRigidbodyConstraints = _playerRigidbody.constraints;
     }
 
-    private void Update()
+    public void DialogueStart()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            _dialogueTreeController.StartDialogue();
-        }
+        _playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        Debug.Log("1111");
+        _playerController.enabled = false;
+
     }
+
+    public void DialogueEnd()
+    {
+        _playerRigidbody.constraints = _playerRigidbodyConstraints;
+        _playerController.enabled = true;
+
+    }
+   
 }
