@@ -7,7 +7,7 @@ public class SD
 {
     public int SDname;
     public int SDNum;
-    public List<AnchorPoint> AP;
+    public bool[] Anchor;
     public List<Bullet> EB;
     public List<Bullet> BB;
 }
@@ -51,6 +51,15 @@ public class SaveManager : MonoBehaviour
     {
         NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack();
         NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets();
+        NowSD.Anchor = new[]
+        {
+            Whole.anchorPoints[0].isUnlocked,
+            Whole.anchorPoints[1].isUnlocked,
+            Whole.anchorPoints[2].isUnlocked,
+            Whole.anchorPoints[3].isUnlocked,
+            Whole.anchorPoints[4].isUnlocked,
+            Whole.anchorPoints[5].isUnlocked
+        };
         string SDJson = JsonUtility.ToJson(NowSD);
         PlayerPrefs.SetString(NowName, SDJson);
         PlayerPrefs.SetString(LastUsed, NowName); // 更新最后使用的存档
@@ -66,7 +75,7 @@ public class SaveManager : MonoBehaviour
         {
             SDname = newSDName,
             SDNum = 0,
-            AP = new List<AnchorPoint>(),
+            Anchor = new []{false,false,false,false,false,false},
             EB = new List<Bullet>(),
             BB = new List<Bullet>()
         };
