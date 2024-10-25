@@ -8,7 +8,7 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
     [SerializeField] List<Bullet> EquippedBullets = new();
     [SerializeField] List<Bullet> BulletInBackpack = new();
 
-    [Header("µôÂäµÄÎäÆ÷×°±¸Ïà¹Ø")]
+    [Header("æ‰è½çš„æ­¦å™¨è£…å¤‡ç›¸å…³")]
     [SerializeField] LayerMask LayerIgnore_DroppedThings;
 
     // Start is called before the first frame update
