@@ -26,10 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PictorialBookDisplay.unity
     guid: 329c9d9f5ad7d644792e8a8caa99d9b0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/World.unity
     guid: ca759866f492334479f1d7f3e978482b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WorldUI.unity
     guid: 8b6aece79e8e6314eb3c7fcfa88a642b
   - enabled: 1

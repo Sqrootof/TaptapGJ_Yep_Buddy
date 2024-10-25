@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Team Yep Buddy - Uncharted Territory
+  companyName: "\u662F\uFF01\u54E5\u4EEC"
+  productName: "\u672A\u66FE\u8E0F\u8DB3\u4E4B\u5883"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
