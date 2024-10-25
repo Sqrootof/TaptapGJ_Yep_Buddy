@@ -38,5 +38,7 @@ public class BulletEasyEnemy : MonoBehaviour
 
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Ground"))
+            Destroy(gameObject);
     }
 }
