@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99553f5488f3b5f43a204b822f7ca67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: WorldUI
+  sceneName: WorldUI 1
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
 --- !u!95 &47834709
@@ -1482,7 +1482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -204}
+  m_AnchoredPosition: {x: 450, y: -207.99998}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415691053
@@ -2403,7 +2403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -4}
+  m_AnchoredPosition: {x: 450, y: -7.9999847}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &767142532
@@ -4248,7 +4248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1434082884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4489,7 +4489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -104}
+  m_AnchoredPosition: {x: 450, y: -107.999985}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509093197
@@ -4648,6 +4648,7 @@ GameObject:
   - component: {fileID: 1522607784}
   - component: {fileID: 1522607783}
   - component: {fileID: 1522607785}
+  - component: {fileID: 1522607786}
   m_Layer: 0
   m_Name: PanelManager
   m_TagString: Untagged
@@ -4735,6 +4736,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a369b1b8c908b4281164c2ea3b859b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1522607786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522607780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931041e2216515949a735bce8eaa65ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1526652543
@@ -4892,9 +4905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99553f5488f3b5f43a204b822f7ca67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: World
+  sceneName: WorldUI 1
   ifDelayTime: 0.32
-  effect: {fileID: 0}
+  effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
 --- !u!114 &1526652550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6297,7 +6310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2097430331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6399,9 +6412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99553f5488f3b5f43a204b822f7ca67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: World
+  sceneName: SaveMenu
   ifDelayTime: 0.32
-  effect: {fileID: 0}
+  effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
 --- !u!95 &2097430336
 Animator:
   serializedVersion: 5

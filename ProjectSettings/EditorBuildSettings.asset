@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AchievementMenu.unity
     guid: 9d0695b79589ca742849cce68902f9f7
   - enabled: 1
+    path: Assets/Scenes/SaveMenu.unity
+    guid: d31efd983eee62740ae59758432b47c2
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -35,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AchievementShow.unity
     guid: 1d10c26107d641e47b16ffd11dedd139
+  - enabled: 1
+    path: Assets/Scenes/WorldUI 1.unity
+    guid: 8a2f446eaa119144cb69b2b0aa1ffa2e
   m_configObjects: {}
