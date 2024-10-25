@@ -39,6 +39,7 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
     [SerializeField]private bool InTheAir;
     int FaceDir = 1;//1为右，-1为左
     private float LastDashTime=-10;
+    [SerializeField] Image HealthBar;
     #endregion
 
     [Header("战斗相关")]
@@ -106,6 +107,7 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
         Move();
         Jump();
         Dash();
+        HealthBar.fillAmount = HealthCurrent / HealthMax;
     }
 
     private void OnCollisionEnter(Collision collision)
