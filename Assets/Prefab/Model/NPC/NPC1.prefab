@@ -10212,7 +10212,7 @@ GameObject:
   - component: {fileID: 5269769511592959512}
   - component: {fileID: 1624664738650647266}
   m_Layer: 7
-  m_Name: NPC0
+  m_Name: NPC1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
