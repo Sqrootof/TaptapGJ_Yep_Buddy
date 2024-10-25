@@ -782,6 +782,18 @@ MonoBehaviour:
   currentHealth: 0
   rb: {fileID: 0}
   player: {fileID: 0}
+  dropGameObject:
+  - {fileID: 8352140513640148334, guid: 51c9707f8cb72b641801388d64e98a7a, type: 3}
+  - {fileID: 8352140513640148334, guid: 629ebd3fa8e758c418987338d726c2bc, type: 3}
+  dropNumber:
+  - min: 1
+    max: 1
+    probably:
+    - 100
+  - min: 1
+    max: 1
+    probably:
+    - 100
   patrolSpeed: 3
   chaseSpeed: 3
   currentSpeed: 0
@@ -796,19 +808,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1600
   enemy: {fileID: 0}
+  enemyLaser: {fileID: 0}
   bulletSpeed: 0
-  bullet: 0
-  targetPoint: {x: 0, y: 0, z: 0}
   attackTime: 0
   stopDuration: 2
   stopTimer: 0
   movingToA: 1
   isStopping: 0
+  bullet: 0
   PointA: {fileID: 3058354033244867208}
   PointB: {fileID: 4504518463259032383}
+  body: {fileID: 0}
+  hitCollider: {fileID: 0}
   patrolPointA: {x: 0, y: 0, z: 0}
   patrolPointB: {x: 0, y: 0, z: 0}
   targetPosition: {x: 0, y: 0, z: 0}
+  targetPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &3713865821428465253
 MonoBehaviour:
   m_ObjectHideFlags: 0

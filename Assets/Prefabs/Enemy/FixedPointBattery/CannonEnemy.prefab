@@ -139,6 +139,18 @@ MonoBehaviour:
   currentHealth: 50
   rb: {fileID: 0}
   player: {fileID: 0}
+  dropGameObject:
+  - {fileID: 8352140513640148334, guid: 33f31e2e99ad9fc4e941142beec13ea1, type: 3}
+  - {fileID: 8352140513640148334, guid: b47a2fe7950f19040be50b1608b685d7, type: 3}
+  dropNumber:
+  - min: 1
+    max: 1
+    probably:
+    - 60
+  - min: 1
+    max: 1
+    probably:
+    - 60
   patrolSpeed: 0
   chaseSpeed: 0
   currentSpeed: 0
@@ -152,6 +164,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1600
+  enemy: {fileID: 0}
   bullet: {fileID: 2802800548311024721, guid: 710bbca0b28b11f418ca6eaf92644f35, type: 3}
   bulletSpeed: 3
   attackTime: 4
