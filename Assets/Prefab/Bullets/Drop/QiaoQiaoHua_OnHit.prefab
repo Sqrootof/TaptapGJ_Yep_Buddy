@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3693322282069342905}
   - component: {fileID: 6892977508573019930}
   m_Layer: 9
-  m_Name: DroppedBullet
+  m_Name: QiaoQiaoHua_OnHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,4 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f613f302ff888b74abbc40154ab6f051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletInfo: {fileID: 11400000, guid: 5883f370607084e4cbdf09d8d4ded9cc, type: 2}
+  BulletInfo: {fileID: 11400000, guid: d7a0fb7b9aabbed48be9f9605272b37a, type: 2}
