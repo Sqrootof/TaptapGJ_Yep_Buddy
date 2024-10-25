@@ -396,6 +396,7 @@ public class BirdEnemyStateDead : EnemyState
 
     public override void OnEnter()
     {
+        enemy.Drop();
         enemy.DestroyEnemy();
     }
 

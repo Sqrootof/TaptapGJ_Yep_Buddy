@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class FixedPointBatteryEnemy : Enemy
 {
+    public Enemy enemy;
     public GameObject bullet;
     public float bulletSpeed;
     public float attackTime;
     float timer;
     protected override void Awake()
     {
+        enemy=GetComponent<Enemy>();
         base.Awake();
     }
 
@@ -34,6 +36,7 @@ public class FixedPointBatteryEnemy : Enemy
     {
         if (currentHealth <= 0)
         {
+            enemy.Drop();
             Destroy(gameObject);
             return;
         }

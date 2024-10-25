@@ -5,6 +5,15 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour,IDamageable, IKnockBackable
 {
+    [System.Serializable]
+    public class DropNumber
+    {
+        public int min;
+        public int max;
+        public float[] probably;
+    }
+
+
     public float maxHealth;
     public float currentHealth;
     public EnemyFSM enemyFSM;   // 敌人状态机
@@ -14,6 +23,9 @@ public class Enemy : MonoBehaviour,IDamageable, IKnockBackable
     public EnemyState deadState;
     public Rigidbody rb; // 刚体组件
     public GameObject player;
+
+    public GameObject[] dropGameObject;
+    public DropNumber[] dropNumber;
 
     [Tooltip("巡逻速度")] public float patrolSpeed;
     [Tooltip("追击速度")] public float chaseSpeed;
@@ -139,5 +151,31 @@ public class Enemy : MonoBehaviour,IDamageable, IKnockBackable
         KonckBackVec.z = 0;
         KonckBackVec.Normalize();
         rb.AddForce(KonckBackVec * Force, ForceMode.Impulse);
+    }
+
+    public void Drop()
+    {
+        for (int i = 0; i < dropNumber.Length; i++)
+        {
+            float num = Random.Range(0, 100);
+            int j;
+            for (j = 0; j < (dropNumber[i].max - dropNumber[i].min); j++)
+            {
+                num -= dropNumber[i].probably[j];
+                if (num <= 0)
+                {
+                    break;
+                }
+            }
+
+            int dropCount = dropNumber[i].min + j;
+            for (int p = 0; p < dropCount; p++)
+            {
+                // 生成偏移量
+                float offsetX = Random.Range(-0.5f, 0.5f); // 偏移范围为1
+                Vector3 dropPosition = new Vector3(transform.position.x + offsetX, transform.position.y, transform.position.z);
+                Instantiate(dropGameObject[i], dropPosition, Quaternion.identity);
+            }
+        }
     }
 }

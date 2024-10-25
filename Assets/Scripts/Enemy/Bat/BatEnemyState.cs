@@ -156,6 +156,7 @@ public class BatEnemyStateDead : EnemyState
 
     public override void OnEnter()
     {
+        enemy.Drop();
         enemy.DestroyEnemy();
     }
 
