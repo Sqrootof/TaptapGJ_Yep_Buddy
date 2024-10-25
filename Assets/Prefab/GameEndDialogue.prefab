@@ -61,8 +61,8 @@ MonoBehaviour:
     _translation: {x: -603.7443, y: -884.8535}
     _zoomFactor: 0.8334256
   _firstActivation: 1
-  _enableAction: 0
-  _disableAction: 0
+  _enableAction: 1
+  _disableAction: 2
   _lockBoundGraphPrefabOverrides: 1
   _preInitializeSubGraphs: 0
   _updateMode: 0
