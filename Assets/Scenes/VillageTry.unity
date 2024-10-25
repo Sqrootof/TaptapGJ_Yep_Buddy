@@ -19556,6 +19556,26 @@ PrefabInstance:
       propertyPath: _disableAction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4471010660524950148, guid: cc3e3b606f0df984e9a835170d1f6f36,
+        type: 3}
+      propertyPath: _firstActivation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471010660524950148, guid: cc3e3b606f0df984e9a835170d1f6f36,
+        type: 3}
+      propertyPath: _boundGraphSource._zoomFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471010660524950148, guid: cc3e3b606f0df984e9a835170d1f6f36,
+        type: 3}
+      propertyPath: _boundGraphSource._translation.x
+      value: -278.0935
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471010660524950148, guid: cc3e3b606f0df984e9a835170d1f6f36,
+        type: 3}
+      propertyPath: _boundGraphSource._translation.y
+      value: -514.6341
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -70957,7 +70977,7 @@ PrefabInstance:
     - target: {fileID: 6530315335514285724, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: m_Name
-      value: Player (3)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6530315335514285724, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
