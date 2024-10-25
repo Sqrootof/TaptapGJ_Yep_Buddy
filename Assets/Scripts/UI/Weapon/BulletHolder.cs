@@ -60,7 +60,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
             }
         }
         //如果拖拽到了已装备的子弹上
-        else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position) && FromBackpack)
+        else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
         {
             if (FromBackpack){
                 WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);

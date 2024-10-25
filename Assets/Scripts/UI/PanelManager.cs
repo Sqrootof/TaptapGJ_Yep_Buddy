@@ -9,6 +9,10 @@ public class PanelManager : MonoBehaviour
     public GameObject settingPanel;
     public bool isOpen;
     public PanelChoice panelChoice;
+    [SerializeField] GameObject WeaponPanel_Pre;
+                     GameObject WeaponPanel;
+    [SerializeField] GameObject BackpackPanel_Pre;
+                     GameObject BackpackPanel;
 
     private void Start()
     {
