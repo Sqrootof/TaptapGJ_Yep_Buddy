@@ -2,7 +2,9 @@ using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
 public interface IDamageable
 {
@@ -44,6 +46,9 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
     [SerializeField] float BasicDefense;
     [SerializeField] float BasicKnockbackResistance;
     [SerializeField] float currentHealth;
+
+    [Header("À¿ÕˆΩÁ√Ê")]
+    [SerializeField] GameObject DeadUI;
     float HealthCurrent {
         get{
             return currentHealth;
@@ -278,7 +283,16 @@ public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBac
 
     IEnumerator PlayerDie()
     { 
-        yield return null;
+        yield return new WaitForEndOfFrame();
+        Time.timeScale = 0;
+        Image dead = DeadUI.GetComponent<Image>();
+        while (dead.color.a < 1) { 
+            dead.color = new Color(dead.color.r, dead.color.g, dead.color.b, dead.color.a + Time.unscaledDeltaTime);
+            yield return null;
+        }
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene("WorldUI 1");
     }
 
 }
