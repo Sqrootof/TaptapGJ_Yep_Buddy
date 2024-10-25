@@ -14,8 +14,8 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
     // Start is called before the first frame update
     void Start()
     {
-        SetEquippedBullets(SaveManager.NowSD.EB);
-        SetEquippedBullets(SaveManager.NowSD.BB);
+        //SetEquippedBullets(SaveManager.NowSD.EB);
+        //SetEquippedBullets(SaveManager.NowSD.BB);
     }
 
     // Update is called once per frame
