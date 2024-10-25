@@ -106,6 +106,7 @@ MonoBehaviour:
   BulletData: {fileID: 0}
   InfoBox_Pre: {fileID: 2676757074481154708, guid: f92f8e3b08799d6469a2202447b41b4a,
     type: 3}
+  Drop: {fileID: 8352140513640148334, guid: 9f98fd1b225e14d43895ef4fb181c976, type: 3}
 --- !u!1 &3534204224571253921
 GameObject:
   m_ObjectHideFlags: 0

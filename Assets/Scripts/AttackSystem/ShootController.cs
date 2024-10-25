@@ -79,6 +79,7 @@ public class ShootController : TIntance<ShootController>
 
         CurrentProjectileBlock.Clear();
         CurrentGainsBlock.Clear();
+        if (WeaponBackpack.Instance.GetEquippedBullets().Count == 0) return;
         int stepcount = 1;
         int totalStep = 0;
         Bullet CurrentBullet;

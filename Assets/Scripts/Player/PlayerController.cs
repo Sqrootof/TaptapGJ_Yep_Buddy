@@ -15,7 +15,7 @@ public interface IKnockBackable
 }
 
 
-public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
+public class PlayerController : TIntance<PlayerController>,IDamageable,IKnockBackable
 {
     [Header("移动属性相关")]
     [SerializeField] float WalkSpeed;
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour,IDamageable,IKnockBackable
 
     void Awake()
     {
+        base.Awake();
         ComponentInit();
         DataInit();
     }

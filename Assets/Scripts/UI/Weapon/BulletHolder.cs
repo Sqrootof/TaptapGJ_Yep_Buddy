@@ -13,6 +13,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     Transform OriginParent;
     [SerializeField] GameObject InfoBox_Pre;
     GameObject InfoBox;
+    [SerializeField] GameObject Drop;
 
     void Awake()
     {
@@ -62,7 +63,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         //如果拖拽到了已装备的子弹上
         else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
         {
-            if (FromBackpack){
+            if (FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count < 7){
                 WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);
                 Destroy(gameObject);
             }
@@ -74,8 +75,16 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         }
         else
         {
-            WeaponBackpack.Instance.DropBullet(BulletData);
-            Destroy(gameObject);
+            //Debug.Log("Drop");
+            //DropBullet();
+            //if(FromBackpack)
+            //    WeaponBackpack.Instance.GetBulletInBackpack().Remove(BulletData);
+            //else  
+            //    WeaponBackpack.Instance.GetEquippedBullets().Remove(BulletData);
+            //Destroy(gameObject);
+
+            transform.position = OriginPos;
+            transform.parent = OriginParent;
         }
     }
 
@@ -147,5 +156,13 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     private void OnDisable()
     {
         if (InfoBox) Destroy(InfoBox);
+    }
+
+    void DropBullet()
+    {
+        Vector3 pos = PlayerController.Instance.transform.position + new Vector3(1,1,0);
+        GameObject DropBullet = Instantiate(Drop,pos,Quaternion.identity);
+        Drop.GetComponent<BulletDrop>().BulletInfo = BulletData;
+        Destroy(gameObject);
     }
 }

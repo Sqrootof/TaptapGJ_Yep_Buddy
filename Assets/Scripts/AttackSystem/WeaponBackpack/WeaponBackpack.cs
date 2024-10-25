@@ -36,24 +36,6 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
         BulletInBackpack.Add(newBulletData.DeepCopy());
     }
 
-    public void DropBullet(Bullet BulletData)
-    {
-        if (EquippedBullets.Contains(BulletData)) { 
-            EquippedBullets.Remove(BulletData);
-            var drop = new GameObject("DroppedBullet");
-            drop.AddComponent<SpriteRenderer>().sprite = BulletData.Icon;
-            var col = drop.AddComponent<BoxCollider>();
-            var rig = drop.AddComponent<Rigidbody>();
-            col.isTrigger = false;
-            col.excludeLayers = LayerIgnore_DroppedThings;
-            float vel_x = UnityEngine.Random.Range(0f,1f);
-            rig.useGravity = true;
-            rig.velocity = new Vector3(vel_x, 1, 0).normalized * 3;
-            rig.freezeRotation = false;
-            rig.drag = 1;
-        }
-    }
-
     public void StoreEquippedBullet(Bullet equippedBulletData,Action OnBulletDataUpdate)
     {
         if (EquippedBullets.Contains(equippedBulletData)){ 
