@@ -72,3 +72,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/SimpleNaturePack/SimpleNaturePack_2020.3_URP_v1.24.unitypackage.meta
 Assets/SimpleNaturePack/SimpleNaturePack_2020.3_URP_v1.24.unitypackage.meta
+Assets/ParadoxNotion.meta
+Assets/ParadoxNotion/NodeCanvas.meta
+Assets/ParadoxNotion/NodeCanvas/Modules.meta
+Assets/ParadoxNotion/NodeCanvas/Modules/DialogueTrees.meta
+Assets/ParadoxNotion/NodeCanvas/Modules/DialogueTrees/DialogueGUI.meta
+Assets/ParadoxNotion/NodeCanvas/Modules/DialogueTrees/DialogueGUI/@DialogueUGUI.prefab.meta
+Assets/ParadoxNotion/NodeCanvas/Modules/DialogueTrees/DialogueGUI/DialogueUGUI.cs.meta
