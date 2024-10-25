@@ -15,7 +15,7 @@ MonoBehaviour:
   BulletName: "\u96C6\u675F\u5668"
   Icon: {fileID: 21300000, guid: a29bbd0b032b35e4685e9be57a842436, type: 3}
   BulletType: 2
-  ShootInterval: 0
+  ShootInterval: 0.11
   GainType: 1
   Description: "\u589E\u52A0\u6FC0\u5149\u957F\u5EA6"
   Gain_LaserLength: 1.6
