@@ -13,6 +13,10 @@ public class AnchorManager : MonoBehaviour
     private void Start()
     {
         //anchorPoints = Whole.anchorPoints;
+        for (int i = 0; i < anchorPoints.Count && i < 6; i++) // 确保不超过6个
+        {
+            anchorPoints[i].isUnlocked = SaveManager.NowSD.Anchor[i];
+        }
         Whole.anchorPoints=anchorPoints;
     }
 
