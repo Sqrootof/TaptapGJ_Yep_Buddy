@@ -15,7 +15,7 @@ MonoBehaviour:
   BulletName: "\u70C8\u6027\u70B8\u836F"
   Icon: {fileID: 21300000, guid: 391fd5730ba0e0d488acb289a321d7b3, type: 3}
   BulletType: 2
-  ShootInterval: 0
+  ShootInterval: 0.13
   GainType: 2
   Description: "\u6269\u5927\u7206\u70B8\u7269\u7684\u7206\u70B8\u8303\u56F4"
   Gain_BombRadius: 1.4

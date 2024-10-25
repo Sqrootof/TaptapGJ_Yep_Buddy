@@ -15,11 +15,11 @@ MonoBehaviour:
   BulletName: "\u6084\u6084\u8BDD"
   Icon: {fileID: 21300000, guid: b0b7a44fcd86bd44c87134ffc2f0b185, type: 3}
   BulletType: 0
-  ShootInterval: 0.5
+  ShootInterval: 0.82
   ProjectileType: 2
   InitialVelocity: 8
   OffsetAngle: 5
-  Damage: 3
+  Damage: 25
   LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
