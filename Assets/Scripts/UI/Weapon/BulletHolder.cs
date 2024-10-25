@@ -75,16 +75,16 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         }
         else
         {
-            //Debug.Log("Drop");
-            //DropBullet();
-            //if(FromBackpack)
-            //    WeaponBackpack.Instance.GetBulletInBackpack().Remove(BulletData);
-            //else  
-            //    WeaponBackpack.Instance.GetEquippedBullets().Remove(BulletData);
-            //Destroy(gameObject);
+            Debug.Log("Drop");
+            DropBullet();
+            if (FromBackpack)
+                WeaponBackpack.Instance.GetBulletInBackpack().Remove(BulletData);
+            else
+                WeaponBackpack.Instance.GetEquippedBullets().Remove(BulletData);
+            Destroy(gameObject);
 
-            transform.position = OriginPos;
-            transform.parent = OriginParent;
+            //transform.position = OriginPos;
+            //transform.parent = OriginParent;
         }
     }
 
@@ -160,9 +160,10 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
 
     void DropBullet()
     {
-        Vector3 pos = PlayerController.Instance.transform.position + new Vector3(1,1,0);
+        //Debug.Log(BulletData.BulletName);
+        Vector3 pos = PlayerController.Instance.gameObject.transform.position + new Vector3(1,1,0);
         GameObject DropBullet = Instantiate(Drop,pos,Quaternion.identity);
-        Drop.GetComponent<BulletDrop>().BulletInfo = BulletData;
+        DropBullet.GetComponent<BulletDrop>().BulletInfo = BulletData;
         Destroy(gameObject);
     }
 }

@@ -55,4 +55,17 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
             OnBulletDataUpdate?.Invoke();
         }
     }
+
+    public void DropBullet(Bullet bullet)
+    {
+        if (EquippedBullets.Contains(bullet))
+        {
+            EquippedBullets.Remove(bullet);
+        }
+        else if (BulletInBackpack.Contains(bullet))
+        {
+            BulletInBackpack.Remove(bullet);
+        }
+        else Debug.Log("子弹不存在");
+    }
 }
