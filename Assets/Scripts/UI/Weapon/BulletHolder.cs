@@ -143,4 +143,9 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     {
         Destroy(InfoBox);
     }
+
+    private void OnDisable()
+    {
+        if (InfoBox) Destroy(InfoBox);
+    }
 }
