@@ -23,7 +23,7 @@ public class FixedPointBatteryEnemy : Enemy
 
     protected override void OnDisable()
     {
-        base.OnDisable();
+        //base.OnDisable();
     }
 
     protected override void Start()

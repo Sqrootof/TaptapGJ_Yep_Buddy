@@ -60,7 +60,7 @@ public class LaserWeapon : MonoBehaviour
 
         // 使用射线检测
         RaycastHit hit;
-        float laserMaxDistance = 100f;
+        float laserMaxDistance = 20f;
         int reflections = 0; // 当前反射次数
 
         // 初始化激光线段位置
