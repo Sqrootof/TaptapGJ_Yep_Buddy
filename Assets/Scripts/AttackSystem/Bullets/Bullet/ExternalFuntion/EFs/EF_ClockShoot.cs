@@ -6,7 +6,7 @@ using UnityEngine;
 public class EF_ClockShoot : ExternalFunction
 {
     [SerializeField] float Time;
-    Projectile ProjtileToShootOnTime;
+    [SerializeField] Projectile ProjtileToShootOnTime;
 
     public override void OnAwake()
     {
@@ -21,7 +21,24 @@ public class EF_ClockShoot : ExternalFunction
 
     public override IEnumerator ExternalFunc()
     {
-        yield return new WaitForSeconds(Time);
+        if (ProjtileToShootOnTime){
+            yield return new WaitForSeconds(Time);
+            Projectile newData = ProjtileToShootOnTime.DeepCopy() as Projectile;
+            GameObject newbullet = Instantiate(ProjtileToShootOnTime.Prefab);
+            ProjectileHandler Handler = newbullet.GetComponent<ProjectileHandler>();
+            //触发发射弹的EF没给AttachTo赋值
+            if (newData.ExternalFunction) newData.ExternalFunction.AttachTo = Handler;
+            newData.ExternalFunction?.LoadExternalFuncDepend(CurrentBulletBlock, CurrentIndex, hasLooped);
+            newData.ProjectileHandler = Handler;
+            Handler.SetProjectileData(newData);
+
+            Vector3 CurrentDir = Vector3.down;
+            Vector3 RotateAngle = AttachTo.transform.rotation.eulerAngles;
+            Quaternion rotate = Quaternion.AngleAxis(RotateAngle.z, Vector3.forward);
+            CurrentDir = rotate * CurrentDir;
+
+            Handler.BeShoot(AttachTo.transform.position, AttachTo.transform.position+CurrentDir);
+        }
     }
 
     public override void LoadExternalFuncDepend(List<Bullet> CBB, int CI, bool whetherLooped)

@@ -25,7 +25,7 @@ public class ShootController : TIntance<ShootController>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && OnEmpty.ClickButton) {
+        if (Input.GetMouseButton(0) /*&& OnEmpty.ClickButton*/) {
             if (Time.time - LastShootTime >= ShootInterval) {
                 Shoot();
                 LastShootTime = Time.time;

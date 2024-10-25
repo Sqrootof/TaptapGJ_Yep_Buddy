@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f0c3b79daa0e2428290370146cff6f, type: 3}
-  m_Name: QiaoQiaoHua
+  m_Name: QiaoQiaoHua_Clock
   m_EditorClassIdentifier: 
   BulletName: "\u6084\u6084\u8BDD"
   Icon: {fileID: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
   LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 4280672713333370936, guid: c8509f0cf8a3bd2418d90d4e938ae653, type: 3}
-  ExternalFunction: {fileID: 0}
+  ExternalFunction: {fileID: 11400000, guid: 5afc0f70f89126c498e55bd3f082c819, type: 2}
   ProjectileHandler: {fileID: 0}
   useGravity: 0
   BombRadius: 2

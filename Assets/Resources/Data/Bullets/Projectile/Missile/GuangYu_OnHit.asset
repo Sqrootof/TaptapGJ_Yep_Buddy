@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 481a4fe37af2cb04eadeaeb9b53808d4, type: 3}
-  m_Name: GuangYu
+  m_Name: GuangYu_OnHit
   m_EditorClassIdentifier: 
   BulletName: "\u5149\u7FBD"
   Icon: {fileID: 0}
@@ -23,6 +23,6 @@ MonoBehaviour:
   LifeTime: 10
   SelfDamage: 0
   Prefab: {fileID: 9163245249547095048, guid: 31bac093089466e4bb894e9cef7ada07, type: 3}
-  ExternalFunction: {fileID: 0}
+  ExternalFunction: {fileID: 11400000, guid: 64f86b8c5fdb08d4897a570b992508d4, type: 2}
   ProjectileHandler: {fileID: 0}
   Tail: {fileID: 0}

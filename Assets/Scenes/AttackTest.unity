@@ -1581,6 +1581,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c2cc6a37e99d5f4db313ea1f8ef34fe,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f6960eff58d56954bbf7dd2c948bbfc6,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: EquippedBullets.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e3f5d1057046154ab7d2882d2e7d6d7,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e3f5d1057046154ab7d2882d2e7d6d7,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: f6960eff58d56954bbf7dd2c948bbfc6,
+        type: 2}
+    - target: {fileID: 6466511944386201142, guid: c18cdc916d204a047b863ea83954dd28,
+        type: 3}
+      propertyPath: BulletInBackpack.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c2cc6a37e99d5f4db313ea1f8ef34fe,
+        type: 2}
     - target: {fileID: 6530315335514285724, guid: c18cdc916d204a047b863ea83954dd28,
         type: 3}
       propertyPath: m_Name
