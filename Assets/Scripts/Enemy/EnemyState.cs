@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// µĞÈË×´Ì¬»ú»ùÀà
+/// æ•ŒäººçŠ¶æ€æœºåŸºç±»
 /// </summary>
 public abstract class EnemyState
 {
@@ -16,8 +16,8 @@ public abstract class EnemyState
         this.enemyFSM = enemyFSM;
     }
 
-    public abstract void OnEnter();  //½øÈë×´Ì¬Ê±´¥·¢
-    public abstract void LogicUpdate();  //×´Ì¬µÄÂß¼­¸üĞÂ£¬ÔÚUpdateÀïµ÷ÓÃ
-    public abstract void PhysicsUpdate();    //×´Ì¬µÄÎïÀí¸üĞÂ£¬ÔÚFixedUpdateÀïµ÷ÓÃ
-    public abstract void OnExit();   //ÍË³ö×´Ì¬Ê±´¥·¢
+    public abstract void OnEnter();  //è¿›å…¥çŠ¶æ€æ—¶è§¦å‘
+    public abstract void LogicUpdate();  //çŠ¶æ€çš„é€»è¾‘æ›´æ–°ï¼Œåœ¨Updateé‡Œè°ƒç”¨
+    public abstract void PhysicsUpdate();    //çŠ¶æ€çš„ç‰©ç†æ›´æ–°ï¼Œåœ¨FixedUpdateé‡Œè°ƒç”¨
+    public abstract void OnExit();   //é€€å‡ºçŠ¶æ€æ—¶è§¦å‘
 }

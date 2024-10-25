@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// µĞÈË×´Ì¬»ú¿ØÖÆ½Å±¾
+/// æ•ŒäººçŠ¶æ€æœºæ§åˆ¶è„šæœ¬
 /// </summary>
 public class EnemyFSM
 {
-    public EnemyState currentState; // µ±Ç°×´Ì¬
-    public EnemyState startState;   // ³õÊ¼×´Ì¬
+    public EnemyState currentState; // å½“å‰çŠ¶æ€
+    public EnemyState startState;   // åˆå§‹çŠ¶æ€
 
     /// <summary>
-    /// ×´Ì¬³õÊ¼»¯·½·¨£¬ÔÚOnEnableÖĞµ÷ÓÃ
+    /// çŠ¶æ€åˆå§‹åŒ–æ–¹æ³•ï¼Œåœ¨OnEnableä¸­è°ƒç”¨
     /// </summary>
-    /// <param name="state">³õÊ¼×´Ì¬</param>
+    /// <param name="state">åˆå§‹çŠ¶æ€</param>
     public void InitializeState(EnemyState state)
     {
-        currentState = state; // ½«µ±Ç°×´Ì¬ÉèÖÃÎª³õÊ¼×´Ì¬
-        currentState.OnEnter(); // Ö´ĞĞµ±Ç°×´Ì¬µÄOnEnterº¯Êı
+        currentState = state; // å°†å½“å‰çŠ¶æ€è®¾ç½®ä¸ºåˆå§‹çŠ¶æ€
+        currentState.OnEnter(); // æ‰§è¡Œå½“å‰çŠ¶æ€çš„OnEnterå‡½æ•°
     }
 
     /// <summary>
-    /// ÇĞ»»×´Ì¬·½·¨
+    /// åˆ‡æ¢çŠ¶æ€æ–¹æ³•
     /// </summary>
-    /// <param name="state">ÇĞ»»ºóµÄ×´Ì¬</param>
+    /// <param name="state">åˆ‡æ¢åçš„çŠ¶æ€</param>
     public void ChangeState(EnemyState state)
     {
-        currentState.OnExit(); // Ö´ĞĞµ±Ç°×´Ì¬µÄOnExitº¯Êı
-        currentState = state; // ½«µ±Ç°×´Ì¬ÉèÖÃÎªĞÂ×´Ì¬
-        currentState.OnEnter(); // Ö´ĞĞĞÂ×´Ì¬µÄOnEnterº¯Êı
+        currentState.OnExit(); // æ‰§è¡Œå½“å‰çŠ¶æ€çš„OnExitå‡½æ•°
+        currentState = state; // å°†å½“å‰çŠ¶æ€è®¾ç½®ä¸ºæ–°çŠ¶æ€
+        currentState.OnEnter(); // æ‰§è¡Œæ–°çŠ¶æ€çš„OnEnterå‡½æ•°
     }
 }
