@@ -245,6 +245,8 @@ MonoBehaviour:
   currentHealth: 100
   rb: {fileID: 0}
   player: {fileID: 0}
+  dropGameObject: []
+  dropNumber: []
   patrolSpeed: 4
   chaseSpeed: 10
   currentSpeed: 0
@@ -258,10 +260,6 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 576
-  PointA: {fileID: 0}
-  PointB: {fileID: 0}
-  patrolPointA: {x: 0, y: 0, z: 0}
-  patrolPointB: {x: 0, y: 0, z: 0}
   enemy: {fileID: 0}
   enemyLaser: {fileID: 0}
   target: {fileID: 0}
@@ -278,6 +276,7 @@ MonoBehaviour:
   bulletSpeed: 2
   timer: 0
   damage: 5
+  force: 2
   showGizmos: 1
   patrolAreaSize: {x: 20, y: 10, z: 0}
 --- !u!114 &2281822321021462743
@@ -305,6 +304,7 @@ MonoBehaviour:
     type: 3}
   maxReflections: 0
   laserStartParticlePrefab: {fileID: 0}
+  laserMaxDistance: 100
   end: {x: 0, y: 0, z: 0}
 --- !u!95 &6156569591439883492
 Animator:
