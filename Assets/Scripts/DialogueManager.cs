@@ -18,7 +18,6 @@ public class DialogueManager : MonoBehaviour
         _playerRigidbody = GameObject.Find("Player").GetComponent<Rigidbody>();
         _playerRigidbodyConstraints = _playerRigidbody.constraints;
         _panelManager = GameObject.Find("PanelManager").GetComponent<PanelManager>();
-        
     }
 
     public void DialogueStart()
@@ -26,10 +25,9 @@ public class DialogueManager : MonoBehaviour
         dialogueImage.SetActive(true);
         shootController.SetActive(false);
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        Debug.Log("1111");
         _panelManager.enabled = false;
         _playerController.enabled = false;
-
+        
     }
 
     public void DialogueEnd()
