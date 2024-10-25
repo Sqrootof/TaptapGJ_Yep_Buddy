@@ -7,18 +7,26 @@ public class GetSave : MonoBehaviour
 {
     public GameObject sItemPrefab; // 预设
     public Transform sListParent; // 存档列表的父对象
-    public Button newSaveButton; // 新建存档按钮
     public GameObject loadButtonPrefab; // 加载按钮预设
     private string currentSaveName; // 当前选中的存档名
+    public static int Select;
+    public Text selectText;
+
+    public Text text;
 
     private void Start()
     {
-        newSaveButton.onClick.AddListener(CreateNewSave); // 为按钮添加监听器
+        Select = -1;
         RefreshSaveList(); // 初始显示存档列表
     }
 
     private void RefreshSaveList()
     {
+        text.text = "当前存档：" + SaveManager.NowName;
+        if (Select == -1)
+            selectText.text = "未选中存档";
+        else
+            selectText.text = "点击启用存档：" + Select.ToString();
         // 清除现有的存档显示
         foreach (Transform child in sListParent)
         {
@@ -62,7 +70,7 @@ public class GetSave : MonoBehaviour
         }
     }
 
-    private void CreateNewSave()
+    public void CreateNewSave()
     {
         // 创建新的存档
         SaveManager.NewSave();
@@ -108,7 +116,7 @@ public class GetSave : MonoBehaviour
         }
     }
 
-    private void LoadSave(string saveName)
+    public void LoadSave(string saveName)
     {
         // 加载指定的存档
         SaveManager.Load(saveName);

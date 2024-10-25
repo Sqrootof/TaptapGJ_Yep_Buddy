@@ -33,6 +33,11 @@ public class SaveManager : MonoBehaviour
         {
             Load(lastUsedSave);
         }
+        else
+        {
+            NewSave();
+            Load(NowName);
+        }
     }
 
     public static void Load(string name)
@@ -83,7 +88,6 @@ public class SaveManager : MonoBehaviour
         // 保存新的 SD 实例
         NowSD = newSD;
         NowName = newSD.SDname.ToString();
-        Save(); // 保存新的 SD 实例
     }
 
     private static int GetNextSaveName()

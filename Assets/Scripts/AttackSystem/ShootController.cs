@@ -28,6 +28,7 @@ public class ShootController : TIntance<ShootController>
         if (Input.GetMouseButton(0) && OnEmpty.ClickButton) {
             if (Time.time - LastShootTime >= ShootInterval) {
                 Shoot();
+                SoundsManager.Attack();
                 LastShootTime = Time.time;
             } 
         }

@@ -6,6 +6,7 @@ public class SoundsManager : MonoBehaviour
 {
     public static AudioSource effect;
     private static AudioClip panel;
+    private static AudioClip a;
     
     public static float EffectVol = 1f;
     
@@ -13,6 +14,8 @@ public class SoundsManager : MonoBehaviour
     {
         effect = GetComponent<AudioSource>();
         panel = Resources.Load<AudioClip>("sounds/weapon_handling_48");
+        a = Resources.Load<AudioClip>("sounds/Magic_Bullet_Blue");
+        
     }
 
     public static void PanelClip()
@@ -20,6 +23,13 @@ public class SoundsManager : MonoBehaviour
         if (panel)
         {
             effect.PlayOneShot(panel);
+        }
+    }
+    public static void Attack()
+    {
+        if (a)
+        {
+            effect.PlayOneShot(a);
         }
     }
 }
