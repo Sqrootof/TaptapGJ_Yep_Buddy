@@ -5,54 +5,52 @@ using UnityEngine;
 [Serializable]
 public class SD
 {
-    public int SDname;
-    public int SDNum;
-    public bool[] Anchor;
-    public List<Bullet> EB;
-    public List<Bullet> BB;
+    public int SDNum; // 存档编号
+    public bool[] Anchor; // 锚点状态
+    public List<Bullet> EB; // 装备子弹列表
+    public List<Bullet> BB; // 背包子弹列表
 }
 
 public class SaveManager : MonoBehaviour
 {
     public static SD NowSD;
-    public static int Num;
-    public const string LastUsed = "LastUsedSave";
-    public static string NowName;
+    public static int NowNum;
+    public const string LastUsed = "LastUsed";
+    public const string SaveCount = "SaveCount";
     public static bool IsLoggedIn = false;
-    private string lastUsedSave;
+    private int lastUsedSave;
+    
+    //加载目标存档：SaveManager.Load(int name);
+    //保存当前存档：SaveManager.Save(SaveManager.NowNum);
 
     private void Start()
     {
-        lastUsedSave = PlayerPrefs.GetString(LastUsed, "");
-        if (!string.IsNullOrEmpty(lastUsedSave) && PlayerPrefs.HasKey(lastUsedSave))
-        {
-            IsLoggedIn = true;
-        }
-
-        if (IsLoggedIn)
+        lastUsedSave = PlayerPrefs.GetInt(LastUsed, 0);
+        if (lastUsedSave > 0)
         {
             Load(lastUsedSave);
         }
         else
         {
             NewSave();
-            Load(NowName);
         }
     }
 
-    public static void Load(string name)
+    //加载，由num获取NowSD、NowNum，改变LastUsed。
+    public static void Load(int num)
     {
-        string SDJson = PlayerPrefs.GetString(name, "");
+        string SDJson = PlayerPrefs.GetString(num.ToString(), "");
         if (!string.IsNullOrEmpty(SDJson))
         {
             NowSD = JsonUtility.FromJson<SD>(SDJson);
-            NowName = NowSD.SDname.ToString();
-            Num = NowSD.SDNum;
+            NowNum = NowSD.SDNum;
             IsLoggedIn = true;
+            PlayerPrefs.SetInt(LastUsed,NowNum); PlayerPrefs.Save();
         }
     }
 
-    public static void Save()
+    //保存，获取bool[]和两个List，修改NowSD并保存。
+    public static void Save(int num)
     {
         NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack();
         NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets();
@@ -65,44 +63,28 @@ public class SaveManager : MonoBehaviour
             Whole.anchorPoints[4].isUnlocked,
             Whole.anchorPoints[5].isUnlocked
         };
-        string SDJson = JsonUtility.ToJson(NowSD);
-        PlayerPrefs.SetString(NowName, SDJson);
-        PlayerPrefs.SetString(LastUsed, NowName); // 更新最后使用的存档
-        PlayerPrefs.Save();
+        PlayerPrefs.SetString(num.ToString(), JsonUtility.ToJson(NowSD)); PlayerPrefs.Save();
     }
 
     public static void NewSave()
     {
         // 创建一个新的 SD 实例
-        int newSDName = GetNextSaveName(); // 获取新的存档名称
-
+        int newSDNum = GetNextSaveName(); // 获取新的存档名称
         SD newSD = new SD
         {
-            SDname = newSDName,
-            SDNum = 0,
-            Anchor = new []{false,false,false,false,false,false},
-            EB = new List<Bullet>(),
-            BB = new List<Bullet>()
+            SDNum = newSDNum, // 将存档编号设置为新名称
+            Anchor = new bool[] {false, false, false, false, false, false}, // 初始化锚点状态
+            EB = new List<Bullet>(), // 初始化装备子弹列表
+            BB = new List<Bullet>() // 初始化背包子弹列表
         };
-
-        // 保存新的 SD 实例
-        NowSD = newSD;
-        NowName = newSD.SDname.ToString();
+        PlayerPrefs.SetString(newSDNum.ToString(), JsonUtility.ToJson(newSD)); //存起来
+        PlayerPrefs.SetInt(SaveCount,newSDNum); PlayerPrefs.Save(); //数目加一
+        Load(newSDNum);
     }
 
     private static int GetNextSaveName()
     {
-        int maxName = 0;
-
-        // 这里我们假设存档名称是数字字符串，所以需要手动跟踪
-        for (int i = 0; i < PlayerPrefs.GetInt("SaveCount", 0); i++)
-        {
-            if (PlayerPrefs.HasKey(i.ToString()))
-            {
-                maxName = Math.Max(maxName, i);
-            }
-        }
-
-        return maxName + 1;
+        int maxNum = PlayerPrefs.GetInt(SaveCount, 0);
+        return maxNum + 1; // 返回当前存档计数作为新的存档名称
     }
 }

@@ -505,7 +505,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2dc2772ac481f7748ac0a73454efd192, type: 3}
-    m_FontSize: 45
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -610,7 +610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 178780672}
   - component: {fileID: 178780674}
-  - component: {fileID: 178780675}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -661,23 +660,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &178780675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178780671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9e050c5d119e64692d04120d2bbcc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sItemPrefab: {fileID: 1392128059706583862, guid: 0158fedec5180674fb914b395b247cc2,
-    type: 3}
-  sListParent: {fileID: 178780672}
-  loadButtonPrefab: {fileID: 672120044}
-  text: {fileID: 548310678}
 --- !u!1 &180568912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1699,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 778.26, y: 215.99998}
-  m_SizeDelta: {x: 300, y: 67.75}
+  m_SizeDelta: {x: 300, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548310678
 MonoBehaviour:
@@ -1741,7 +1723,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2dc2772ac481f7748ac0a73454efd192, type: 3}
-    m_FontSize: 45
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -1752,7 +1734,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u542F\u7528\u5B58\u6863"
+  m_Text: "\u5F53\u524D\u5B58\u6863"
 --- !u!222 &548310679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1798,7 +1780,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 778.26, y: 16.19}
-  m_SizeDelta: {x: 204.53, y: 143.36}
+  m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672120046
 MonoBehaviour:
@@ -1844,10 +1826,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178780675}
+      - m_Target: {fileID: 2076089008}
         m_TargetAssemblyTypeName: GetSave, Assembly-CSharp
         m_MethodName: LoadSave
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2006,9 +1988,9 @@ RectTransform:
   - {fileID: 453384292}
   m_Father: {fileID: 911172661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -300, y: -80}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -80}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714508339
@@ -4484,9 +4466,9 @@ RectTransform:
   - {fileID: 1165364744}
   m_Father: {fileID: 911172661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -80}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -300, y: -80}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581503666
@@ -5692,9 +5674,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2076089002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931041e2216515949a735bce8eaa65ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f9e050c5d119e64692d04120d2bbcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sItemPrefab: {fileID: 7747609159697988701, guid: aa22961a1d0ea29429091d5295cb4ffa,
+    type: 3}
+  sListParent: {fileID: 178780672}
+  selectText: {fileID: 155348939}
+  saveText: {fileID: 548310678}
 --- !u!1 &2092279438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,9 +5912,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178780675}
+      - m_Target: {fileID: 2076089008}
         m_TargetAssemblyTypeName: GetSave, Assembly-CSharp
-        m_MethodName: CreateNewSave
+        m_MethodName: BuildNewSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5955,7 +5942,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 778.26, y: -215.99997}
-  m_SizeDelta: {x: 204.53, y: 67.75}
+  m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3570320655868085224
 MonoBehaviour:
@@ -6047,7 +6034,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2dc2772ac481f7748ac0a73454efd192, type: 3}
-    m_FontSize: 45
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4

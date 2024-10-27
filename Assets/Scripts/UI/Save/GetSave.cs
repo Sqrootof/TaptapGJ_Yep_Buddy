@@ -1,125 +1,122 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GetSave : MonoBehaviour
 {
-    public GameObject sItemPrefab; // 预设
+    public GameObject sItemPrefab; // 存档预设
     public Transform sListParent; // 存档列表的父对象
-    public GameObject loadButtonPrefab; // 加载按钮预设
-    private string currentSaveName; // 当前选中的存档名
-    public static int Select;
-    public Text selectText;
 
-    public Text text;
+    public static int SelectNum;
+    public Text selectText;
+    public Text saveText;
+
+    private int previousSelectNum; // 用于跟踪上一个选择的存档编号
 
     private void Start()
     {
-        Select = -1;
-        RefreshSaveList(); // 初始显示存档列表
+        DisplaySaves();
+        previousSelectNum = SelectNum; // 初始化上一个存档编号
     }
 
-    private void RefreshSaveList()
+    private void Update()
     {
-        text.text = "当前存档：" + SaveManager.NowName;
-        if (Select == -1)
-            selectText.text = "未选中存档";
+        // 监听 SelectNum 的变化
+        if (SelectNum != previousSelectNum)
+        {
+            ShowSelect(); // 调用显示选择的存档文本
+            previousSelectNum = SelectNum; // 更新上一个存档编号
+        }
+    }
+
+    private void ShowSave()
+    {
+        if (SaveManager.NowNum > 0)
+            saveText.text = "当前存档：" + SaveManager.NowNum.ToString();
+    }
+
+    private void ShowSelect()
+    {
+        if (SelectNum > 0)
+            selectText.text = "点击切换为存档：" + SelectNum.ToString();
         else
-            selectText.text = "点击启用存档：" + Select.ToString();
-        // 清除现有的存档显示
+            selectText.text = "当前未选中存档";
+    }
+
+    public void LoadSave()
+    {
+        SaveManager.Load(SelectNum);
+        DisplaySaves();
+    }
+
+    private void DisplaySaves()
+    {
+        SelectNum = 0;
+        ShowSelect();
+        ShowSave();
+        
+        // 清空列表
         foreach (Transform child in sListParent)
         {
             Destroy(child.gameObject);
         }
 
         // 获取存档数量
-        int saveCount = PlayerPrefs.GetInt("SaveCount", 0);
-        
-        // 遍历所有存档
-        for (int i = 0; i < saveCount; i++)
+        int saveCount = PlayerPrefs.GetInt(SaveManager.SaveCount, 0);
+
+        for (int i = 1; i <= saveCount; i++) // 存档编号从1开始
         {
-            if (PlayerPrefs.HasKey(i.ToString()))
+            // 获取存档数据
+            string SDJson = PlayerPrefs.GetString(i.ToString(), "");
+            if (!string.IsNullOrEmpty(SDJson))
             {
-                // 获取存档的 JSON 数据
-                string saveData = PlayerPrefs.GetString(i.ToString(), "");
-                if (!string.IsNullOrEmpty(saveData))
-                {
-                    // 解析存档
-                    SD saveDataObj = JsonUtility.FromJson<SD>(saveData);
+                // 反序列化存档数据
+                SD saveData = JsonUtility.FromJson<SD>(SDJson);
+                
+                // 实例化存档项
+                GameObject sItem = Instantiate(sItemPrefab, sListParent);
+                sItem.GetComponent<SaveButton>().num = saveData.SDNum;
 
-                    // 实例化 UI 元素
-                    GameObject item = Instantiate(sItemPrefab, sListParent);
-
-                    // 获取显示文本组件并设置内容
-                    Text itemText = item.GetComponentInChildren<Text>();
-                    if (itemText != null)
-                    {
-                        itemText.text = "Save Name: " + saveDataObj.SDname + " | Save Num: " + saveDataObj.SDNum;
-                    }
-
-
-                    // 添加点击事件
-                    Button itemButton = item.GetComponent<Button>();
-                    if (itemButton != null)
-                    {
-                        itemButton.onClick.AddListener(() => SelectSave(saveDataObj.SDname.ToString()));
-                    }
-                }
+                // 获取 Text 组件
+                Text text1 = sItem.transform.Find("Text1").GetComponent<Text>();
+                Text text2 = sItem.transform.Find("Text2").GetComponent<Text>();
+                int itemCount = GetTotalItemCount(saveData);
+                // 设置文本内容
+                text1.text = $"存档编号: {saveData.SDNum}";
+                text2.text = $"锚点数: {CountTrueAnchors(saveData.Anchor)} 道具数: {itemCount}";
             }
         }
     }
 
-    public void CreateNewSave()
+    // 计算锚点中为true的数量
+    private int CountTrueAnchors(bool[] anchors)
     {
-        // 创建新的存档
+        int count = 0;
+        foreach (bool anchor in anchors)
+        {
+            if (anchor) count++;
+        }
+        return count;
+    }
+
+    // 计算道具数量
+    private int GetTotalItemCount(SD saveData)
+    {
+        int itemCount = 0;
+
+        // 确保 EB 和 BB 列表存在并计算元素数量
+        if (saveData.EB != null)
+            itemCount += saveData.EB.Count;
+
+        if (saveData.BB != null)
+            itemCount += saveData.BB.Count;
+
+        return itemCount;
+    }
+
+    public void BuildNewSave()
+    {
         SaveManager.NewSave();
-        
-        // 刷新存档列表显示
-        RefreshSaveList();
-    }
-
-    private void SelectSave(string saveName)
-    {
-        // 记录当前选中的存档名
-        currentSaveName = saveName;
-
-        // 显示加载按钮
-        ShowLoadButton();
-    }
-
-    private void ShowLoadButton()
-    {
-        // 清除已有的加载按钮（如果存在）
-        foreach (Transform child in sListParent)
-        {
-            if (child.name == "LoadButton")
-            {
-                Destroy(child.gameObject);
-            }
-        }
-
-        // 实例化新的加载按钮
-        GameObject loadButton = Instantiate(loadButtonPrefab, sListParent);
-        loadButton.name = "LoadButton"; // 给按钮命名，方便后续查找
-
-        // 获取按钮组件并添加事件
-        Button button = loadButton.GetComponent<Button>();
-        if (button != null)
-        {
-            button.onClick.AddListener(() => LoadSave(currentSaveName));
-            Text buttonText = loadButton.GetComponentInChildren<Text>();
-            if (buttonText != null)
-            {
-                buttonText.text = "Load Save: " + currentSaveName;
-            }
-        }
-    }
-
-    public void LoadSave(string saveName)
-    {
-        // 加载指定的存档
-        SaveManager.Load(saveName);
-        // 这里可以添加加载成功后的逻辑，例如跳转到游戏主界面等
+        DisplaySaves();
     }
 }

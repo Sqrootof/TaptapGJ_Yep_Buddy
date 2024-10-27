@@ -59,6 +59,7 @@ public class AnchorPointButton : MonoBehaviour
         AnchorPoint anchorPoint=Whole.anchorPoints.Find(a => a.AnchorPointName == Where);
         if (anchorPoint != null && anchorPoint.isUnlocked)
         {
+            SaveManager.Save(SaveManager.NowNum);
             player.transform.position=anchorPoint.anchorObject.transform.position;
             BlackScreen blackScreen = Black.GetComponent<BlackScreen>();
             blackScreen.gameObject.SetActive(true);

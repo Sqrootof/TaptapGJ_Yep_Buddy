@@ -14,6 +14,7 @@ public class SceneChoice : MonoBehaviour
     {
         Time.timeScale = 1;
         Instantiate(effect, transform.position, transform.rotation);
+        SaveManager.Save(SaveManager.NowNum);
         SceneManager.LoadScene(sceneName);
     }
 

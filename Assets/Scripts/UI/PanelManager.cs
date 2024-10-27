@@ -62,13 +62,13 @@ public class PanelManager : MonoBehaviour
         {
             PanelChoice.Num = 7;
             KeyCode1();
-        }*/
+        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             PanelChoice.Num = 3;
             KeyCode1();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
+        }*/
+        if (Input.GetKeyDown(KeyCode.B))
         {
             PanelChoice.Num = 2;
             KeyCode1();
