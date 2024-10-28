@@ -8,13 +8,13 @@ public class SceneChoice : MonoBehaviour
     public string sceneName; // 要跳转的场景名称
     public float ifDelayTime;
     public GameObject effect;
+    public bool isSave = false;
 
     // 立即跳转到指定场景
     public void SceneAlt()
     {
         Time.timeScale = 1;
         Instantiate(effect, transform.position, transform.rotation);
-        SaveManager.Save(SaveManager.NowNum);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -23,6 +23,8 @@ public class SceneChoice : MonoBehaviour
     {
         Time.timeScale = 1;
         Instantiate(effect, transform.position, transform.rotation);
+        if (isSave)
+            SaveManager.Save(SaveManager.NowNum);
         StartCoroutine(DelayedSceneChange(ifDelayTime));
     }
 

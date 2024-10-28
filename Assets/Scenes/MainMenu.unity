@@ -453,6 +453,7 @@ MonoBehaviour:
   sceneName: WorldUI 1
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!95 &47834709
 Animator:
   serializedVersion: 5
@@ -3909,6 +3910,7 @@ MonoBehaviour:
   sceneName: World
   ifDelayTime: 0.5
   effect: {fileID: 0}
+  isSave: 0
 --- !u!95 &1256263173
 Animator:
   serializedVersion: 5
@@ -4353,6 +4355,7 @@ MonoBehaviour:
   sceneName: AchievementMenu
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!95 &1434082889
 Animator:
   serializedVersion: 5
@@ -4576,6 +4579,7 @@ MonoBehaviour:
   sceneName: AboutMenu
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!95 &1509093201
 Animator:
   serializedVersion: 5
@@ -4920,6 +4924,7 @@ MonoBehaviour:
   sceneName: WorldUI 1
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!114 &1526652550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5667,7 +5672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1842038493
 Transform:
   m_ObjectHideFlags: 0
@@ -6427,6 +6432,7 @@ MonoBehaviour:
   sceneName: SaveMenu
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!95 &2097430336
 Animator:
   serializedVersion: 5
