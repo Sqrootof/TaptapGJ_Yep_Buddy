@@ -15,6 +15,8 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     GameObject InfoBox;
     [SerializeField] GameObject Drop;
 
+    int IndexToEquip=0;
+
     void Awake()
     {
         BulletImage = transform.GetChild(0).GetComponent<Image>();
@@ -41,6 +43,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     {
         if (InfoBox) Destroy(InfoBox);
         transform.position = eventData.position;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -63,8 +66,12 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         //如果拖拽到了已装备的子弹上
         else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
         {
-            if (FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count < 7){
-                WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);
+            if (WeaponBackpack.Instance.GetEquippedBullets().Count < 7){
+                Debug.Log("Equip");
+                float delat_x = eventData.position.x - WeaponPanelMgr.Instance.EquippedBulletRect.Origin.x;
+                delat_x -= WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().padding.left;
+                IndexToEquip = (int)(delat_x / (WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().spacing + 70));
+                WeaponBackpack.Instance.EquipBulletFromBackpack(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged,IndexToEquip);
                 Destroy(gameObject);
             }
             else
