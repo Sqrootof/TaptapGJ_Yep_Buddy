@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eb76bbd07c5b34f8c5778b818db7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 500
+  currentHealth: 500
   rb: {fileID: 0}
   player: {fileID: 0}
   dropGameObject: []
@@ -272,7 +272,7 @@ MonoBehaviour:
   bullet: {fileID: 2802800548311024721, guid: 710bbca0b28b11f418ca6eaf92644f35, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
   targetInitialPosition: {x: 0, y: 0, z: 0}
-  InitialPosition: {x: 1.12, y: 13.65, z: 0}
+  InitialPosition: {x: 0, y: 10, z: 0}
   rotationSpeed: 5
   bulletSpeed: 2
   timer: 0
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ce9e4a61d188b41b228f0c2a0bcaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogueTreeController: {fileID: 0}
 --- !u!1 &1380200422395266684
 GameObject:
   m_ObjectHideFlags: 0
