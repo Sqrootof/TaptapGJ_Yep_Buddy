@@ -60,14 +60,29 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
         }
     }
 
-    public void EquipBulletFromBackpack(Bullet Bullet,Action OnBulletDataUpdate)
+    public void EquipBulletFromBackpack(Bullet Bullet,Action OnBulletDataUpdate,int Index)
     {
-        if (BulletInBackpack.Contains(Bullet)) { 
+        Debug.Log("Index:" + Index);
+        Index = Index > EquippedBullets.Count-1 ? EquippedBullets.Count: Index;
+        Debug.Log("__Index:" + Index);
+        if (BulletInBackpack.Contains(Bullet)) {
+            EquippedBullets.Insert(Index, Bullet);
             BulletInBackpack.Remove(Bullet);
-            EquippedBullets.Add(Bullet);
-            ShootController.Instance.BlockHeadIndex = 0;
-            OnBulletDataUpdate?.Invoke();
         }
+        else if (EquippedBullets.Contains(Bullet))
+        {
+            int CurrentIndex = EquippedBullets.IndexOf(Bullet);
+            Debug.Log("CurrentIndex" + CurrentIndex);
+            if (Index != CurrentIndex) { 
+                if (Index < CurrentIndex) CurrentIndex += 1;
+                else Index += 1;
+                EquippedBullets.Insert(Index, Bullet);
+                EquippedBullets.RemoveAt(CurrentIndex); 
+            }
+        }
+        else Debug.LogError("意外的子弹装载来源");
+        ShootController.Instance.BlockHeadIndex = 0;
+        OnBulletDataUpdate?.Invoke();   
     }
 
     public void DropBullet(Bullet bullet)
