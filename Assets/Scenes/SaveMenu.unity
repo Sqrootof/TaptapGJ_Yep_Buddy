@@ -2523,10 +2523,10 @@ RectTransform:
   - {fileID: 1581503665}
   - {fileID: 714508338}
   - {fileID: 1359561974}
-  - {fileID: 2029469224}
   - {fileID: 672120045}
   - {fileID: 1853855694121234585}
   - {fileID: 548310677}
+  - {fileID: 2029469224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4555,6 +4555,7 @@ MonoBehaviour:
   sceneName: MainMenu
   ifDelayTime: 0.32
   effect: {fileID: 7309629313245838733, guid: 4ea8e9171adeb454e83de392c153f818, type: 3}
+  isSave: 0
 --- !u!95 &1581503670
 Animator:
   serializedVersion: 5
@@ -5809,6 +5810,7 @@ MonoBehaviour:
   sceneName: World
   ifDelayTime: 0.5
   effect: {fileID: 0}
+  isSave: 0
 --- !u!95 &2092279444
 Animator:
   serializedVersion: 5

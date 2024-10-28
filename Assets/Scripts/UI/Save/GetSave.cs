@@ -106,10 +106,10 @@ public class GetSave : MonoBehaviour
 
         // 确保 EB 和 BB 列表存在并计算元素数量
         if (saveData.EB != null)
-            itemCount += saveData.EB.Count;
+            itemCount += saveData.EB.Length;
 
         if (saveData.BB != null)
-            itemCount += saveData.BB.Count;
+            itemCount += saveData.BB.Length;
 
         return itemCount;
     }

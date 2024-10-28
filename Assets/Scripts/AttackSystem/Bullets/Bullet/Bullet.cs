@@ -17,6 +17,7 @@ public class Bullet : ScriptableObject
     public Sprite Icon;
     public BulletType BulletType;
     public float ShootInterval;
+    public string Address;
 
     public virtual Bullet DeepCopy() { return Instantiate(this); }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -7,9 +8,18 @@ public class SD
 {
     public int SDNum; // 存档编号
     public bool[] Anchor; // 锚点状态
-    public List<Bullet> EB; // 装备子弹列表
-    public List<Bullet> BB; // 背包子弹列表
+    public string[] EB; // 装备子弹列表
+    public string[] BB; // 背包子弹列表
 }
+
+/*[Serializable]
+public class BulletData
+{
+    public string BulletName;
+    public Sprite Icon;
+    public BulletType BulletType;
+    public float ShootInterval;
+}*/
 
 public class SaveManager : MonoBehaviour
 {
@@ -44,6 +54,7 @@ public class SaveManager : MonoBehaviour
         {
             NowSD = JsonUtility.FromJson<SD>(SDJson);
             NowNum = NowSD.SDNum;
+            
             IsLoggedIn = true;
             PlayerPrefs.SetInt(LastUsed,NowNum); PlayerPrefs.Save();
         }
@@ -55,8 +66,9 @@ public class SaveManager : MonoBehaviour
     {
         if (Whole.anchorPoints.Count > 1)
         {
-            NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack();
-            NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets();
+            NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack().Select(b => b.Address).ToArray();
+            NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets().Select(b => b.Address).ToArray();
+
             NowSD.Anchor = new[]
             {
                 Whole.anchorPoints[0].isUnlocked,
@@ -79,8 +91,8 @@ public class SaveManager : MonoBehaviour
         {
             SDNum = newSDNum, // 将存档编号设置为新名称
             Anchor = new bool[] {false, false, false, false, false, false}, // 初始化锚点状态
-            EB = new List<Bullet>(), // 初始化装备子弹列表
-            BB = new List<Bullet>() // 初始化背包子弹列表
+            EB = Array.Empty<string>(), // 初始化装备子弹列表
+            BB = Array.Empty<string>() // 初始化背包子弹列表
         };
         PlayerPrefs.SetString(newSDNum.ToString(), JsonUtility.ToJson(newSD)); //存起来
         PlayerPrefs.SetInt(SaveCount,newSDNum); PlayerPrefs.Save(); //数目加一

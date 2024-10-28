@@ -47,7 +47,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     {
         if (InfoBox) Destroy(InfoBox);
 
-        //Èç¹ûÍÏ×§µ½ÁË±³°üÀï
+        //å¦‚æœæ‹–æ‹½åˆ°äº†èƒŒåŒ…é‡Œ
         if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.BulletBackpackRect, eventData.position))
         {
             if (!FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count > 1){
@@ -60,7 +60,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
                 transform.parent = OriginParent;
             }
         }
-        //Èç¹ûÍÏ×§µ½ÁËÒÑ×°±¸µÄ×Óµ¯ÉÏ
+        //å¦‚æœæ‹–æ‹½åˆ°äº†å·²è£…å¤‡çš„å­å¼¹ä¸Š
         else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
         {
             if (FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count < 7){
@@ -99,10 +99,10 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         InfoBox.transform.SetParent(transform.parent.parent.parent.parent);
         InfoBox.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position + new Vector3(120,0,0);
         Text text = InfoBox.GetComponentInChildren<Text>();
-        text.text = BulletData.BulletName + "\n" + "Éä»÷ÀäÈ´£º" + BulletData.ShootInterval + "\n";
+        text.text = BulletData.BulletName + "\n" + "å°„å‡»å†·å´ï¼š" + BulletData.ShootInterval + "\n";
         if (BulletData as Extend)
         {
-            text.text += "¶îÍâÊÍ·ÅÊı£º" + (BulletData as Extend).StepExtension + "\n";
+            text.text += "é¢å¤–é‡Šæ”¾æ•°ï¼š" + (BulletData as Extend).StepExtension + "\n";
         }
         else if (BulletData as Gain)
         {
@@ -110,39 +110,39 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
             switch ((BulletData as Gain).GainType)
             {
                 case GainType.General:
-                    text.text += "ÔöÒæÀàĞÍ£º·ºÓÃ\n";
+                    text.text += "å¢ç›Šç±»å‹ï¼šæ³›ç”¨\n";
                     break;
 
                 case GainType.Laser:
-                    text.text += "ÔöÒæÀàĞÍ£º½ö¼¤¹â\n";
+                    text.text += "å¢ç›Šç±»å‹ï¼šä»…æ¿€å…‰\n";
                     break;
 
                 case GainType.Bomb:
-                    text.text += "ÔöÒæÀàĞÍ£º½ö±¬Õ¨\n";
+                    text.text += "å¢ç›Šç±»å‹ï¼šä»…çˆ†ç‚¸\n";
                     break;
             }
-            text.text += "ÔöÒæ£º" + (BulletData as Gain).Description + "\n";
+            text.text += "å¢ç›Šï¼š" + (BulletData as Gain).Description + "\n";
         }
         else if (BulletData as Projectile) {
             InfoBox.GetComponent<RectTransform>().sizeDelta += new Vector2(40, 100);
             switch ((BulletData as Projectile).ProjectileType) {
                 case ProjectileType.Missile:
-                    text.text += "ÀàĞÍ£ºµ¼µ¯\n";
+                    text.text += "ç±»å‹ï¼šå¯¼å¼¹\n";
                     break;
 
                 case ProjectileType.Laser:
-                    text.text += "ÀàĞÍ£º¼¤¹â\n";
+                    text.text += "ç±»å‹ï¼šæ¿€å…‰\n";
                     break;
 
                 case ProjectileType.Bomb:
-                    text.text += "ÀàĞÍ£º±¬Õ¨\n";
+                    text.text += "ç±»å‹ï¼šçˆ†ç‚¸\n";
                     break;
             } 
-            text.text += "ÉËº¦£º" + (BulletData as Projectile).Damage + "\n";
-            text.text += "³õËÙ¶È£º" + (BulletData as Projectile).InitialVelocity + "\n";
-            text.text += "¼ºÉË£¿" + ((BulletData as Projectile).SelfDamage? "ÊÇ\n": "·ñ\n");
-            text.text += "³ÖĞøÊ±¼ä£º" + (BulletData as Projectile).LifeTime + "\n";
-            text.text += "Æ«ÒÆ½Ç£º" + (BulletData as Projectile).OffsetAngle + "\n";
+            text.text += "ä¼¤å®³ï¼š" + (BulletData as Projectile).Damage + "\n";
+            text.text += "åˆé€Ÿåº¦ï¼š" + (BulletData as Projectile).InitialVelocity + "\n";
+            text.text += "å·±ä¼¤ï¼Ÿ" + ((BulletData as Projectile).SelfDamage? "æ˜¯\n": "å¦\n");
+            text.text += "æŒç»­æ—¶é—´ï¼š" + (BulletData as Projectile).LifeTime + "\n";
+            text.text += "åç§»è§’ï¼š" + (BulletData as Projectile).OffsetAngle + "\n";
             if((BulletData as Projectile).ExternalFunction) 
                 text.text += " " + (BulletData as Projectile).ExternalFunction.Description + "\n";
         }

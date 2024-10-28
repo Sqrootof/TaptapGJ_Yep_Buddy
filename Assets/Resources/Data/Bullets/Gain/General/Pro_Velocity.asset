@@ -16,6 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 0155739e905ccaf44857966e463f42cf, type: 3}
   BulletType: 2
   ShootInterval: 0
+  Address: Data/Bullets/Gain/General/Pro_Velocity
   GainType: 0
   Description: "\u589E\u52A0\u5B50\u5F39\u521D\u59CB\u901F\u5EA6"
   Gain_InitVelocity: 1.4

@@ -18,7 +18,7 @@ public class Click : MonoBehaviour
     public void setTrue()
     {
         OnEmpty.ClickButton = true;
-        Debug.Log("1");
+        //Debug.Log("1");
     }
 
     public void setFalse()

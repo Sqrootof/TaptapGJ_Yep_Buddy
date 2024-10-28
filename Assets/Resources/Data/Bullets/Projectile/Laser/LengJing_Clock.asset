@@ -16,6 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: ca23987533b90464e99c69dfb60dbc00, type: 3}
   BulletType: 0
   ShootInterval: 0.4
+  Address: Data/Bullets/Projectile/Laser/LengJing_Clock
   ProjectileType: 1
   InitialVelocity: 0
   OffsetAngle: 0

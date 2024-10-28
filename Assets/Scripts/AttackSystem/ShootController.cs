@@ -39,9 +39,30 @@ public class ShootController : TIntance<ShootController>
         GetNextBulletBlock();
         ShootInterval = 0;
         int index = 0;
+        if (CurrentProjectileBlock.Count == 0)
+        {
+            Debug.LogError("CurrentProjectileBlock is empty!");
+            return;
+        }
         foreach (var Projectile in CurrentProjectileBlock)
         {
+            if (Projectile == null)
+            {
+                Debug.LogError("Projectile is null!");
+                continue; // Skip this iteration
+            }
             Projectile newData = Projectile.DeepCopy() as Projectile;
+            if (newData == null)
+            {
+                Debug.LogError("newData is null after DeepCopy!");
+                continue; // Skip this iteration
+            }
+
+            if (newData.Prefab == null)
+            {
+                Debug.LogError("Prefab is null for " + newData.BulletName);
+                continue; // Skip this iteration
+            }
             ShootInterval += newData.ShootInterval;
             foreach (var gain in CurrentGainsBlock)
             {

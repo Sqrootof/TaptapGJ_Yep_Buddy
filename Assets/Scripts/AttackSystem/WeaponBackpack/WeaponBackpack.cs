@@ -16,10 +16,22 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
     {
         if (SaveManager.NowSD != null)
         {
-            SetEquippedBullets(SaveManager.NowSD.EB);
-            SetEquippedBullets(SaveManager.NowSD.BB);
+            var a = SaveManager.NowSD.EB;
+            var b = SaveManager.NowSD.BB;
+            SetEquippedBullets(a);
+            SetBulletsInBackpack(b);
         }
     }
+    /*private static Bullet CreateBullet(BulletData data)
+    {
+        // 在这里根据 BulletData 创建 Bullet 实例
+        Bullet bullet = ScriptableObject.CreateInstance<Bullet>();
+        bullet.BulletName = data.BulletName;
+        bullet.Icon = data.Icon;
+        bullet.BulletType = data.BulletType;
+        bullet.ShootInterval = data.ShootInterval;
+        return bullet;
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -27,14 +39,30 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
         
     }
 
-    public void SetEquippedBullets(List<Bullet> Bullets)
+    public void SetEquippedBullets(string[] addresses)
     {
-        EquippedBullets = new List<Bullet>(Bullets);
+        EquippedBullets = new List<Bullet>();
+        foreach (var address in addresses)
+        {
+            Bullet bullet = Resources.Load<Bullet>(address);
+            if (bullet != null)
+            {
+                EquippedBullets.Add(bullet);
+            }
+        }
     }
 
-    public void SetBulletsInBackpack(List<Bullet> Bullets)
+    public void SetBulletsInBackpack(string[] addresses)
     {
-        BulletInBackpack = new List<Bullet>(Bullets);
+        BulletInBackpack = new List<Bullet>();
+        foreach (var address in addresses)
+        {
+            Bullet bullet = Resources.Load<Bullet>(address);
+            if (bullet != null)
+            {
+                BulletInBackpack.Add(bullet);
+            }
+        }
     }
 
     public List<Bullet> GetEquippedBullets() { 
