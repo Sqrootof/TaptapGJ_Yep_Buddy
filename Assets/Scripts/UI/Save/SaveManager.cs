@@ -10,6 +10,7 @@ public class SD
     public bool[] Anchor; // 锚点状态
     public string[] EB; // 装备子弹列表
     public string[] BB; // 背包子弹列表
+    public int Round;
 }
 
 /*[Serializable]
@@ -28,6 +29,7 @@ public class SaveManager : MonoBehaviour
     public const string LastUsed = "LastUsed";
     public const string SaveCount = "SaveCount";
     public static bool IsLoggedIn = false;
+    public static int Round;
     private int lastUsedSave;
     
     //加载目标存档：SaveManager.Load(int name);
@@ -54,7 +56,7 @@ public class SaveManager : MonoBehaviour
         {
             NowSD = JsonUtility.FromJson<SD>(SDJson);
             NowNum = NowSD.SDNum;
-            
+            Round = NowSD.Round;
             IsLoggedIn = true;
             PlayerPrefs.SetInt(LastUsed,NowNum); PlayerPrefs.Save();
         }
@@ -92,7 +94,8 @@ public class SaveManager : MonoBehaviour
             SDNum = newSDNum, // 将存档编号设置为新名称
             Anchor = new bool[] {false, false, false, false, false, false}, // 初始化锚点状态
             EB = Array.Empty<string>(), // 初始化装备子弹列表
-            BB = Array.Empty<string>() // 初始化背包子弹列表
+            BB = Array.Empty<string>(), // 初始化背包子弹列表
+            Round = 1
         };
         PlayerPrefs.SetString(newSDNum.ToString(), JsonUtility.ToJson(newSD)); //存起来
         PlayerPrefs.SetInt(SaveCount,newSDNum); PlayerPrefs.Save(); //数目加一

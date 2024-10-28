@@ -47,7 +47,7 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
             Bullet bullet = Resources.Load<Bullet>(address);
             if (bullet != null)
             {
-                EquippedBullets.Add(bullet);
+                EquippedBullets.Add(bullet.DeepCopy());
             }
         }
     }
@@ -60,7 +60,7 @@ public class WeaponBackpack : TIntance<WeaponBackpack>
             Bullet bullet = Resources.Load<Bullet>(address);
             if (bullet != null)
             {
-                BulletInBackpack.Add(bullet);
+                BulletInBackpack.Add(bullet.DeepCopy());
             }
         }
     }

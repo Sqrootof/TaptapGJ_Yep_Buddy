@@ -80,10 +80,12 @@ public class GetSave : MonoBehaviour
                 // 获取 Text 组件
                 Text text1 = sItem.transform.Find("Text1").GetComponent<Text>();
                 Text text2 = sItem.transform.Find("Text2").GetComponent<Text>();
+                Text text3 = sItem.transform.Find("Text3").GetComponent<Text>();
                 int itemCount = GetTotalItemCount(saveData);
                 // 设置文本内容
                 text1.text = $"存档编号: {saveData.SDNum}";
                 text2.text = $"锚点数: {CountTrueAnchors(saveData.Anchor)} 道具数: {itemCount}";
+                text3.text = $"轮回：{saveData.Round}";
             }
         }
     }

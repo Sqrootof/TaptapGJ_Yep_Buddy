@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour,IDamageable, IKnockBackable
     /// </summary>
     protected virtual void OnEnable()
     {
+        maxHealth = maxHealth * (1 + 0.5F * SaveManager.Round);
         currentHealth = maxHealth;
 
         /*子类中在base.OnEnable()之前为enemyFSM.startState赋值*/

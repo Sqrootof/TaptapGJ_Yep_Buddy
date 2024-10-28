@@ -6,16 +6,16 @@ using UnityEngine;
 
 public class HiddenEnemy : Enemy
 {
-    public Enemy enemy; // Enemy ÊµÀıÒıÓÃ
+    public Enemy enemy; // Enemy å®ä¾‹å¼•ç”¨
     public EnemyLaser enemyLaser;
 
-    public float bulletSpeed; // ×Óµ¯ËÙ¶È
+    public float bulletSpeed; // å­å¼¹é€Ÿåº¦
     public float attackTime;
-    public float stopDuration = 2f; // Í£ÁôÊ±¼ä
-    public float stopTimer; // Í£Áô¼ÆÊ±Æ÷
+    public float stopDuration = 2f; // åœç•™æ—¶é—´
+    public float stopTimer; // åœç•™è®¡æ—¶å™¨
 
-    public bool movingToA = true; // µ±Ç°ÊÇ·ñ³¯AµãÒÆ¶¯
-    public bool isStopping = false; // ÊÇ·ñÕıÔÚÍ£Áô
+    public bool movingToA = true; // å½“å‰æ˜¯å¦æœAç‚¹ç§»åŠ¨
+    public bool isStopping = false; // æ˜¯å¦æ­£åœ¨åœç•™
     public bool bullet;
 
     public GameObject PointA;
@@ -61,7 +61,7 @@ public class HiddenEnemy : Enemy
     protected override void Start()
     {
         enemy = FindObjectOfType<Enemy>();
-        targetPoint = patrolPointA; // ³õÊ¼Ä¿±êµãÎªAµã
+        targetPoint = patrolPointA; // åˆå§‹ç›®æ ‡ç‚¹ä¸ºAç‚¹
         base.Start();
     }
 
@@ -74,26 +74,26 @@ public class HiddenEnemy : Enemy
         }
         if (enemyFSM.currentState == patrolState)
         {
-            // Èç¹ûÕıÔÚÍ£Áô
+            // å¦‚æœæ­£åœ¨åœç•™
             if (isStopping)
             {
-                stopTimer += Time.deltaTime; // Ôö¼ÓÍ£Áô¼ÆÊ±Æ÷
+                stopTimer += Time.deltaTime; // å¢åŠ åœç•™è®¡æ—¶å™¨
                 if (stopTimer >= stopDuration)
                 {
-                    // Í£ÁôÊ±¼ä½áÊø£¬ÇĞ»»Ä¿±êµã
+                    // åœç•™æ—¶é—´ç»“æŸï¼Œåˆ‡æ¢ç›®æ ‡ç‚¹
                     movingToA = !movingToA;
                     targetPoint = movingToA ? patrolPointA : patrolPointB;
-                    isStopping = false; // ÖØÖÃÍ£Áô×´Ì¬
+                    isStopping = false; // é‡ç½®åœç•™çŠ¶æ€
                 }
-                return; // Í£ÁôÊ±²»Ö´ĞĞÆäËûÂß¼­
+                return; // åœç•™æ—¶ä¸æ‰§è¡Œå…¶ä»–é€»è¾‘
             }
 
-            // ¼ì²âÊÇ·ñµ½´ïÄ¿±êµã
+            // æ£€æµ‹æ˜¯å¦åˆ°è¾¾ç›®æ ‡ç‚¹
             if (Mathf.Abs(enemy.transform.position.x - targetPoint.x) < 0.1f)
             {
-                // ¿ªÊ¼Í£Áô
+                // å¼€å§‹åœç•™
                 isStopping = true;
-                stopTimer = 0f; // ÖØÖÃ¼ÆÊ±Æ÷
+                stopTimer = 0f; // é‡ç½®è®¡æ—¶å™¨
             }
         }
 
@@ -102,21 +102,21 @@ public class HiddenEnemy : Enemy
 
     public void SetTargetPosition()
     {
-        // ¼ÆËãÄ¿±ê·½Ïò
+        // è®¡ç®—ç›®æ ‡æ–¹å‘
         Vector3 direction = enemy.player.transform.position - enemy.transform.position;
         Quaternion targetRotation;
-        if (direction.x < 0) // Ïò×ó
+        if (direction.x < 0) // å‘å·¦
         {
-            targetRotation = Quaternion.Euler(0, 40, 0); // Ïò×ó×ªÏò
+            targetRotation = Quaternion.Euler(0, 40, 0); // å‘å·¦è½¬å‘
         }
-        else// ÏòÓÒ
+        else// å‘å³
         {
-            targetRotation = Quaternion.Euler(0, 0, 0); // ÏòÓÒ×ªÏò
+            targetRotation = Quaternion.Euler(0, 0, 0); // å‘å³è½¬å‘
         }
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 15f); // 5f Îª×ªÏòËÙ¶È
-        // ½«·½Ïò¹éÒ»»¯
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 15f); // 5f ä¸ºè½¬å‘é€Ÿåº¦
+        // å°†æ–¹å‘å½’ä¸€åŒ–
         direction.Normalize();
-        // ¼ÆËãÄ¿±êÎ»ÖÃ£¬µĞÈËµÄµ±Ç°Î»ÖÃ + ·½Ïò * 2
+        // è®¡ç®—ç›®æ ‡ä½ç½®ï¼Œæ•Œäººçš„å½“å‰ä½ç½® + æ–¹å‘ * 2
         if (direction.x>0)
         {
             targetPosition = enemy.transform.position + new Vector3(2, 0, 0);
@@ -148,30 +148,30 @@ public class HiddenEnemy : Enemy
     {
         if (enemyFSM.currentState == patrolState)
         {
-            // Èç¹ûÃ»ÓĞÍ£Áô£¬ÔòÒÆ¶¯Ğ¡¹Ö
+            // å¦‚æœæ²¡æœ‰åœç•™ï¼Œåˆ™ç§»åŠ¨å°æ€ª
             if (!isStopping)
             {
                 targetPoint.y = transform.position.y;
                 enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, targetPoint, enemy.patrolSpeed * Time.deltaTime);
 
-                Vector3 direction = targetPoint - enemy.transform.position; // ¼ÆËãÄ¿±ê·½Ïò
+                Vector3 direction = targetPoint - enemy.transform.position; // è®¡ç®—ç›®æ ‡æ–¹å‘
                 Quaternion targetRotation;
 
-                if (direction.x < 0) // Ïò×ó
+                if (direction.x < 0) // å‘å·¦
                 {
-                    targetRotation = Quaternion.Euler(0, 40, 0); // Ïò×ó×ªÏò
+                    targetRotation = Quaternion.Euler(0, 40, 0); // å‘å·¦è½¬å‘
                 }
-                else if (direction.x >= 0) // ÏòÓÒ
+                else if (direction.x >= 0) // å‘å³
                 {
-                    targetRotation = Quaternion.Euler(0, 0, 0); // ÏòÓÒ×ªÏò
+                    targetRotation = Quaternion.Euler(0, 0, 0); // å‘å³è½¬å‘
                 }
                 else
                 {
-                    return; // Èç¹ûÃ»ÓĞÒÆ¶¯£¬Ö±½Ó·µ»Ø
+                    return; // å¦‚æœæ²¡æœ‰ç§»åŠ¨ï¼Œç›´æ¥è¿”å›
                 }
 
-                // Ê¹ÓÃ Slerp ÊµÏÖÆ½»¬×ªÏò
-                enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 15f); // 5f Îª×ªÏòËÙ¶È
+                // ä½¿ç”¨ Slerp å®ç°å¹³æ»‘è½¬å‘
+                enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 15f); // 5f ä¸ºè½¬å‘é€Ÿåº¦
             }
         }
         base.FixedUpdate();
@@ -181,9 +181,9 @@ public class HiddenEnemy : Enemy
     {
         if (other.CompareTag("Obstacles"))
         {
-            // Åöµ½ÕÏ°­Îï£¬Í£Ö¹ÒÆ¶¯²¢ÇĞ»»Ä¿±êµã
-            isStopping = true; // ¿ªÊ¼Í£Áô
-            stopTimer = 0f; // ÖØÖÃ¼ÆÊ±Æ÷
+            // ç¢°åˆ°éšœç¢ç‰©ï¼Œåœæ­¢ç§»åŠ¨å¹¶åˆ‡æ¢ç›®æ ‡ç‚¹
+            isStopping = true; // å¼€å§‹åœç•™
+            stopTimer = 0f; // é‡ç½®è®¡æ—¶å™¨
         }
     }
 }
