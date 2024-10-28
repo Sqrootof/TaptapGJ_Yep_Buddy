@@ -47,23 +47,28 @@ public class SaveManager : MonoBehaviour
             IsLoggedIn = true;
             PlayerPrefs.SetInt(LastUsed,NowNum); PlayerPrefs.Save();
         }
+        Debug.Log("Loading: " + SDJson);
     }
 
     //保存，获取bool[]和两个List，修改NowSD并保存。
     public static void Save(int num)
     {
-        NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack();
-        NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets();
-        NowSD.Anchor = new[]
+        if (Whole.anchorPoints.Count > 1)
         {
-            Whole.anchorPoints[0].isUnlocked,
-            Whole.anchorPoints[1].isUnlocked,
-            Whole.anchorPoints[2].isUnlocked,
-            Whole.anchorPoints[3].isUnlocked,
-            Whole.anchorPoints[4].isUnlocked,
-            Whole.anchorPoints[5].isUnlocked
-        };
+            NowSD.BB = WeaponBackpack.Instance.GetBulletInBackpack();
+            NowSD.EB = WeaponBackpack.Instance.GetEquippedBullets();
+            NowSD.Anchor = new[]
+            {
+                Whole.anchorPoints[0].isUnlocked,
+                Whole.anchorPoints[1].isUnlocked,
+                Whole.anchorPoints[2].isUnlocked,
+                Whole.anchorPoints[3].isUnlocked,
+                Whole.anchorPoints[4].isUnlocked,
+                Whole.anchorPoints[5].isUnlocked
+            };
+        }
         PlayerPrefs.SetString(num.ToString(), JsonUtility.ToJson(NowSD)); PlayerPrefs.Save();
+        Debug.Log("Saving: " + JsonUtility.ToJson(NowSD));
     }
 
     public static void NewSave()

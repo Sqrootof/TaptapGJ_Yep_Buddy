@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum BulletType
 {
-    Projectile,//ÆÕÍ¨Éäµ¯
-    Extend,//À©Õ¹Éäµ¯
-    Gain//Éäµ¯ÔöÒæ
+    Projectile,//æ™®é€šå°„å¼¹
+    Extend,//æ‰©å±•å°„å¼¹
+    Gain//å°„å¼¹å¢žç›Š
 }
 
+[Serializable]
 public class Bullet : ScriptableObject
 {
     public string BulletName;
