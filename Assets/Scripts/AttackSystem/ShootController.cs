@@ -41,7 +41,7 @@ public class ShootController : TIntance<ShootController>
         int index = 0;
         if (CurrentProjectileBlock.Count == 0)
         {
-            Debug.LogError("CurrentProjectileBlock is empty!");
+            //Debug.LogError("CurrentProjectileBlock is empty!");
             return;
         }
         foreach (var Projectile in CurrentProjectileBlock)
