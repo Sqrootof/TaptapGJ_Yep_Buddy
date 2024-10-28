@@ -5846,10 +5846,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1857
+    m_Bits: 3905
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 6272
+    m_Bits: 4224
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -5893,10 +5893,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPoints:
-  - AnchorPointName: T1
+  - AnchorPointName: "\u6751\u53E3"
     anchorObject: {fileID: 0}
     isUnlocked: 0
-  - AnchorPointName: T2
+  - AnchorPointName: "\u5343\u7FBD\u788E\u754C\u524D"
+    anchorObject: {fileID: 0}
+    isUnlocked: 0
+  - AnchorPointName: "2\u5C42"
+    anchorObject: {fileID: 0}
+    isUnlocked: 0
+  - AnchorPointName: "3\u5C42"
+    anchorObject: {fileID: 0}
+    isUnlocked: 0
+  - AnchorPointName: "4\u5C42"
+    anchorObject: {fileID: 0}
+    isUnlocked: 0
+  - AnchorPointName: "\u91D1\u4E4C"
     anchorObject: {fileID: 0}
     isUnlocked: 0
   unlockButton: {fileID: 0}
@@ -5926,10 +5938,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 576
   InTheAir: 0
+  HealthBar: {fileID: 0}
   HealthMax: 100
   BasicDefense: 0
   BasicKnockbackResistance: 0
   currentHealth: 0
+  DeadUI: {fileID: 0}
   PlayerBody: {fileID: 1007750251990868763}
   Head: {fileID: 5457237015240246129}
 --- !u!95 &1624664738650647266
@@ -5989,7 +6003,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  damageAmount: 0.025
+  damageAmount: 0.00001
   explosionPrefab: {fileID: 1021871776118716432, guid: 93899786d7ffe5a4ca80ffaace31164c,
     type: 3}
   maxReflections: 4
@@ -6370,18 +6384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquippedBullets: []
-  BulletInBackpack:
-  - {fileID: 11400000, guid: 7add89c40cb08e64aa884a1d8d149aab, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
-  - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
-  - {fileID: 11400000, guid: 249e3042be891794f8fdcebd1f20a84c, type: 2}
-  - {fileID: 11400000, guid: 302442b4456d4aa4bbcef1eb63d9aecd, type: 2}
-  - {fileID: 11400000, guid: 9309dfd60009d4248aabed730d7f25c0, type: 2}
-  - {fileID: 11400000, guid: 5808a91153b58af48a6b47791bae40a5, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
-  - {fileID: 11400000, guid: cea09f4828b9d3e4fb44398f71f13d24, type: 2}
+  BulletInBackpack: []
   LayerIgnore_DroppedThings:
     serializedVersion: 2
     m_Bits: 5504
