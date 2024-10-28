@@ -26,16 +26,21 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     {
         
     }
-    
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (InfoBox) Destroy(InfoBox);
         OriginPos = transform.position;
         OriginParent = transform.parent;
-        transform.parent = transform.parent.parent.parent.parent;
-        if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.BulletBackpackRect, eventData.position))
-        {
+        if (PointerInBackpackUIRect()){
             FromBackpack = true;
+            transform.parent = transform.parent.parent.parent.parent;
+            transform.SetAsFirstSibling();
+        }
+        else if(PointerInEquippedUIRect()){
+            FromBackpack = false;
+            transform.parent = transform.parent.parent.parent;
+            transform.SetAsFirstSibling();
         }
     }
 
@@ -49,10 +54,13 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
     public void OnEndDrag(PointerEventData eventData)
     {
         if (InfoBox) Destroy(InfoBox);
+        Debug.Log("PointerInBackpack:" + PointerInBackpackUIRect());
+        Debug.Log("PointerInEquipped:" + PointerInEquippedUIRect());
 
         //如果拖拽到了背包里
-        if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.BulletBackpackRect, eventData.position))
+        if (PointerInBackpackUIRect())
         {
+            Debug.Log("背包");
             if (!FromBackpack && WeaponBackpack.Instance.GetEquippedBullets().Count > 1){
                 WeaponBackpack.Instance.StoreEquippedBullet(BulletData, WeaponPanelMgr.Instance.OnBulletDataChanged);
                 Destroy(gameObject);
@@ -64,10 +72,11 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
             }
         }
         //如果拖拽到了已装备的子弹上
-        else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
+        else if (PointerInEquippedUIRect())
         {
+            Debug.Log("装备");
             if (WeaponBackpack.Instance.GetEquippedBullets().Count < 10 * (1 + 0.5F * (SaveManager.Round-1))){
-                //Debug.Log("Equip");
+                Debug.Log("Equip");
                 float delat_x = eventData.position.x - WeaponPanelMgr.Instance.EquippedBulletRect.Origin.x;
                 delat_x -= WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().padding.left;
                 IndexToEquip = (int)(delat_x / (WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().spacing + 70));
@@ -82,7 +91,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         }
         else
         {
-            //Debug.Log("Drop");
+            Debug.Log("Drop");
             DropBullet();
             if (FromBackpack)
                 WeaponBackpack.Instance.GetBulletInBackpack().Remove(BulletData);
@@ -172,5 +181,15 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         GameObject DropBullet = Instantiate(Drop,pos,Quaternion.identity);
         DropBullet.GetComponent<BulletDrop>().BulletInfo = BulletData;
         Destroy(gameObject);
+    }
+
+    bool PointerInEquippedUIRect()
+    {
+        return WeaponPanelMgr.Instance.EquippedBulletMask.PointerIn;
+    }
+
+    bool PointerInBackpackUIRect()
+    {
+        return WeaponPanelMgr.Instance.BackpackMask.PointerIn;
     }
 }

@@ -25,6 +25,8 @@ public class WeaponPanelMgr : TIntance<WeaponPanelMgr>
     [SerializeField] Scrollbar ScrollerBar_BulletBackpack;//背包子弹的滚动条
     [SerializeField] public GameObject WeaponContainer;//当前未使用物体的父物体,有VerticalLayoutGroup组件
     [SerializeField] Scrollbar ScrollerBar_WeaponContainer;//武器的滚动条
+    [SerializeField] public UIRect EquippedBulletMask;
+    [SerializeField] public UIRect BackpackMask;
 
     [SerializeField] float RawSpeed = 10;
 
