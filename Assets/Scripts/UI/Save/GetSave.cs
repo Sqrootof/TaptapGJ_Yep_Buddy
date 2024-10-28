@@ -91,7 +91,7 @@ public class GetSave : MonoBehaviour
     }
 
     // 计算锚点中为true的数量
-    private int CountTrueAnchors(bool[] anchors)
+    public static int CountTrueAnchors(bool[] anchors)
     {
         int count = 0;
         foreach (bool anchor in anchors)

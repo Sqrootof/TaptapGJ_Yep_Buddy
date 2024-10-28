@@ -80,6 +80,7 @@ public class SaveManager : MonoBehaviour
                 Whole.anchorPoints[4].isUnlocked,
                 Whole.anchorPoints[5].isUnlocked
             };
+            NowSD.Round = Round;
         }
         PlayerPrefs.SetString(num.ToString(), JsonUtility.ToJson(NowSD)); PlayerPrefs.Save();
         Debug.Log("Saving: " + JsonUtility.ToJson(NowSD));

@@ -10,7 +10,7 @@ public class BossDie : MonoBehaviour
     public DialogueTreeController _dialogueTreeController;
     public void OnDestroy()
     {
-        SaveManager.Round += 1;
+        SaveManager.Round++;
         foreach (var a in Whole.anchorPoints)
         {
             a.isUnlocked = false;

@@ -66,8 +66,8 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         //如果拖拽到了已装备的子弹上
         else if (WeaponPanelMgr.Instance.PointerInRect(WeaponPanelMgr.Instance.EquippedBulletRect, eventData.position))
         {
-            if (WeaponBackpack.Instance.GetEquippedBullets().Count < 7){
-                Debug.Log("Equip");
+            if (WeaponBackpack.Instance.GetEquippedBullets().Count < 10 * (1 + 0.5F * (SaveManager.Round-1))){
+                //Debug.Log("Equip");
                 float delat_x = eventData.position.x - WeaponPanelMgr.Instance.EquippedBulletRect.Origin.x;
                 delat_x -= WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().padding.left;
                 IndexToEquip = (int)(delat_x / (WeaponPanelMgr.Instance.EquippiedBulletContainer.GetComponent<HorizontalLayoutGroup>().spacing + 70));
@@ -82,7 +82,7 @@ public class BulletHolder : MonoBehaviour, IDragHandler, IEndDragHandler , IBegi
         }
         else
         {
-            Debug.Log("Drop");
+            //Debug.Log("Drop");
             DropBullet();
             if (FromBackpack)
                 WeaponBackpack.Instance.GetBulletInBackpack().Remove(BulletData);
